@@ -11,7 +11,7 @@ import Interfaces.Prueba;
  *
  * @author Andy
  */
-public class ProyectosOperativos2Ant {
+public class Proyectos2Operativos {
 
     /**
      * @param args the command line arguments
