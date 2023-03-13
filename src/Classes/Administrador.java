@@ -15,7 +15,6 @@ import java.util.logging.Logger;
  */
 public class Administrador extends Thread{
     
-    int contador;
 
     public static LinkedList colaNivel1Jose = new LinkedList();
     public static LinkedList colaNivel2Jose = new LinkedList();
@@ -36,7 +35,7 @@ public class Administrador extends Thread{
     public void run(){
         
         
-        while(true){
+        while(variablesGenerales.keep){
             Serie serieJose = new Serie();
             Serie serieAndy = new Serie();
             Serie serieUseche = new Serie();
@@ -55,7 +54,6 @@ public class Administrador extends Thread{
     /**
      * Determina cual debería ser la prioridad de la serie que se le pase
      * @param serieNombreRodaje
-     * @return prioridad de la serie
      */
     public void establecerPrioridad(Serie serieNombreRodaje){
         double introProb = Math.random();

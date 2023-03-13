@@ -12,8 +12,10 @@ import java.util.concurrent.Semaphore;
  */
 public class variablesGenerales {
     
+    public static boolean keep = true;
+    
     public static Semaphore darPasoIA = new Semaphore(0);
-    public static Semaphore darPasoAdmin = new Semaphore(1);
+    public static Semaphore darPasoAdmin = new Semaphore(0);
     
     public static int numeroCiclos = 0;
     
