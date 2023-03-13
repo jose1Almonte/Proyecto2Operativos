@@ -95,6 +95,9 @@ public class Procesador extends Thread{
         
     }
     
+    /**
+     * Encola las series en su respectivo rodaje en su respectiva cola de prioridad
+     */
     public void encolarSerie(){
         this.serieJose.setNivelPrioridad(this.serieJose.getNivelPrioridadInicio());
         this.serieJose.setContador(0);
