@@ -22,6 +22,7 @@ public class Procesador extends Thread{
     
     @Override
     public void run(){
+        
         double probBatalla = Math.random();
         
         if (this.probHayGanador(probBatalla)){
@@ -30,7 +31,11 @@ public class Procesador extends Thread{
             
         }else if(this.probHayEmpate(probBatalla)){
             
+//            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
+            
         }else{
+            
+//            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
             
         }
         
@@ -66,7 +71,7 @@ public class Procesador extends Thread{
         }else if(this.serieAndy.getPuntosPoder() > this.serieJose.getPuntosPoder() && this.serieAndy.getPuntosPoder() > this.serieUseche.getPuntosPoder()){
             return this.serieAndy;
             
-        }else if(this.serieUseche.getPuntosPoder() >this.serieJose.getPuntosPoder() && this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder()){
+        }else if(this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder() && this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder()){
             return this.serieUseche;
             
         }else{
