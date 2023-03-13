@@ -4,6 +4,7 @@
  */
 package Proyecto2Operativos;
 
+import Classes.Administrador;
 import Interfaces.Prueba;
 
 /**
@@ -18,6 +19,10 @@ public class ProyectosOperativos2Ant {
     public static void main(String[] args) {
         Prueba p =new Prueba();
         p.setVisible(true);
+        
+        Administrador admin = new Administrador();
+        
+        admin.start();
     }
     
 }

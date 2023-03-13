@@ -14,6 +14,8 @@ public class Serie {
     private int contador;
     private int puntosPoder;
     private int vida;
+    private int nivelPrioridad;
+    
     
     /**
      * Constructor
@@ -91,6 +93,20 @@ public class Serie {
      */
     public void setVida(int vida) {
         this.vida = vida;
+    }
+
+    /**
+     * @return the nivelPrioridad
+     */
+    public int getNivelPrioridad() {
+        return nivelPrioridad;
+    }
+
+    /**
+     * @param nivelPrioridad the nivelPrioridad to set
+     */
+    public void setNivelPrioridad(int nivelPrioridad) {
+        this.nivelPrioridad = nivelPrioridad;
     }
     
     
