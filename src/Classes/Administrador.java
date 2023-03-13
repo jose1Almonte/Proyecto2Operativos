@@ -41,6 +41,15 @@ public class Administrador extends Thread{
             Serie serieAndy = new Serie();
             Serie serieUseche = new Serie();
             
+            this.establecerPrioridad(serieJose);
+            this.establecerPrioridad(serieAndy);
+            this.establecerPrioridad(serieUseche);
+            
+            System.out.println( "Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
+            
+            
+            
+            
         }
     }
     /**
@@ -48,7 +57,7 @@ public class Administrador extends Thread{
      * @param serieNombreRodaje
      * @return prioridad de la serie
      */
-    public int establecerPrioridad(Serie serieNombreRodaje){
+    public void establecerPrioridad(Serie serieNombreRodaje){
         double introProb = Math.random();
         double inicio1Prob = Math.random();
         double inicio2Prob = Math.random();
@@ -94,15 +103,29 @@ public class Administrador extends Thread{
         
         int total = intro + inicio1 + inicio2 + cierre + creditos;
         
-        if(total <= 1){
+        
+        if(total <= 2){
 //            prioridad 1
-            return 1;
-        }else if(total <= 3){
+            serieNombreRodaje.setNivelPrioridad(1);
+            
+            int duracionMinutos = (int) (Math.random()*90 + 90);
+            
+            serieNombreRodaje.setDuracionMinutos(duracionMinutos);
+            
+        }else if(total <= 4){
 //            prioridad 2
-            return 2;
+            serieNombreRodaje.setNivelPrioridad(2);
+            
+            int duracionMinutos = (int) (Math.random()*30 + 60);
+            
+            serieNombreRodaje.setDuracionMinutos(duracionMinutos);
         }else{
 //            prioridad 3
-            return 3;
+            serieNombreRodaje.setNivelPrioridad(3);
+            
+            int duracionMinutos = (int) (Math.random()*59);
+            
+            serieNombreRodaje.setDuracionMinutos(duracionMinutos);
         }
     }
 }

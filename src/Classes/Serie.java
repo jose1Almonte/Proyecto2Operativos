@@ -15,6 +15,7 @@ public class Serie {
     private int puntosPoder;
     private int vida;
     private int nivelPrioridad;
+    private int duracionMinutos;
     
     
     /**
@@ -107,6 +108,20 @@ public class Serie {
      */
     public void setNivelPrioridad(int nivelPrioridad) {
         this.nivelPrioridad = nivelPrioridad;
+    }
+
+    /**
+     * @return the duracionMinutos
+     */
+    public int getDuracionMinutos() {
+        return duracionMinutos;
+    }
+
+    /**
+     * @param duracionMinutos the duracionMinutos to set
+     */
+    public void setDuracionMinutos(int duracionMinutos) {
+        this.duracionMinutos = duracionMinutos;
     }
     
     
