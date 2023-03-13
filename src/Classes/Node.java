@@ -58,9 +58,7 @@ public class Node<T> {
         String nClass = n.getData().getClass().getSimpleName();
         
         if (nClass.equals("Integer")) return (Integer)n.getData();
-        
-        System.out.println("hola");
-        
+                
         return 0;
         
     }    
