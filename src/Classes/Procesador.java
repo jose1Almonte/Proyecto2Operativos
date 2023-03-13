@@ -22,6 +22,70 @@ public class Procesador extends Thread{
     
     @Override
     public void run(){
+        double probBatalla = Math.random();
+        
+        if (this.probHayGanador(probBatalla)){
+            
+            Serie serieGanadora = this.puntosPoderMasAlto();
+            
+        }else if(this.probHayEmpate(probBatalla)){
+            
+        }else{
+            
+        }
+        
+    }
+    
+    /**
+     * Te dice si esta batalla debe haber un ganador o no
+     * @param probBatalla
+     * @return boolean 
+     */
+    public boolean probHayGanador(double probBatalla){
+        return probBatalla <= 0.40;
+    }
+    
+    /**
+     * Te dice si esta batalla debe haber un empate
+     * @param probBatalla
+     * @return boolean
+     */
+    public boolean probHayEmpate(double probBatalla){
+        return probBatalla > 0.40 && probBatalla <= 0.67;
+    }
+    
+    /**
+     * Te indica cual serie, de las tres que pasaron, es la ganadora
+     * @return Serie 
+     */
+    public Serie puntosPoderMasAlto(){
+        
+        if(this.serieJose.getPuntosPoder() > this.serieAndy.getPuntosPoder() && this.serieJose.getPuntosPoder() > this.serieUseche.getPuntosPoder()){
+            return this.serieJose;
+            
+        }else if(this.serieAndy.getPuntosPoder() > this.serieJose.getPuntosPoder() && this.serieAndy.getPuntosPoder() > this.serieUseche.getPuntosPoder()){
+            return this.serieAndy;
+            
+        }else if(this.serieUseche.getPuntosPoder() >this.serieJose.getPuntosPoder() && this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder()){
+            return this.serieUseche;
+            
+        }else{
+            
+            int randomTemp = 1 + (int) (Math.random() + 2);
+            
+            switch (randomTemp) {
+                case 3 -> {
+                    return this.serieAndy;
+                }
+                case 2 -> {
+                    return this.serieUseche;
+                }
+                default -> {
+                    return this.serieJose;
+                }
+            }
+            
+        }
         
     }
     
