@@ -36,6 +36,7 @@ public class Administrador extends Thread{
         
         
         while(variablesGenerales.keep){
+            
             Serie serieJose = new Serie();
             Serie serieAndy = new Serie();
             Serie serieUseche = new Serie();
@@ -51,6 +52,7 @@ public class Administrador extends Thread{
             
         }
     }
+    
     /**
      * Determina cual debería ser la prioridad de la serie que se le pase
      * @param serieNombreRodaje
@@ -106,6 +108,7 @@ public class Administrador extends Thread{
             case 5 ->                 {
                     //            prioridad 1
                     serieNombreRodaje.setNivelPrioridad(1);
+//                    serieNombreRodaje.setNivelPrioridadInicio(1);
                     int duracionMinutos = (int) (Math.random()*90 + 90);
                     serieNombreRodaje.setDuracionMinutos(duracionMinutos);
                     break;
@@ -113,6 +116,7 @@ public class Administrador extends Thread{
             case 4 ->                 {
                     //            prioridad 2
                     serieNombreRodaje.setNivelPrioridad(2);
+                    serieNombreRodaje.setNivelPrioridadInicio(2);
                     int duracionMinutos = (int) (Math.random()*30 + 60);
                     serieNombreRodaje.setDuracionMinutos(duracionMinutos);
                     break;
@@ -120,9 +124,13 @@ public class Administrador extends Thread{
             default ->                 {
                     //            prioridad 3
                     serieNombreRodaje.setNivelPrioridad(3);
+                    serieNombreRodaje.setNivelPrioridadInicio(3);
                     int duracionMinutos = (int) (Math.random()*59);
                     serieNombreRodaje.setDuracionMinutos(duracionMinutos);
                 }
         }
     }
+    
+    
+    
 }

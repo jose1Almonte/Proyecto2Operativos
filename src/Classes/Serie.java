@@ -11,6 +11,7 @@ package Classes;
 public class Serie {
     private int id;
     private int nivelPrioridad;
+    private int nivelPrioridadInicio;
     private int rodajePertenece;
     private int duracionMinutos;    
     private int contador;
@@ -138,6 +139,20 @@ public class Serie {
      */
     public void setIdPersonaje(int idPersonaje) {
         this.idPersonaje = idPersonaje;
+    }
+
+    /**
+     * @return the nivelPrioridadInicio
+     */
+    public int getNivelPrioridadInicio() {
+        return nivelPrioridadInicio;
+    }
+
+    /**
+     * @param nivelPrioridadInicio the nivelPrioridadInicio to set
+     */
+    public void setNivelPrioridadInicio(int nivelPrioridadInicio) {
+        this.nivelPrioridadInicio = nivelPrioridadInicio;
     }
     
     
