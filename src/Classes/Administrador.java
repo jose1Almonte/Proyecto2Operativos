@@ -30,7 +30,9 @@ public class Administrador extends Thread{
     @Override
     public void run(){
         
-        
+        while(true){
+            
+        }
         
         
         

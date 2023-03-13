@@ -21,7 +21,7 @@ public class LinkedList<T> {
     public LinkedList() {
         this.head = this.tail = null;
     }
-
+    
     /**
      * Constructor for list initially with one node
      * @param n
