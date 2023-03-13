@@ -102,28 +102,25 @@ public class Administrador extends Thread{
         int total = intro + inicio1 + inicio2 + cierre + creditos;
         
         
-        if(total <= 2){
-//            prioridad 1
-            serieNombreRodaje.setNivelPrioridad(1);
-            
-            int duracionMinutos = (int) (Math.random()*90 + 90);
-            
-            serieNombreRodaje.setDuracionMinutos(duracionMinutos);
-            
-        }else if(total <= 4){
-//            prioridad 2
-            serieNombreRodaje.setNivelPrioridad(2);
-            
-            int duracionMinutos = (int) (Math.random()*30 + 60);
-            
-            serieNombreRodaje.setDuracionMinutos(duracionMinutos);
-        }else{
-//            prioridad 3
-            serieNombreRodaje.setNivelPrioridad(3);
-            
-            int duracionMinutos = (int) (Math.random()*59);
-            
-            serieNombreRodaje.setDuracionMinutos(duracionMinutos);
+        switch (total) {
+            case 5 ->                 {
+                    //            prioridad 1
+                    serieNombreRodaje.setNivelPrioridad(1);
+                    int duracionMinutos = (int) (Math.random()*90 + 90);
+                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
+                }
+            case 4 ->                 {
+                    //            prioridad 2
+                    serieNombreRodaje.setNivelPrioridad(2);
+                    int duracionMinutos = (int) (Math.random()*30 + 60);
+                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
+                }
+            default ->                 {
+                    //            prioridad 3
+                    serieNombreRodaje.setNivelPrioridad(3);
+                    int duracionMinutos = (int) (Math.random()*59);
+                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
+                }
         }
     }
 }

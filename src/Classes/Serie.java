@@ -10,12 +10,14 @@ package Classes;
  */
 public class Serie {
     private int id;
+    private int nivelPrioridad;
     private int rodajePertenece;
+    private int duracionMinutos;    
     private int contador;
+    
+    private int idPersonaje;
     private int puntosPoder;
     private int vida;
-    private int nivelPrioridad;
-    private int duracionMinutos;
     
     
     /**
@@ -122,6 +124,20 @@ public class Serie {
      */
     public void setDuracionMinutos(int duracionMinutos) {
         this.duracionMinutos = duracionMinutos;
+    }
+
+    /**
+     * @return the idPersonaje
+     */
+    public int getIdPersonaje() {
+        return idPersonaje;
+    }
+
+    /**
+     * @param idPersonaje the idPersonaje to set
+     */
+    public void setIdPersonaje(int idPersonaje) {
+        this.idPersonaje = idPersonaje;
     }
     
     
