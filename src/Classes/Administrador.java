@@ -377,6 +377,61 @@ public class Administrador extends Thread{
         }
     }
     
-    
+    public void SeleccionarSeriesParaCombate(){
+        double ProbRefuerzo = Math.random();
+        Serie serie1=null;
+        if (ProbRefuerzo<0.4){
+            serie1 = (Serie) Administrador.colaRefuerzoAndy.getHead().getData();
+            Administrador.colaRefuerzoAndy.deleteFirst();
+        }
+        else{
+            if(Administrador.colaNivel1Andy.getHead() != null){
+                serie1 = (Serie) Administrador.colaNivel1Andy.getHead().getData();
+            }
+            else if(Administrador.colaNivel2Andy.getHead() != null){
+                serie1 = (Serie) Administrador.colaNivel2Andy.getHead().getData();
+            }
+            else if(Administrador.colaNivel3Andy.getHead() != null){
+                serie1 = (Serie) Administrador.colaNivel3Andy.getHead().getData();
+            }
+        }
+        
+        double ProbRefuerzo2 = Math.random();
+        Serie serie2=null;
+        if (ProbRefuerzo2<0.4){
+            serie2 = (Serie) Administrador.colaRefuerzoJose.getHead().getData();
+            Administrador.colaRefuerzoJose.deleteFirst();
+        }
+        else{
+            if(Administrador.colaNivel1Jose.getHead() != null){
+                serie2 = (Serie) Administrador.colaNivel1Jose.getHead().getData();
+            }
+            else if(Administrador.colaNivel2Jose.getHead() != null){
+                serie2 = (Serie) Administrador.colaNivel2Jose.getHead().getData();
+            }
+            else if(Administrador.colaNivel3Jose.getHead() != null){
+                serie2 = (Serie) Administrador.colaNivel3Jose.getHead().getData();
+            }
+        }
+        
+        double ProbRefuerzo3 = Math.random();
+        Serie serie3=null;
+        if (ProbRefuerzo3<0.4){
+            serie3 = (Serie) Administrador.colaRefuerzoUseche.getHead().getData();
+            Administrador.colaRefuerzoUseche.deleteFirst();
+        }
+        else{
+            if(Administrador.colaNivel1Useche.getHead() != null){
+                serie3 = (Serie) Administrador.colaNivel1Useche.getHead().getData();
+            }
+            else if(Administrador.colaNivel2Useche.getHead() != null){
+                serie3 = (Serie) Administrador.colaNivel2Useche.getHead().getData();
+            }
+            else if(Administrador.colaNivel3Useche.getHead() != null){
+                serie3 = (Serie) Administrador.colaNivel3Useche.getHead().getData();
+            }
+        }
+        
+    }
     
 }
