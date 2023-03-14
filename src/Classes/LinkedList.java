@@ -21,7 +21,7 @@ public class LinkedList<T> {
     public LinkedList() {
         this.head = this.tail = null;
     }
-
+    
     /**
      * Constructor for list initially with one node
      * @param n
@@ -64,8 +64,8 @@ public class LinkedList<T> {
         
         Node<T> aux = this.head;
         while(aux != null) {
-            aux = aux.getNext();
             i++;
+            aux = aux.getNext();
         }
         return i;
     }

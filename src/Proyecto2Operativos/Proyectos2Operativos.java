@@ -4,13 +4,14 @@
  */
 package Proyecto2Operativos;
 
+import Classes.Administrador;
 import Interfaces.Prueba;
 
 /**
  *
  * @author Andy
  */
-public class ProyectosOperativos2Ant {
+public class Proyectos2Operativos {
 
     /**
      * @param args the command line arguments
@@ -18,6 +19,10 @@ public class ProyectosOperativos2Ant {
     public static void main(String[] args) {
         Prueba p =new Prueba();
         p.setVisible(true);
+        
+        Administrador admin = new Administrador();
+        
+        admin.start();
     }
     
 }
