@@ -222,16 +222,120 @@ public class Administrador extends Thread{
             
             Administrador.colaNivel2Jose.deleteFirst();
             
-            serieTemp.setContador(serieTemp.getContador() + 1);
+            if (serieTemp.getContador()<8){
             
-            Administrador.colaNivel2Jose.addLast(serieTemp);
+                serieTemp.setContador(serieTemp.getContador() + 1);
             
+                Administrador.colaNivel2Jose.addLast(serieTemp);
+            }
+            else{
+                serieTemp.setContador(0);
+            
+                Administrador.colaNivel1Jose.addLast(serieTemp);
+            }
             i++;
         }
         
-        //TERMINAR LO DEMÁS
+        for(int i = 0; i < sizeColaNivel3Jose; i++){
+            
+            Serie serieTemp1 = (Serie) (Administrador.colaNivel3Jose.getHead().getData());
+            
+            Administrador.colaNivel3Jose.deleteFirst();
+            
+            if (serieTemp1.getContador()<8){
+            
+                serieTemp1.setContador(serieTemp1.getContador() + 1);
+            
+                Administrador.colaNivel3Jose.addLast(serieTemp1);
+            }
+            else{
+                serieTemp1.setContador(0);
+            
+                Administrador.colaNivel2Jose.addLast(serieTemp1);
+            }
+            i++;
+        }
         
         
+         for(int i = 0; i < sizeColaNivel2Andy; i++){
+            
+            Serie serieTemp2 = (Serie) (Administrador.colaNivel2Andy.getHead().getData());
+            
+            Administrador.colaNivel2Andy.deleteFirst();
+            
+            if (serieTemp2.getContador()<8){
+            
+                serieTemp2.setContador(serieTemp2.getContador() + 1);
+            
+                Administrador.colaNivel2Andy.addLast(serieTemp2);
+            }
+            else{
+                serieTemp2.setContador(0);
+            
+                Administrador.colaNivel1Andy.addLast(serieTemp2);
+            }
+            i++;
+        }
+        
+        for(int i = 0; i < sizeColaNivel3Andy; i++){
+            
+            Serie serieTemp3 = (Serie) (Administrador.colaNivel3Andy.getHead().getData());
+            
+            Administrador.colaNivel3Andy.deleteFirst();
+            
+            if (serieTemp3.getContador()<8){
+            
+                serieTemp3.setContador(serieTemp3.getContador() + 1);
+            
+                Administrador.colaNivel3Andy.addLast(serieTemp3);
+            }
+            else{
+                serieTemp3.setContador(0);
+            
+                Administrador.colaNivel2Andy.addLast(serieTemp3);
+            }
+            i++;
+        }
+        
+        for(int i = 0; i < sizeColaNivel2Useche; i++){
+            
+            Serie serieTemp4 = (Serie) (Administrador.colaNivel2Useche.getHead().getData());
+            
+            Administrador.colaNivel2Useche.deleteFirst();
+            
+            if (serieTemp4.getContador()<8){
+            
+                serieTemp4.setContador(serieTemp4.getContador() + 1);
+            
+                Administrador.colaNivel2Useche.addLast(serieTemp4);
+            }
+            else{
+                serieTemp4.setContador(0);
+            
+                Administrador.colaNivel1Useche.addLast(serieTemp2);
+            }
+            i++;
+        }
+        
+        for(int i = 0; i < sizeColaNivel3Useche; i++){
+            
+            Serie serieTemp5 = (Serie) (Administrador.colaNivel3Useche.getHead().getData());
+            
+            Administrador.colaNivel3Useche.deleteFirst();
+            
+            if (serieTemp5.getContador()<8){
+            
+                serieTemp5.setContador(serieTemp5.getContador() + 1);
+            
+                Administrador.colaNivel3Useche.addLast(serieTemp5);
+            }
+            else{
+                serieTemp5.setContador(0);
+            
+                Administrador.colaNivel2Useche.addLast(serieTemp5);
+            }
+            i++;
+        }
         
     }
     
