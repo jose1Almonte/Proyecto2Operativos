@@ -108,7 +108,7 @@ public class Administrador extends Thread{
             case 5 ->                 {
                     //            prioridad 1
                     serieNombreRodaje.setNivelPrioridad(1);
-//                    serieNombreRodaje.setNivelPrioridadInicio(1);
+                    serieNombreRodaje.setNivelPrioridadInicio(1);
                     int duracionMinutos = (int) (Math.random()*90 + 90);
                     serieNombreRodaje.setDuracionMinutos(duracionMinutos);
                     break;
