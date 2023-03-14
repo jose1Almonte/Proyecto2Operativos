@@ -312,7 +312,7 @@ public class Administrador extends Thread{
             else{
                 serieTemp4.setContador(0);
             
-                Administrador.colaNivel1Useche.addLast(serieTemp2);
+                Administrador.colaNivel1Useche.addLast(serieTemp4);
             }
             i++;
         }
