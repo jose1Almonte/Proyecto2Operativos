@@ -14,8 +14,6 @@ public class LinkedList<T> {
     
     private Node<T> head;
     private Node<T> tail;
-    private T data1;
-    private int counter1;;
 
     /**
      * Constructor for initially empty list
@@ -32,10 +30,6 @@ public class LinkedList<T> {
         this.head = this.tail = n;
     }
 
-    public LinkedList(T data1,int counter1){
-        this.data1=data1;
-        this.counter1=counter1;
-    }
     
     public Node<T> getHead() {
         return this.head;
@@ -80,8 +74,8 @@ public class LinkedList<T> {
      * Add datum to the first position of the list
      * @param datum Datum to be added
      */
-    public void addFirst(T datum,int counter) {
-        Node<T> n = new Node(datum, counter);
+    public void addFirst(T datum) {
+        Node<T> n = new Node(datum);
         if (isEmpty()) {
             this.head = n;
             this.tail = n;
@@ -97,8 +91,8 @@ public class LinkedList<T> {
      * Add datum to the last position of the list
      * @param datum Datum to be added
      */
-    public void addLast(T datum, int counter) {
-        Node<T> n = new Node(datum,counter);
+    public void addLast(T datum) {
+        Node<T> n = new Node(datum);
         if (isEmpty()) {
             this.head = n;
             this.tail = n;
@@ -110,27 +104,50 @@ public class LinkedList<T> {
         }
     }
     
-    
+    /**
+     * Add datum to the specified position
+     * @param datum Datum to be added
+     * @param i Position to be added in
+     */
+    public void add(T datum, int i) {
+        if (isEmpty() || i == 0) {
+            this.addFirst(datum);
+        } else if (i >= size()) {
+            this.addLast(datum);
+        } else if (i < 0) {
+            this.add(datum, size() + i);
+        }else {
+            Node<T> n = new Node(datum);
+            Node aux = this.head; // Nodo previo
+            int count = 0;
+            while(count < i -1) {
+                aux = aux.getNext();
+                count++;
+            }
+            n.setNext(aux.getNext());
+            aux.setNext(n);
+        }
+    }
 
     /**
      * Deletes first element of the list
      * @return The data of the first element
      */
-    public LinkedList deleteFirst() {
+    public T deleteFirst() {
         if (isEmpty()) {
             return null;
         }
         Node<T> temp = this.head;
         this.head= this.head.getNext();
         temp.setNext(null);
-        return new LinkedList(temp.getData(),temp.getCounter());
+        return temp.getData();
     }
     
     /**
      * Deletes last element of the list
      * @return The data of the last element
      */
-    public LinkedList deleteLast() {
+    public T deleteLast() {
         if (isEmpty()) {
             return null;
         }
@@ -142,9 +159,39 @@ public class LinkedList<T> {
         pre.setNext(null);
         this.tail = pre;
         temp.setNext(null);
+        return temp.getData();
         
-        return new LinkedList(temp.getData(),temp.getCounter());
-        
+    }
+    
+    /**
+     * Deletes the element at the specified position
+     * @param i The position to be deleted
+     * @return The data of the deleted element
+     */
+    public T delete(int i) {
+        if (isEmpty()) {
+            return null;
+        } else if (i == 0) {
+            return deleteFirst();
+        } else if (i == size() -1) {
+            return deleteLast();
+        } else if (i < 0)  {
+            return delete(size() + i);
+        } else if (i > size() - 1) {
+            System.out.println("\nError");
+            return null;
+        } else {
+            Node<T> aux = this.head;
+            int count = 0;
+            while(count < i-1) {
+                aux = aux.getNext();
+                count++;
+            }
+            Node<T> del = aux.getNext();
+            aux.setNext(del.getNext());
+            del.setNext(null);
+            return del.getData();
+        }
     }
     
     /**
@@ -196,33 +243,21 @@ public class LinkedList<T> {
 //    }
 //    
     
-    
-    /**
-     * @return the counter1
-     */
-    public int getCounter1() {
-        return counter1;
+        
+    public void completeList() {
+        Node current = this.head;
+        int index = 1;
+        // 7, 8, 10, 13
+        while (current.getNext() != null) {
+            if (Node.getValueAsInteger(current) + 1 != Node.getValueAsInteger(current.getNext())) {
+                Integer a = Node.getValueAsInteger(current) + 1;
+                this.add((T) a, index);
+            }
+            this.print();
+            current = current.getNext();
+            index++;
+        }
     }
-
-    /**
-     * @param counter1 the counter1 to set
-     */
-    public void setCounter1(int counter1) {
-        this.counter1 = counter1;
-    }
-
-    /**
-     * @return the data1
-     */
-    public T getData1() {
-        return data1;
-    }
-
-    /**
-     * @param data1 the data1 to set
-     */
-    public void setData1(T data1) {
-        this.data1 = data1;
-    }
+//    
 }
 

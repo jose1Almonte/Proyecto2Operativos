@@ -148,13 +148,13 @@ public class Administrador extends Thread{
         
         switch (nivelJose) {
             case 1:
-                Administrador.colaNivel1Jose.addLast(serieJose,0);
+                Administrador.colaNivel1Jose.addLast(serieJose);
                 break;
             case 2:
-                Administrador.colaNivel2Jose.addLast(serieJose,0);
+                Administrador.colaNivel2Jose.addLast(serieJose);
                 break;
             default:
-                Administrador.colaNivel3Jose.addLast(serieJose,0);
+                Administrador.colaNivel3Jose.addLast(serieJose);
                 break;
         }
         
@@ -162,13 +162,13 @@ public class Administrador extends Thread{
         
         switch (nivelAndy){
             case 1:
-                Administrador.colaNivel1Andy.addLast(serieAndy,0);
+                Administrador.colaNivel1Andy.addLast(serieAndy);
                 break;
             case 2:
-                Administrador.colaNivel2Andy.addLast(serieAndy,0);
+                Administrador.colaNivel2Andy.addLast(serieAndy);
                 break;
             default:
-                Administrador.colaNivel3Andy.addLast(serieAndy,0);
+                Administrador.colaNivel3Andy.addLast(serieAndy);
                 break;
         }
         
@@ -176,13 +176,13 @@ public class Administrador extends Thread{
         
         switch (nivelUseche) {
             case 1:
-                Administrador.colaNivel1Useche.addLast(serieUseche,0);
+                Administrador.colaNivel1Useche.addLast(serieUseche);
                 break;
             case 2:
-                Administrador.colaNivel2Useche.addLast(serieUseche,0);
+                Administrador.colaNivel2Useche.addLast(serieUseche);
                 break;
             default:
-                Administrador.colaNivel3Useche.addLast(serieUseche,0);
+                Administrador.colaNivel3Useche.addLast(serieUseche);
                 break;
         }
     }
@@ -194,9 +194,9 @@ public class Administrador extends Thread{
      * @param serieUseche 
      */
     public void encolarColaRefuerzo(Serie serieJose, Serie serieAndy, Serie serieUseche){
-        Administrador.colaRefuerzoJose.addLast(serieJose,0);
-        Administrador.colaRefuerzoAndy.addLast(serieAndy,0);
-        Administrador.colaRefuerzoUseche.addLast(serieUseche,0);
+        Administrador.colaRefuerzoJose.addLast(serieJose);
+        Administrador.colaRefuerzoAndy.addLast(serieAndy);
+        Administrador.colaRefuerzoUseche.addLast(serieUseche);
     }
     
     /**
@@ -204,40 +204,38 @@ public class Administrador extends Thread{
      */
     public void sumar1ContadorSeries(){
         
+        int sizeColaNivel2Jose = Administrador.colaNivel2Jose.size();
+        int sizeColaNivel3Jose = Administrador.colaNivel3Jose.size();
+        int sizeColaRefuerzoJose = Administrador.colaRefuerzoJose.size();
         
+        int sizeColaNivel2Andy = Administrador.colaNivel2Andy.size();
+        int sizeColaNivel3Andy = Administrador.colaNivel3Andy.size();
+        int sizeColaRefuerzoAndy = Administrador.colaRefuerzoAndy.size();
         
-        //int sizeColaNivel2Jose = Administrador.colaNivel2Jose.size();
-        //int sizeColaNivel3Jose = Administrador.colaNivel3Jose.size();
-        //int sizeColaRefuerzoJose = Administrador.colaRefuerzoJose.size();
+        int sizeColaNivel2Useche = Administrador.colaNivel2Useche.size();
+        int sizeColaNivel3Useche = Administrador.colaNivel3Useche.size();
+        int sizeColaRefuerzoUseche = Administrador.colaRefuerzoUseche.size();
         
-        //int sizeColaNivel2Andy = Administrador.colaNivel2Andy.size();
-        //int sizeColaNivel3Andy = Administrador.colaNivel3Andy.size();
-        //int sizeColaRefuerzoAndy = Administrador.colaRefuerzoAndy.size();
-        
-        //int sizeColaNivel2Useche = Administrador.colaNivel2Useche.size();
-        //int sizeColaNivel3Useche = Administrador.colaNivel3Useche.size();
-        //int sizeColaRefuerzoUseche = Administrador.colaRefuerzoUseche.size();
-        //
-        //for(int i = 0; i < sizeColaNivel2Jose; i++){
+        for(int i = 0; i < sizeColaNivel2Jose; i++){
             
-        //    Serie serieTemp = (Serie) (Administrador.colaNivel2Jose.getHead().getData());
+            Serie serieTemp = (Serie) (Administrador.colaNivel2Jose.getHead().getData());
             
-        //    Administrador.colaNivel2Jose.deleteFirst();
+            Administrador.colaNivel2Jose.deleteFirst();
             
-        //    if(serieTemp.getContador() == 7){
-        //        serieTemp.setContador(0);
-        //        serieTemp.setNivelPrioridad(1);
+            if(serieTemp.getContador() == 7){
+                serieTemp.setContador(0);
+                serieTemp.setNivelPrioridad(1);
                 
-        //        Administrador.colaNivel1Jose.addLast(serieTemp);
-        //    }else{                
-        //        serieTemp.setContador(serieTemp.getContador() + 1);
+                Administrador.colaNivel1Jose.addLast(serieTemp);
+            }else{                
+                serieTemp.setContador(serieTemp.getContador() + 1);
 
-        //        Administrador.colaNivel2Jose.addLast(serieTemp);
-        //    }
+                Administrador.colaNivel2Jose.addLast(serieTemp);
+            }
             
             
-        //    i++;
-        //}
+            i++;
+        }
         
         //TERMINAR LO DEMÁS
         
@@ -245,124 +243,6 @@ public class Administrador extends Thread{
         
     }
     
-    public void actualizarSerieAndy2(){
-        LinkedList serieAuxiliar = new LinkedList();
-        while(true){
-            LinkedList listaConDatos = colaNivel2Andy.deleteFirst();
-            if(listaConDatos ==null){
-                break;
-            }
-            int count=listaConDatos.getCounter1();
-            if (count <8){
-                count =count++;
-                serieAuxiliar.addLast(listaConDatos.getData1(), count);
-            }
-            else{
-                count =0;
-                colaNivel1Andy.addLast(listaConDatos.getData1(), count);
-            }
-        }
-        colaNivel2Andy = serieAuxiliar;
-    }
     
-    public void actualizarSerieAndy3(){
-        LinkedList serieAuxiliar = new LinkedList();
-        while(true){
-            LinkedList listaConDatos = colaNivel3Andy.deleteFirst();
-            if(listaConDatos ==null){
-                break;
-            }
-            int count=listaConDatos.getCounter1();
-            if (count <8){
-                count =count++;
-                serieAuxiliar.addLast(listaConDatos.getData1(), count);
-            }
-            else{
-                count =0;
-                colaNivel2Andy.addLast(listaConDatos.getData1(), count);
-            }
-        }
-        colaNivel3Andy = serieAuxiliar;
-    }
-    
-    public void actualizarSerieJose2(){
-        LinkedList serieAuxiliar = new LinkedList();
-        while(true){
-            LinkedList listaConDatos = colaNivel2Jose.deleteFirst();
-            if(listaConDatos ==null){
-                break;
-            }
-            int count=listaConDatos.getCounter1();
-            if (count <8){
-                count =count++;
-                serieAuxiliar.addLast(listaConDatos.getData1(), count);
-            }
-            else{
-                count =0;
-                colaNivel1Jose.addLast(listaConDatos.getData1(), count);
-            }
-        }
-        colaNivel2Jose = serieAuxiliar;
-    }
-    
-     public void actualizarSerieJose3(){
-        LinkedList serieAuxiliar = new LinkedList();
-        while(true){
-            LinkedList listaConDatos = colaNivel3Jose.deleteFirst();
-            if(listaConDatos ==null){
-                break;
-            }
-            int count=listaConDatos.getCounter1();
-            if (count <8){
-                count =count++;
-                serieAuxiliar.addLast(listaConDatos.getData1(), count);
-            }
-            else{
-                count =0;
-                colaNivel2Jose.addLast(listaConDatos.getData1(), count);
-            }
-        }
-        colaNivel3Jose = serieAuxiliar;
-    }
-    
-    public void actualizarSerieUseche2(){
-        LinkedList serieAuxiliar = new LinkedList();
-        while(true){
-            LinkedList listaConDatos = colaNivel2Useche.deleteFirst();
-            if(listaConDatos ==null){
-                break;
-            }
-            int count=listaConDatos.getCounter1();
-            if (count <8){
-                count =count++;
-                serieAuxiliar.addLast(listaConDatos.getData1(), count);
-            }
-            else{
-                count =0;
-                colaNivel1Useche.addLast(listaConDatos.getData1(), count);
-            }
-        }
-        colaNivel2Useche = serieAuxiliar;
-    }
-    
-    public void actualizarSerieUseche3(){
-        LinkedList serieAuxiliar = new LinkedList();
-        while(true){
-            LinkedList listaConDatos = colaNivel3Useche.deleteFirst();
-            if(listaConDatos ==null){
-                break;
-            }
-            int count=listaConDatos.getCounter1();
-            if (count <8){
-                count =count++;
-                serieAuxiliar.addLast(listaConDatos.getData1(), count);
-            }
-            else{
-                count =0;
-                colaNivel2Useche.addLast(listaConDatos.getData1(), count);
-            }
-        }
-        colaNivel3Useche = serieAuxiliar;
-    }
     
 }
