@@ -64,8 +64,8 @@ public class LinkedList<T> {
         
         Node<T> aux = this.head;
         while(aux != null) {
-            aux = aux.getNext();
             i++;
+            aux = aux.getNext();
         }
         return i;
     }

@@ -187,10 +187,52 @@ public class Administrador extends Thread{
         }
     }
     
+    /**
+     * Encola las series que se le pasen en su respectiva cola de refuerzo
+     * @param serieJose
+     * @param serieAndy
+     * @param serieUseche 
+     */
     public void encolarColaRefuerzo(Serie serieJose, Serie serieAndy, Serie serieUseche){
         Administrador.colaRefuerzoJose.addLast(serieJose);
         Administrador.colaRefuerzoAndy.addLast(serieAndy);
         Administrador.colaRefuerzoUseche.addLast(serieUseche);
+    }
+    
+    /**
+     * Suma 1 al contador individual de cada serie de las listas resaltadas al inicio del metodo
+     */
+    public void sumar1ContadorSeries(){
+        
+        int sizeColaNivel2Jose = Administrador.colaNivel2Jose.size();
+        int sizeColaNivel3Jose = Administrador.colaNivel3Jose.size();
+        int sizeColaRefuerzoJose = Administrador.colaRefuerzoJose.size();
+        
+        int sizeColaNivel2Andy = Administrador.colaNivel2Andy.size();
+        int sizeColaNivel3Andy = Administrador.colaNivel3Andy.size();
+        int sizeColaRefuerzoAndy = Administrador.colaRefuerzoAndy.size();
+        
+        int sizeColaNivel2Useche = Administrador.colaNivel2Useche.size();
+        int sizeColaNivel3Useche = Administrador.colaNivel3Useche.size();
+        int sizeColaRefuerzoUseche = Administrador.colaRefuerzoUseche.size();
+        
+        for(int i = 0; i < sizeColaNivel2Jose; i++){
+            
+            Serie serieTemp = (Serie) (Administrador.colaNivel2Jose.getHead().getData());
+            
+            Administrador.colaNivel2Jose.deleteFirst();
+            
+            serieTemp.setContador(serieTemp.getContador() + 1);
+            
+            Administrador.colaNivel2Jose.addLast(serieTemp);
+            
+            i++;
+        }
+        
+        //TERMINAR LO DEMÁS
+        
+        
+        
     }
     
     

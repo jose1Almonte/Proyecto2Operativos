@@ -12,7 +12,7 @@ public class Serie {
     private int id;
     private int nivelPrioridad;
     private int nivelPrioridadInicio;
-    private int rodajePertenece;
+    private int rodajePertenece; //    1: jose ; 2: Andy ; 3: Useche 
     private int duracionMinutos;    
     private int contador;
     
