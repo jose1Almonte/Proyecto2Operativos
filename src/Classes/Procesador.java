@@ -32,11 +32,15 @@ public class Procesador extends Thread{
         }else if(this.probHayEmpate(probBatalla)){
             
 //            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
-            this.encolarSerie();
+
+            Administrador admin = new Administrador();
+            admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
             
         }else{
             
 //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
+            Administrador admin = new Administrador();
+            admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
             
         }
         
@@ -95,61 +99,6 @@ public class Procesador extends Thread{
         
     }
     
-    /**
-     * Encola las series en su respectivo rodaje en su respectiva cola de prioridad
-     */
-    public void encolarSerie(){
-        this.serieJose.setNivelPrioridad(this.serieJose.getNivelPrioridadInicio());
-        this.serieJose.setContador(0);
-        
-        this.serieAndy.setNivelPrioridad(this.serieAndy.getNivelPrioridadInicio());
-        this.serieAndy.setContador(0);
-        
-        this.serieUseche.setNivelPrioridad(this.serieUseche.getNivelPrioridadInicio());
-        this.serieUseche.setContador(0);
-        
-        int nivelJose = serieJose.getNivelPrioridad();
-        
-        switch (nivelJose) {
-            case 1:
-                Administrador.colaNivel1Jose.addLast(serieJose);
-                break;
-            case 2:
-                Administrador.colaNivel2Jose.addLast(serieJose);
-                break;
-            default:
-                Administrador.colaNivel3Jose.addLast(serieJose);
-                break;
-        }
-        
-        int nivelAndy = serieAndy.getNivelPrioridad();
-        
-        switch (nivelAndy){
-            case 1:
-                Administrador.colaNivel1Andy.addLast(serieAndy);
-                break;
-            case 2:
-                Administrador.colaNivel2Andy.addLast(serieAndy);
-                break;
-            default:
-                Administrador.colaNivel3Andy.addLast(serieAndy);
-                break;
-        }
-        
-        int nivelUseche = serieUseche.getNivelPrioridad();
-        
-        switch (nivelUseche) {
-            case 1:
-                Administrador.colaNivel1Useche.addLast(serieUseche);
-                break;
-            case 2:
-                Administrador.colaNivel2Useche.addLast(serieUseche);
-                break;
-            default:
-                Administrador.colaNivel3Useche.addLast(serieUseche);
-                break;
-        }
-    }
     
     
 }

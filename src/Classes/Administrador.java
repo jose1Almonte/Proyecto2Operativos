@@ -131,6 +131,68 @@ public class Administrador extends Thread{
         }
     }
     
+    /**
+     * Encola las series en su respectivo rodaje en su respectiva cola de prioridad
+     */
+    public void encolarSerie(Serie serieJose, Serie serieAndy, Serie serieUseche){
+        serieJose.setNivelPrioridad(serieJose.getNivelPrioridadInicio());
+        serieJose.setContador(0);
+        
+        serieAndy.setNivelPrioridad(serieAndy.getNivelPrioridadInicio());
+        serieAndy.setContador(0);
+        
+        serieUseche.setNivelPrioridad(serieUseche.getNivelPrioridadInicio());
+        serieUseche.setContador(0);
+        
+        int nivelJose = serieJose.getNivelPrioridad();
+        
+        switch (nivelJose) {
+            case 1:
+                Administrador.colaNivel1Jose.addLast(serieJose);
+                break;
+            case 2:
+                Administrador.colaNivel2Jose.addLast(serieJose);
+                break;
+            default:
+                Administrador.colaNivel3Jose.addLast(serieJose);
+                break;
+        }
+        
+        int nivelAndy = serieAndy.getNivelPrioridad();
+        
+        switch (nivelAndy){
+            case 1:
+                Administrador.colaNivel1Andy.addLast(serieAndy);
+                break;
+            case 2:
+                Administrador.colaNivel2Andy.addLast(serieAndy);
+                break;
+            default:
+                Administrador.colaNivel3Andy.addLast(serieAndy);
+                break;
+        }
+        
+        int nivelUseche = serieUseche.getNivelPrioridad();
+        
+        switch (nivelUseche) {
+            case 1:
+                Administrador.colaNivel1Useche.addLast(serieUseche);
+                break;
+            case 2:
+                Administrador.colaNivel2Useche.addLast(serieUseche);
+                break;
+            default:
+                Administrador.colaNivel3Useche.addLast(serieUseche);
+                break;
+        }
+    }
+    
+    public void encolarColaRefuerzo(Serie serieJose, Serie serieAndy, Serie serieUseche){
+        Administrador.colaRefuerzoJose.addLast(serieJose);
+        Administrador.colaRefuerzoAndy.addLast(serieAndy);
+        Administrador.colaRefuerzoUseche.addLast(serieUseche);
+    }
+    
     
     
 }
