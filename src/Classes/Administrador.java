@@ -222,17 +222,9 @@ public class Administrador extends Thread{
             
             Administrador.colaNivel2Jose.deleteFirst();
             
-            if(serieTemp.getContador() == 7){
-                serieTemp.setContador(0);
-                serieTemp.setNivelPrioridad(1);
-                
-                Administrador.colaNivel1Jose.addLast(serieTemp);
-            }else{                
-                serieTemp.setContador(serieTemp.getContador() + 1);
-
-                Administrador.colaNivel2Jose.addLast(serieTemp);
-            }
+            serieTemp.setContador(serieTemp.getContador() + 1);
             
+            Administrador.colaNivel2Jose.addLast(serieTemp);
             
             i++;
         }
