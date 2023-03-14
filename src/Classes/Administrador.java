@@ -337,6 +337,44 @@ public class Administrador extends Thread{
             i++;
         }
         
+        for(int i = 0; i < sizeColaRefuerzoJose; i++){
+            
+            Serie serieTemp6 = (Serie) (Administrador.colaRefuerzoJose.getHead().getData());
+            
+            Administrador.colaRefuerzoJose.deleteFirst();
+            
+            serieTemp6.setContador(serieTemp6.getContador() + 1);
+            
+            Administrador.colaRefuerzoJose.addLast(serieTemp6);
+            
+            i++;
+        }
+        
+        for(int i = 0; i < sizeColaRefuerzoAndy; i++){
+            
+            Serie serieTemp7 = (Serie) (Administrador.colaRefuerzoAndy.getHead().getData());
+            
+            Administrador.colaRefuerzoAndy.deleteFirst();
+            
+            serieTemp7.setContador(serieTemp7.getContador() + 1);
+            
+            Administrador.colaRefuerzoAndy.addLast(serieTemp7);
+            
+            i++;
+        }
+        
+        for(int i = 0; i < sizeColaRefuerzoUseche; i++){
+            
+            Serie serieTemp8 = (Serie) (Administrador.colaRefuerzoUseche.getHead().getData());
+            
+            Administrador.colaRefuerzoUseche.deleteFirst();
+            
+            serieTemp8.setContador(serieTemp8.getContador() + 1);
+            
+            Administrador.colaRefuerzoUseche.addLast(serieTemp8);
+            
+            i++;
+        }
     }
     
     
