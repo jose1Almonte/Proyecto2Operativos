@@ -11,14 +11,16 @@ package Classes;
  */
 public class Node<T> {
     private T data;
+    private int counter;
     private Node next;
     
     /**
      *
      * @param datum
      */
-    public Node (T datum) {
+    public Node (T datum,int counter) {
         this.data = datum;
+        this.counter=counter;
         this.next = null;
     }
 
@@ -62,4 +64,18 @@ public class Node<T> {
         return 0;
         
     }    
+
+    /**
+     * @return the counter
+     */
+    public int getCounter() {
+        return counter;
+    }
+
+    /**
+     * @param counter the counter to set
+     */
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
 }
