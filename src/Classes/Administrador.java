@@ -564,7 +564,6 @@ public class Administrador extends Thread{
             
             Administrador.colaRefuerzoAndy.addLast(serieTemp7);
             
-            i++;
         }
         
         for(int i = 0; i < sizeColaRefuerzoJose; i++){
