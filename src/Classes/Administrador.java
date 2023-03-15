@@ -46,6 +46,57 @@ public class Administrador extends Thread{
             
             System.out.println( "Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
             
+            if(colaNivel1Jose.isEmpty()){
+                       if(colaNivel2Jose.isEmpty()){
+                                  if(colaNivel3Jose.isEmpty()){
+                                             Serie CampeonJose = null;
+                                  }else{
+                                            Serie CampeonJose = (Serie) (Administrador.colaNivel3Jose.getHead().getData());
+                                            colaNivel1Jose.deleteFirst();
+                                  }                   
+                       }else{
+                                Serie CampeonJose = (Serie) (Administrador.colaNivel2Jose.getHead().getData());
+                                 colaNivel1Jose.deleteFirst();  
+                       }
+            }else{
+                       Serie CampeonJose = (Serie) (Administrador.colaNivel1Jose.getHead().getData());
+                       colaNivel1Jose.deleteFirst();
+            }
+            
+            if(colaNivel1Andy.isEmpty()){
+                       if(colaNivel2Andy.isEmpty()){
+                                  if(colaNivel3Andy.isEmpty()){
+                                             Serie CampeonAndy = null;
+                                  }else{
+                                            Serie CampeonAndy = (Serie) (Administrador.colaNivel3Andy.getHead().getData());
+                                            colaNivel1Andy.deleteFirst();
+                                  }                   
+                       }else{
+                                Serie CampeonAndy = (Serie) (Administrador.colaNivel2Andy.getHead().getData());
+                                 colaNivel1Andy.deleteFirst();  
+                       }
+            }else{
+                       Serie CampeonAndy = (Serie) (Administrador.colaNivel1Andy.getHead().getData());
+                       colaNivel1Andy.deleteFirst();
+            }
+            
+            if(colaNivel1Useche.isEmpty()){
+                       if(colaNivel2Useche.isEmpty()){
+                                  if(colaNivel3Useche.isEmpty()){
+                                             Serie CampeonUseche = null;
+                                  }else{
+                                            Serie CampeonUseche = (Serie) (Administrador.colaNivel3Useche.getHead().getData());
+                                            colaNivel1Useche.deleteFirst();
+                                  }                   
+                       }else{
+                                Serie CampeonUseche = (Serie) (Administrador.colaNivel2Useche.getHead().getData());
+                                 colaNivel1Useche.deleteFirst();  
+                       }
+            }else{
+                       Serie CampeonUseche = (Serie) (Administrador.colaNivel1Useche.getHead().getData());
+                       colaNivel1Useche.deleteFirst();
+            }
+
             
             
             
@@ -415,15 +466,15 @@ public class Administrador extends Thread{
         
         int sizeColaNivel2Jose = Administrador.colaNivel2Jose.size();
         int sizeColaNivel3Jose = Administrador.colaNivel3Jose.size();
-        int sizeColaRefuerzoJose = Administrador.colaRefuerzoJose.size();
+//        int sizeColaRefuerzoJose = Administrador.colaRefuerzoJose.size();
         
         int sizeColaNivel2Andy = Administrador.colaNivel2Andy.size();
         int sizeColaNivel3Andy = Administrador.colaNivel3Andy.size();
-        int sizeColaRefuerzoAndy = Administrador.colaRefuerzoAndy.size();
+//        int sizeColaRefuerzoAndy = Administrador.colaRefuerzoAndy.size();
         
         int sizeColaNivel2Useche = Administrador.colaNivel2Useche.size();
         int sizeColaNivel3Useche = Administrador.colaNivel3Useche.size();
-        int sizeColaRefuerzoUseche = Administrador.colaRefuerzoUseche.size();
+//        int sizeColaRefuerzoUseche = Administrador.colaRefuerzoUseche.size();
         
         for(int i = 0; i < sizeColaNivel2Jose; i++){
             
@@ -539,89 +590,89 @@ public class Administrador extends Thread{
             }
         }
         
-        for(int i = 0; i < sizeColaRefuerzoAndy; i++){
-            
-            Serie serieTemp7 = (Serie) (Administrador.colaRefuerzoAndy.getHead().getData());
-            
-            Administrador.colaRefuerzoAndy.deleteFirst();
-            
-            if(serieTemp7.getContador() < 7){
-                
-                serieTemp7.setContador(serieTemp7.getContador() + 1);
-                
-            }else{
-                
-                if(serieTemp7.getNivelPrioridad() == 2){
-                    serieTemp7.setNivelPrioridad(1);
-                }else if(serieTemp7.getNivelPrioridad() == 3){
-                    serieTemp7.setNivelPrioridad(2);
-                    
-                }
-                
-                serieTemp7.setContador(0);
-            }
-            
-            
-            Administrador.colaRefuerzoAndy.addLast(serieTemp7);
-            
-        }
-        
-        for(int i = 0; i < sizeColaRefuerzoJose; i++){
-            
-            Serie serieTemp8 = (Serie) (Administrador.colaRefuerzoJose.getHead().getData());
-            
-            Administrador.colaRefuerzoJose.deleteFirst();
-            
-            if(serieTemp8.getContador() < 7){
-                
-                serieTemp8.setContador(serieTemp8.getContador() + 1);
-                
-            }else{
-                
-                if(serieTemp8.getNivelPrioridad() == 2){
-                    serieTemp8.setNivelPrioridad(1);
-                }else if(serieTemp8.getNivelPrioridad() == 3){
-                    serieTemp8.setNivelPrioridad(2);
-                    
-                }
-                
-                serieTemp8.setContador(0);
-            }
-            
-            
-            Administrador.colaRefuerzoJose.addLast(serieTemp8);
-            
-        }
-        
-        
-        for(int i = 0; i < sizeColaRefuerzoUseche; i++){
-            
-            Serie serieTemp9 = (Serie) (Administrador.colaRefuerzoUseche.getHead().getData());
-            
-            Administrador.colaRefuerzoUseche.deleteFirst();
-            
-            if(serieTemp9.getContador() < 7){
-                
-                serieTemp9.setContador(serieTemp9.getContador() + 1);
-                
-            }else{
-                
-                if(serieTemp9.getNivelPrioridad() == 2){
-                    serieTemp9.setNivelPrioridad(1);
-                }else if(serieTemp9.getNivelPrioridad() == 3){
-                    serieTemp9.setNivelPrioridad(2);
-                    
-                }
-                
-                serieTemp9.setContador(0);
-            }
-            
-            
-            Administrador.colaRefuerzoUseche.addLast(serieTemp9);
-            
-        }
-        
-        
+//        for(int i = 0; i < sizeColaRefuerzoAndy; i++){
+//            
+//            Serie serieTemp7 = (Serie) (Administrador.colaRefuerzoAndy.getHead().getData());
+//            
+//            Administrador.colaRefuerzoAndy.deleteFirst();
+//            
+//            if(serieTemp7.getContador() < 7){
+//                
+//                serieTemp7.setContador(serieTemp7.getContador() + 1);
+//                
+//            }else{
+//                
+//                if(serieTemp7.getNivelPrioridad() == 2){
+//                    serieTemp7.setNivelPrioridad(1);
+//                }else if(serieTemp7.getNivelPrioridad() == 3){
+//                    serieTemp7.setNivelPrioridad(2);
+//                    
+//                }
+//                
+//                serieTemp7.setContador(0);
+//            }
+//            
+//            
+//            Administrador.colaRefuerzoAndy.addLast(serieTemp7);
+//            
+//        }
+//        
+//        for(int i = 0; i < sizeColaRefuerzoJose; i++){
+//            
+//            Serie serieTemp8 = (Serie) (Administrador.colaRefuerzoJose.getHead().getData());
+//            
+//            Administrador.colaRefuerzoJose.deleteFirst();
+//            
+//            if(serieTemp8.getContador() < 7){
+//                
+//                serieTemp8.setContador(serieTemp8.getContador() + 1);
+//                
+//            }else{
+//                
+//                if(serieTemp8.getNivelPrioridad() == 2){
+//                    serieTemp8.setNivelPrioridad(1);
+//                }else if(serieTemp8.getNivelPrioridad() == 3){
+//                    serieTemp8.setNivelPrioridad(2);
+//                    
+//                }
+//                
+//                serieTemp8.setContador(0);
+//            }
+//            
+//            
+//            Administrador.colaRefuerzoJose.addLast(serieTemp8);
+//            
+//        }
+//        
+//        
+//        for(int i = 0; i < sizeColaRefuerzoUseche; i++){
+//            
+//            Serie serieTemp9 = (Serie) (Administrador.colaRefuerzoUseche.getHead().getData());
+//            
+//            Administrador.colaRefuerzoUseche.deleteFirst();
+//            
+//            if(serieTemp9.getContador() < 7){
+//                
+//                serieTemp9.setContador(serieTemp9.getContador() + 1);
+//                
+//            }else{
+//                
+//                if(serieTemp9.getNivelPrioridad() == 2){
+//                    serieTemp9.setNivelPrioridad(1);
+//                }else if(serieTemp9.getNivelPrioridad() == 3){
+//                    serieTemp9.setNivelPrioridad(2);
+//                    
+//                }
+//                
+//                serieTemp9.setContador(0);
+//            }
+//            
+//            
+//            Administrador.colaRefuerzoUseche.addLast(serieTemp9);
+//            
+//        }
+//        
+//        
     }
     
     /**

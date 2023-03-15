@@ -16,7 +16,7 @@ public class Serie {
     private int duracionMinutos;    
     private int contador;
     
-    private int idPersonaje;
+//    private int idPersonaje;
     private int puntosPoder;
     private int vida;
     
@@ -130,16 +130,16 @@ public class Serie {
     /**
      * @return the idPersonaje
      */
-    public int getIdPersonaje() {
-        return idPersonaje;
-    }
-
-    /**
-     * @param idPersonaje the idPersonaje to set
-     */
-    public void setIdPersonaje(int idPersonaje) {
-        this.idPersonaje = idPersonaje;
-    }
+//    public int getIdPersonaje() {
+//        return idPersonaje;
+//    }
+//
+//    /**
+//     * @param idPersonaje the idPersonaje to set
+//     */
+//    public void setIdPersonaje(int idPersonaje) {
+//        this.idPersonaje = idPersonaje;
+//    }
 
     /**
      * @return the nivelPrioridadInicio
