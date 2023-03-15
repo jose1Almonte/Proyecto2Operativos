@@ -421,10 +421,16 @@ public class Administrador extends Thread{
             
             Administrador.colaNivel2Jose.deleteFirst();
             
-            serieTemp.setContador(serieTemp.getContador() + 1);
+            if (serieTemp.getContador()<7){
+                serieTemp.setContador(serieTemp.getContador() + 1);
+
+                Administrador.colaNivel2Jose.addLast(serieTemp);
+            }
+            else{
+                serieTemp.setContador(0);
             
-            Administrador.colaNivel2Jose.addLast(serieTemp);
-            
+                Administrador.colaNivel1Jose.addLast(serieTemp);
+            }
             i++;
         }
         
@@ -434,7 +440,7 @@ public class Administrador extends Thread{
             
             Administrador.colaNivel3Jose.deleteFirst();
             
-            if (serieTemp1.getContador()<8){
+            if (serieTemp1.getContador()<7){
             
                 serieTemp1.setContador(serieTemp1.getContador() + 1);
             
@@ -455,7 +461,7 @@ public class Administrador extends Thread{
             
             Administrador.colaNivel2Andy.deleteFirst();
             
-            if (serieTemp2.getContador()<8){
+            if (serieTemp2.getContador()<7){
             
                 serieTemp2.setContador(serieTemp2.getContador() + 1);
             
@@ -475,7 +481,7 @@ public class Administrador extends Thread{
             
             Administrador.colaNivel3Andy.deleteFirst();
             
-            if (serieTemp3.getContador()<8){
+            if (serieTemp3.getContador()<7){
             
                 serieTemp3.setContador(serieTemp3.getContador() + 1);
             
@@ -495,7 +501,7 @@ public class Administrador extends Thread{
             
             Administrador.colaNivel2Useche.deleteFirst();
             
-            if (serieTemp4.getContador()<8){
+            if (serieTemp4.getContador()<7){
             
                 serieTemp4.setContador(serieTemp4.getContador() + 1);
             
@@ -515,7 +521,7 @@ public class Administrador extends Thread{
             
             Administrador.colaNivel3Useche.deleteFirst();
             
-            if (serieTemp5.getContador()<8){
+            if (serieTemp5.getContador()<7){
             
                 serieTemp5.setContador(serieTemp5.getContador() + 1);
             
@@ -529,44 +535,92 @@ public class Administrador extends Thread{
             i++;
         }
         
-        for(int i = 0; i < sizeColaRefuerzoJose; i++){
-            
-            Serie serieTemp6 = (Serie) (Administrador.colaRefuerzoJose.getHead().getData());
-            
-            Administrador.colaRefuerzoJose.deleteFirst();
-            
-            serieTemp6.setContador(serieTemp6.getContador() + 1);
-            
-            Administrador.colaRefuerzoJose.addLast(serieTemp6);
-            
-            i++;
-        }
-        
         for(int i = 0; i < sizeColaRefuerzoAndy; i++){
             
             Serie serieTemp7 = (Serie) (Administrador.colaRefuerzoAndy.getHead().getData());
             
             Administrador.colaRefuerzoAndy.deleteFirst();
             
-            serieTemp7.setContador(serieTemp7.getContador() + 1);
+            if(serieTemp7.getContador() < 7){
+                
+                serieTemp7.setContador(serieTemp7.getContador() + 1);
+                
+            }else{
+                
+                if(serieTemp7.getNivelPrioridad() == 2){
+                    serieTemp7.setNivelPrioridad(1);
+                }else if(serieTemp7.getNivelPrioridad() == 3){
+                    serieTemp7.setNivelPrioridad(2);
+                    
+                }
+                
+                serieTemp7.setContador(0);
+            }
+            
             
             Administrador.colaRefuerzoAndy.addLast(serieTemp7);
             
             i++;
         }
         
-        for(int i = 0; i < sizeColaRefuerzoUseche; i++){
+        for(int i = 0; i < sizeColaRefuerzoJose; i++){
             
-            Serie serieTemp8 = (Serie) (Administrador.colaRefuerzoUseche.getHead().getData());
+            Serie serieTemp8 = (Serie) (Administrador.colaRefuerzoJose.getHead().getData());
             
-            Administrador.colaRefuerzoUseche.deleteFirst();
+            Administrador.colaRefuerzoJose.deleteFirst();
             
-            serieTemp8.setContador(serieTemp8.getContador() + 1);
+            if(serieTemp8.getContador() < 7){
+                
+                serieTemp8.setContador(serieTemp8.getContador() + 1);
+                
+            }else{
+                
+                if(serieTemp8.getNivelPrioridad() == 2){
+                    serieTemp8.setNivelPrioridad(1);
+                }else if(serieTemp8.getNivelPrioridad() == 3){
+                    serieTemp8.setNivelPrioridad(2);
+                    
+                }
+                
+                serieTemp8.setContador(0);
+            }
             
-            Administrador.colaRefuerzoUseche.addLast(serieTemp8);
+            
+            Administrador.colaRefuerzoJose.addLast(serieTemp8);
             
             i++;
         }
+        
+        
+        for(int i = 0; i < sizeColaRefuerzoUseche; i++){
+            
+            Serie serieTemp9 = (Serie) (Administrador.colaRefuerzoUseche.getHead().getData());
+            
+            Administrador.colaRefuerzoUseche.deleteFirst();
+            
+            if(serieTemp9.getContador() < 7){
+                
+                serieTemp9.setContador(serieTemp9.getContador() + 1);
+                
+            }else{
+                
+                if(serieTemp9.getNivelPrioridad() == 2){
+                    serieTemp9.setNivelPrioridad(1);
+                }else if(serieTemp9.getNivelPrioridad() == 3){
+                    serieTemp9.setNivelPrioridad(2);
+                    
+                }
+                
+                serieTemp9.setContador(0);
+            }
+            
+            
+            Administrador.colaRefuerzoUseche.addLast(serieTemp9);
+            
+            i++;
+        }
+        
+        
     }
     
     public void SeleccionarSeriesParaCombate(){
