@@ -711,7 +711,7 @@ public class Administrador extends Thread{
     }
     
     /**
-     * Saca serie de la cabeza de la cola de refuerzo y se pone en su cola correspondiente
+     * Saca serie de la cabeza de la cola de refuerzo y se pone en su cola correspondiente (Ya tiene la probabilidad incluida)
      */
     public void sacarCabezaRefuerzo(){
         double probRefuerzoJose = Math.random();
