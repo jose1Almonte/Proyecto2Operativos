@@ -44,6 +44,8 @@ public class Procesador extends Thread{
             
         }
         
+        
+        variablesGenerales.darPasoAdmin.release();
     }
     
     /**
