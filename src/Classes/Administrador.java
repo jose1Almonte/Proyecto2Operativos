@@ -31,77 +31,147 @@ public class Administrador extends Thread{
     public static LinkedList colaNivel3Useche = new LinkedList();
     public static LinkedList colaRefuerzoUseche = new LinkedList();
     
+
+    
     @Override
     public void run(){
         
         
         while(variablesGenerales.keep){
+                   
+                   
             
-            Serie serieJose = new Serie();
-            Serie serieAndy = new Serie();
-            Serie serieUseche = new Serie();
-            
-            this.establecerPrioridad(serieJose, serieAndy, serieUseche);
-            
-            
-            System.out.println( "Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
-            
-            if(colaNivel1Jose.isEmpty()){
-                       if(colaNivel2Jose.isEmpty()){
-                                  if(colaNivel3Jose.isEmpty()){
-                                             Serie CampeonJose = null;
-                                  }else{
-                                            Serie CampeonJose = (Serie) (Administrador.colaNivel3Jose.getHead().getData());
-                                            colaNivel1Jose.deleteFirst();
-                                  }                   
-                       }else{
-                                Serie CampeonJose = (Serie) (Administrador.colaNivel2Jose.getHead().getData());
-                                 colaNivel1Jose.deleteFirst();  
-                       }
-            }else{
-                       Serie CampeonJose = (Serie) (Administrador.colaNivel1Jose.getHead().getData());
-                       colaNivel1Jose.deleteFirst();
+            if(variablesGenerales.numeroCiclos >= 2){
+                      
+                      Serie serieJose = new Serie();
+                      Serie serieAndy = new Serie();
+                      Serie serieUseche = new Serie();
+                       
+                      this.establecerPrioridad(serieJose, serieAndy, serieUseche);
+                      this.encolarSerie(serieJose, serieAndy, serieUseche);
+                      
+                      System.out.println( "Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
             }
             
-            if(colaNivel1Andy.isEmpty()){
-                       if(colaNivel2Andy.isEmpty()){
-                                  if(colaNivel3Andy.isEmpty()){
-                                             Serie CampeonAndy = null;
-                                  }else{
-                                            Serie CampeonAndy = (Serie) (Administrador.colaNivel3Andy.getHead().getData());
-                                            colaNivel1Andy.deleteFirst();
-                                  }                   
-                       }else{
-                                Serie CampeonAndy = (Serie) (Administrador.colaNivel2Andy.getHead().getData());
-                                 colaNivel1Andy.deleteFirst();  
+            Serie Jose;
+            Serie Andy;
+            Serie Useche;
+            
+            
+            
+            
+            
+            Serie serieJoseProcesador = CampeonJose();
+            Serie serieAndyProcesador = CampeonAndy();
+            Serie serieUsecheProcesador = CampeonUseche();
+            
+            if( serieJoseProcesador == null || serieAndyProcesador == null || serieUsecheProcesador == null){
+                       
+                       if(serieJoseProcesador != null){
+                                  serieJoseProcesador.setNivelPrioridad(1);
+                                  colaNivel1Jose.addFirst(serieJoseProcesador);
                        }
-            }else{
-                       Serie CampeonAndy = (Serie) (Administrador.colaNivel1Andy.getHead().getData());
-                       colaNivel1Andy.deleteFirst();
-            }
-            
-            if(colaNivel1Useche.isEmpty()){
-                       if(colaNivel2Useche.isEmpty()){
-                                  if(colaNivel3Useche.isEmpty()){
-                                             Serie CampeonUseche = null;
-                                  }else{
-                                            Serie CampeonUseche = (Serie) (Administrador.colaNivel3Useche.getHead().getData());
-                                            colaNivel1Useche.deleteFirst();
-                                  }                   
-                       }else{
-                                Serie CampeonUseche = (Serie) (Administrador.colaNivel2Useche.getHead().getData());
-                                 colaNivel1Useche.deleteFirst();  
+                       
+                       if(serieAndyProcesador != null){
+                                  serieAndyProcesador.setNivelPrioridad(1);
+                                  Administrador.colaNivel1Andy.addFirst(serieAndyProcesador);
                        }
+                       
+                       
+                       if(serieUsecheProcesador != null){
+                                  serieUsecheProcesador.setNivelPrioridad(1);
+                                  Administrador.colaNivel1Useche.addFirst(serieUsecheProcesador);
+                       }          
             }else{
-                       Serie CampeonUseche = (Serie) (Administrador.colaNivel1Useche.getHead().getData());
-                       colaNivel1Useche.deleteFirst();
-            }
-
-            
-            
-            
+                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+                       IA.start();
+                       
+                       try {
+                                  
+                                  variablesGenerales.darPasoAdmin.acquire(1);
+                                  
+                       } catch (InterruptedException ex) {
+                                  Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+                       }
+                       
+            } 
         }
     }
+    
+    /**
+     * Saca las series de las colas 
+     */
+    
+    public Serie CampeonJose(){
+               
+               Serie CampeonJose;
+           if(colaNivel1Jose.isEmpty()){
+                       if(colaNivel2Jose.isEmpty()){
+                                  if(colaNivel3Jose.isEmpty()){
+                                             return CampeonJose = null;
+                                  }else{
+                                            CampeonJose = (Serie) (Administrador.colaNivel3Jose.getHead().getData());
+                                            colaNivel1Jose.deleteFirst();
+                                            return CampeonJose;
+                                  }                   
+                       }else{
+                                CampeonJose = (Serie) (Administrador.colaNivel2Jose.getHead().getData());
+                                 colaNivel1Jose.deleteFirst();  
+                                 return CampeonJose;
+                       }
+            }else{
+                       CampeonJose = (Serie) (Administrador.colaNivel1Jose.getHead().getData());
+                       colaNivel1Jose.deleteFirst();
+                       return CampeonJose;
+            }
+    }
+    
+    public Serie CampeonAndy(){
+               Serie CampeonAndy;
+               if(colaNivel1Andy.isEmpty()){
+                       if(colaNivel2Andy.isEmpty()){
+                                  if(colaNivel3Andy.isEmpty()){
+                                             return CampeonAndy = null;
+                                  }else{
+                                            CampeonAndy = (Serie) (Administrador.colaNivel3Andy.getHead().getData());
+                                            colaNivel1Andy.deleteFirst();
+                                            return CampeonAndy;
+                                  }                   
+                       }else{
+                                 CampeonAndy = (Serie) (Administrador.colaNivel2Andy.getHead().getData());
+                                 colaNivel1Andy.deleteFirst();  
+                                 return CampeonAndy;
+                       }
+            }else{
+                       CampeonAndy = (Serie) (Administrador.colaNivel1Andy.getHead().getData());
+                       colaNivel1Andy.deleteFirst();
+                       return CampeonAndy;
+            }
+    }
+    
+    public Serie CampeonUseche(){
+               Serie CampeonUseche;
+               if(colaNivel1Useche.isEmpty()){
+                       if(colaNivel2Useche.isEmpty()){
+                                  if(colaNivel3Useche.isEmpty()){
+                                            return CampeonUseche = null;
+                                  }else{
+                                            CampeonUseche = (Serie) (Administrador.colaNivel3Useche.getHead().getData());
+                                            colaNivel1Useche.deleteFirst();
+                                            return CampeonUseche;
+                                  }                   
+                       }else{
+                                 CampeonUseche = (Serie) (Administrador.colaNivel2Useche.getHead().getData());
+                                 colaNivel1Useche.deleteFirst();
+                                 return CampeonUseche;
+                       }
+            }else{
+                       CampeonUseche = (Serie) (Administrador.colaNivel1Useche.getHead().getData());
+                       colaNivel1Useche.deleteFirst();
+                       return CampeonUseche;
+            }
+        }
+    
     
     /**
      * Determina cual debería ser la prioridad de la serie que se le pase
