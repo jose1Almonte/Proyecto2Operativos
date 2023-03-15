@@ -53,49 +53,62 @@ public class Administrador extends Thread{
                       System.out.println( "Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
             }
             
-            Serie Jose;
-            Serie Andy;
-            Serie Useche;
+//            Serie Jose;
+//            Serie Andy;
+//            Serie Useche;
             
             
             
             
+//            Series que van a la IA
+            Serie serieJoseProcesador = this.CampeonJose();
+            Serie serieAndyProcesador = this.CampeonAndy();
+            Serie serieUsecheProcesador = this.CampeonUseche();
             
-            Serie serieJoseProcesador = CampeonJose();
-            Serie serieAndyProcesador = CampeonAndy();
-            Serie serieUsecheProcesador = CampeonUseche();
+            this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+        }
+    }
+    
+    
+    /**
+     * Envía las series a enfrentar a la IA <=> todos los rodajes pueden aportar una serie, de caso contrario, pone de primeras a las series que no son nulas a esperar hasta que pueda haber un enfrentamiento 
+     * @param serieJoseProcesador
+     * @param serieAndyProcesador
+     * @param serieUsecheProcesador 
+     */
+    public void seriesALaIA(Serie serieJoseProcesador, Serie serieAndyProcesador, Serie serieUsecheProcesador){
+        
+        try{
             
             if( serieJoseProcesador == null || serieAndyProcesador == null || serieUsecheProcesador == null){
-                       
-                       if(serieJoseProcesador != null){
-                                  serieJoseProcesador.setNivelPrioridad(1);
-                                  colaNivel1Jose.addFirst(serieJoseProcesador);
-                       }
-                       
-                       if(serieAndyProcesador != null){
-                                  serieAndyProcesador.setNivelPrioridad(1);
-                                  Administrador.colaNivel1Andy.addFirst(serieAndyProcesador);
-                       }
-                       
-                       
-                       if(serieUsecheProcesador != null){
-                                  serieUsecheProcesador.setNivelPrioridad(1);
-                                  Administrador.colaNivel1Useche.addFirst(serieUsecheProcesador);
-                       }          
+
+               if(serieJoseProcesador != null){
+                          serieJoseProcesador.setNivelPrioridad(1);
+                          colaNivel1Jose.addFirst(serieJoseProcesador);
+               }
+
+               if(serieAndyProcesador != null){
+                          serieAndyProcesador.setNivelPrioridad(1);
+                          Administrador.colaNivel1Andy.addFirst(serieAndyProcesador);
+               }
+
+
+               if(serieUsecheProcesador != null){
+                          serieUsecheProcesador.setNivelPrioridad(1);
+                          Administrador.colaNivel1Useche.addFirst(serieUsecheProcesador);
+               }          
             }else{
                        Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
                        IA.start();
-                       
-                       try {
-                                  
-                                  variablesGenerales.darPasoAdmin.acquire(1);
-                                  
-                       } catch (InterruptedException ex) {
-                                  Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
-                       }
-                       
-            } 
+
+                       variablesGenerales.darPasoAdmin.acquire(1);
+
+
+            }
+        }catch(Exception e){
+            System.out.println(e);
         }
+        
     }
     
     /**
