@@ -116,9 +116,9 @@ public class Administrador extends Thread{
     }
     
     /**
-     * Saca las series de las colas 
-     */
-    
+     * Saca la cabeza de la cola NO VACIA respetando las colas de prioridad
+     * @return Serie
+     */    
     public Serie CampeonJose(){
                
                Serie CampeonJose;
@@ -143,6 +143,10 @@ public class Administrador extends Thread{
             }
     }
     
+    /**
+     * Saca la cabeza de la cola NO VACIA respetando las colas de prioridad
+     * @return Serie
+     */
     public Serie CampeonAndy(){
                Serie CampeonAndy;
                if(colaNivel1Andy.isEmpty()){
@@ -166,6 +170,10 @@ public class Administrador extends Thread{
             }
     }
     
+    /**
+     * Saca la cabeza de la cola NO VACIA respetando las colas de prioridad
+     * @return Serie
+     */
     public Serie CampeonUseche(){
                Serie CampeonUseche;
                if(colaNivel1Useche.isEmpty()){
@@ -191,8 +199,10 @@ public class Administrador extends Thread{
     
     
     /**
-     * Determina cual debería ser la prioridad de la serie que se le pase, prioridad inicio, duracion, puntos de poder y rodaje
-     * @param serieNombreRodaje
+     * Determina cual debería ser la prioridad de la serie que se le pase. Setea tambien: prioridad inicio, duracion, puntos de poder y nro rodaje
+     * @param serieJose
+     * @param serieAndy
+     * @param serieUseche
      */
     public void establecerPrioridad(Serie serieJose, Serie serieAndy, Serie serieUseche){
         

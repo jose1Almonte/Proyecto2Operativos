@@ -4,6 +4,9 @@
  */
 package Classes;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Hallo
@@ -43,9 +46,8 @@ public class Procesador extends Thread{
 //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
             Administrador admin = new Administrador();
             admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
-            
+                        
         }
-        
         
         variablesGenerales.darPasoAdmin.release();
     }
@@ -93,8 +95,7 @@ public class Procesador extends Thread{
             double randomDoubleTemp = (Math.random()*3);
             
             
-            int randomTemp = (int) randomDoubleTemp;
-            
+            int randomTemp = (int) randomDoubleTemp;   
             
             
             switch (randomTemp) {
