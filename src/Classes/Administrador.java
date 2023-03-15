@@ -39,33 +39,37 @@ public class Administrador extends Thread{
         
         while(variablesGenerales.keep){
                    
-                   
+            try{
+                
+                if(variablesGenerales.numeroCiclos >= 2){
+
+                          Serie serieJose = new Serie();
+                          Serie serieAndy = new Serie();
+                          Serie serieUseche = new Serie();
+
+                          this.establecerPrioridad(serieJose, serieAndy, serieUseche);
+                          this.encolarSerie(serieJose, serieAndy, serieUseche);
+
+//                          System.out.println( "Tamaño nivel 1: " + Administrador.colaNivel1Jose.size() + " Tamaño nivel 2: " + Administrador.colaNivel2Jose.size() +  " Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
+                          variablesGenerales.numeroCiclos = 0;
+                }
+
+    //            Series que van a la IA
+                Serie serieJoseProcesador = this.CampeonJose();
+                Serie serieAndyProcesador = this.CampeonAndy();
+                Serie serieUsecheProcesador = this.CampeonUseche();
+
+                this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+                variablesGenerales.numeroCiclos++;
+                
+//                Thread.sleep(1000);
+                
+            }catch(Exception e){
+                System.out.println(e);
+            }    
             
-            if(variablesGenerales.numeroCiclos >= 2){
-                      
-                      Serie serieJose = new Serie();
-                      Serie serieAndy = new Serie();
-                      Serie serieUseche = new Serie();
-                       
-                      this.establecerPrioridad(serieJose, serieAndy, serieUseche);
-                      this.encolarSerie(serieJose, serieAndy, serieUseche);
-                      
-                      System.out.println( "Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
-            }
-            
-//            Serie Jose;
-//            Serie Andy;
-//            Serie Useche;
             
             
-            
-            
-//            Series que van a la IA
-            Serie serieJoseProcesador = this.CampeonJose();
-            Serie serieAndyProcesador = this.CampeonAndy();
-            Serie serieUsecheProcesador = this.CampeonUseche();
-            
-            this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
         }
     }
     
@@ -187,7 +191,7 @@ public class Administrador extends Thread{
     
     
     /**
-     * Determina cual debería ser la prioridad de la serie que se le pase
+     * Determina cual debería ser la prioridad de la serie que se le pase, prioridad inicio, duracion, puntos de poder y rodaje
      * @param serieNombreRodaje
      */
     public void establecerPrioridad(Serie serieJose, Serie serieAndy, Serie serieUseche){
@@ -267,6 +271,8 @@ public class Administrador extends Thread{
             
         }
         
+        serieJose.setRodajePertenece(1);
+        
         
         // VELMA (Andy)
         
@@ -340,6 +346,8 @@ public class Administrador extends Thread{
             
         }
         
+        serieAndy.setRodajePertenece(2);
+        
 //        Game of Thrones (Useche)
         double introProbUseche = Math.random();
         double inicioProbUseche = Math.random(); 
@@ -404,6 +412,8 @@ public class Administrador extends Thread{
             serieUseche.setDuracionMinutos( (int) (Math.random()*60));
             
         }
+        
+        serieUseche.setRodajePertenece(3);
     }
     
     /**

@@ -25,9 +25,11 @@ public class Procesador extends Thread{
         
         double probBatalla = Math.random();
         
+        
         if (this.probHayGanador(probBatalla)){
             
             Serie serieGanadora = this.puntosPoderMasAlto();
+//            System.out.println("Soy la IA, y estoy trabajando con: "+ serieGanadora.getRodajePertenece() + " "  + serieGanadora.getNivelPrioridad() + " " + serieGanadora.getDuracionMinutos() );
             
         }else if(this.probHayEmpate(probBatalla)){
             
@@ -72,6 +74,10 @@ public class Procesador extends Thread{
      */
     public Serie puntosPoderMasAlto(){
         
+//        System.out.println("Jose: " + this.serieJose.getPuntosPoder());
+//        System.out.println("Andy: " + this.serieAndy.getPuntosPoder());
+//        System.out.println("Useche: " + this.serieUseche.getPuntosPoder());
+        
         if(this.serieJose.getPuntosPoder() > this.serieAndy.getPuntosPoder() && this.serieJose.getPuntosPoder() > this.serieUseche.getPuntosPoder()){
             return this.serieJose;
             
@@ -83,10 +89,16 @@ public class Procesador extends Thread{
             
         }else{
             
-            int randomTemp = 1 + (int) (Math.random() + 2);
+            
+            double randomDoubleTemp = (Math.random()*3);
+            
+            
+            int randomTemp = (int) randomDoubleTemp;
+            
+            System.out.println(randomTemp);
             
             switch (randomTemp) {
-                case 3 -> {
+                case 1 -> {
                     return this.serieAndy;
                 }
                 case 2 -> {
