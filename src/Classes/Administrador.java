@@ -117,15 +117,18 @@ public class Administrador extends Thread{
         if(total >= 5){
             serieJose.setNivelPrioridad(1);
             serieJose.setNivelPrioridadInicio(1);
+            serieJose.setDuracionMinutos( (int) (Math.random()*90 + 90));
             serieJose.setPuntosPoder((int) (peleaProb3*2+5));
         }else if(total >= 3){
             serieJose.setNivelPrioridad(2);
             serieJose.setNivelPrioridadInicio(2);
+            serieJose.setDuracionMinutos( (int) (Math.random()*30 + 60));
             serieJose.setPuntosPoder((int) (peleaProb3*2+3));
             
         }else{
             serieJose.setNivelPrioridad(3);
             serieJose.setNivelPrioridadInicio(3);
+            serieJose.setDuracionMinutos( (int) (Math.random()*60));
             serieJose.setPuntosPoder((int) (peleaProb3*2+1));
             
         }
@@ -189,14 +192,17 @@ public class Administrador extends Thread{
             serieAndy.setNivelPrioridad(1);
             serieAndy.setNivelPrioridadInicio(1);
             serieAndy.setPuntosPoder((int) (peleaProb1*2+5));
+            serieAndy.setDuracionMinutos( (int) (Math.random()*90 + 90));
         }else if(total >= 3){
             serieAndy.setNivelPrioridad(2);
             serieAndy.setNivelPrioridadInicio(2);
             serieAndy.setPuntosPoder((int) (peleaProb1*2+3));
+            serieAndy.setDuracionMinutos( (int) (Math.random()*30 + 60));
         }else{
             serieAndy.setNivelPrioridad(3);
             serieAndy.setNivelPrioridadInicio(3);
             serieAndy.setPuntosPoder((int) (peleaProb1*2+1));
+            serieAndy.setDuracionMinutos( (int) (Math.random()*60 ));
             
         }
         
@@ -251,93 +257,19 @@ public class Administrador extends Thread{
             serieUseche.setNivelPrioridad(1);
             serieUseche.setNivelPrioridadInicio(1);
             serieUseche.setPuntosPoder((int) (peleaProb2*2+5));
+            serieUseche.setDuracionMinutos( (int) (Math.random()*90 + 90));
         }else if(total >= 3){
             serieUseche.setNivelPrioridad(2);
             serieUseche.setNivelPrioridadInicio(2);
             serieUseche.setPuntosPoder((int) (peleaProb2*2+3));
+            serieUseche.setDuracionMinutos( (int) (Math.random()*30 + 60));
         }else{
             serieUseche.setNivelPrioridad(3);
             serieUseche.setNivelPrioridadInicio(3);
             serieUseche.setPuntosPoder((int) (peleaProb2*2+1));
+            serieUseche.setDuracionMinutos( (int) (Math.random()*60));
             
         }
-        
-        
-        
-        
-        
-        
-//        double introProb = Math.random();
-//        double inicio1Prob = Math.random();
-//        double inicio2Prob = Math.random();
-//        double cierreProb = Math.random();
-//        double creditosProb = Math.random();
-//        
-//        int intro;
-//        int inicio1;
-//        int inicio2;
-//        int cierre;
-//        int creditos;
-//        
-//        if (introProb <= 0.75){
-//            intro = 1;
-//        }else{
-//            intro = 0;
-//        }
-//        
-//        if (inicio1Prob <= 0.84){
-//            inicio1 = 1;
-//        }else{
-//            inicio1 = 0;
-//            
-//        }
-//        
-//        if (inicio2Prob <= 0.84){            
-//            inicio2 = 1;
-//        }else{            
-//            inicio2 = 0;
-//        }
-//        
-//        if (cierreProb <= 0.80){
-//            cierre = 1;
-//        }else{
-//            cierre = 0;            
-//        }
-//        
-//        if (creditosProb <= 0.85){
-//            creditos = 1;
-//        }else{
-//            creditos = 0;            
-//        }
-//        
-//        int total = intro + inicio1 + inicio2 + cierre + creditos;
-//        
-//        
-//        switch (total) {
-//            case 5 ->                 {
-//                    //            prioridad 1
-//                    serieNombreRodaje.setNivelPrioridad(1);
-//                    serieNombreRodaje.setNivelPrioridadInicio(1);
-//                    int duracionMinutos = (int) (Math.random()*90 + 90);
-//                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
-//                    break;
-//                }
-//            case 4 ->                 {
-//                    //            prioridad 2
-//                    serieNombreRodaje.setNivelPrioridad(2);
-//                    serieNombreRodaje.setNivelPrioridadInicio(2);
-//                    int duracionMinutos = (int) (Math.random()*30 + 60);
-//                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
-//                    break;
-//                }
-//            default ->                 {
-//                    //            prioridad 3
-//                    serieNombreRodaje.setNivelPrioridad(3);
-//                    serieNombreRodaje.setNivelPrioridadInicio(3);
-//                    int duracionMinutos = (int) (Math.random()*59);
-//                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
-//                }
-//        }
     }
     
     /**
