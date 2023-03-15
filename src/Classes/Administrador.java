@@ -41,9 +41,8 @@ public class Administrador extends Thread{
             Serie serieAndy = new Serie();
             Serie serieUseche = new Serie();
             
-            this.establecerPrioridad(serieJose);
-            this.establecerPrioridad(serieAndy);
-            this.establecerPrioridad(serieUseche);
+            this.establecerPrioridad(serieJose, serieAndy, serieUseche);
+            
             
             System.out.println( "Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
             
@@ -57,78 +56,278 @@ public class Administrador extends Thread{
      * Determina cual debería ser la prioridad de la serie que se le pase
      * @param serieNombreRodaje
      */
-    public void establecerPrioridad(Serie serieNombreRodaje){
+    public void establecerPrioridad(Serie serieJose, Serie serieAndy, Serie serieUseche){
+        
+//        The Last of Us (Jose)
         double introProb = Math.random();
         double inicio1Prob = Math.random();
         double inicio2Prob = Math.random();
-        double cierreProb = Math.random();
-        double creditosProb = Math.random();
+        double cierre1Prob = Math.random();
+        double cierre2Prob = Math.random();
+        double creditoProb = Math.random();
         
-        int intro;
-        int inicio1;
-        int inicio2;
-        int cierre;
-        int creditos;
+        int intro = 0;
+        int inicio1 = 0;
+        int inicio2 = 0;
+        int cierre1 = 0;
+        int cierre2 = 0;
+        int credito = 0;
         
-        if (introProb <= 0.75){
+        if(introProb <= 0.75){
             intro = 1;
         }else{
             intro = 0;
         }
         
-        if (inicio1Prob <= 0.84){
+        if(inicio1Prob <= 0.84){
             inicio1 = 1;
         }else{
             inicio1 = 0;
-            
         }
         
-        if (inicio2Prob <= 0.84){            
+        if(inicio2Prob <= 0.84){
             inicio2 = 1;
-        }else{            
+        }else{
             inicio2 = 0;
         }
         
-        if (cierreProb <= 0.80){
-            cierre = 1;
+        if(cierre1Prob <= 0.80){
+            cierre1 = 1;
         }else{
-            cierre = 0;            
+            cierre1 = 0;
         }
         
-        if (creditosProb <= 0.85){
-            creditos = 1;
+        if(cierre2Prob <= 0.80){
+            cierre2 = 1;
         }else{
-            creditos = 0;            
+            cierre2 = 0;
         }
         
-        int total = intro + inicio1 + inicio2 + cierre + creditos;
-        
-        
-        switch (total) {
-            case 5 ->                 {
-                    //            prioridad 1
-                    serieNombreRodaje.setNivelPrioridad(1);
-                    serieNombreRodaje.setNivelPrioridadInicio(1);
-                    int duracionMinutos = (int) (Math.random()*90 + 90);
-                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
-                    break;
-                }
-            case 4 ->                 {
-                    //            prioridad 2
-                    serieNombreRodaje.setNivelPrioridad(2);
-                    serieNombreRodaje.setNivelPrioridadInicio(2);
-                    int duracionMinutos = (int) (Math.random()*30 + 60);
-                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
-                    break;
-                }
-            default ->                 {
-                    //            prioridad 3
-                    serieNombreRodaje.setNivelPrioridad(3);
-                    serieNombreRodaje.setNivelPrioridadInicio(3);
-                    int duracionMinutos = (int) (Math.random()*59);
-                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
-                }
+        if(creditoProb <= 0.85){
+            credito = 1;
+        }else{
+            credito = 0;
         }
+        
+        int total = intro + inicio1 + inicio2 + cierre1 + cierre2 + credito;
+        
+        if(total >= 5){
+            serieJose.setNivelPrioridad(1);
+            serieJose.setNivelPrioridadInicio(1);
+        }else if(total >= 3){
+            serieJose.setNivelPrioridad(2);
+            serieJose.setNivelPrioridadInicio(2);
+            
+        }else{
+            serieJose.setNivelPrioridad(3);
+            serieJose.setNivelPrioridadInicio(3);
+            
+        }
+        
+        
+        // VELMA (Andy)
+        
+        double intro1ProbAndy = Math.random();
+        double intro2ProbAndy = Math.random();
+        double inicioProbAndy = Math.random();
+        double cierreProbAndy = Math.random();
+        double credito1ProbAndy = Math.random();
+        double credito2ProbAndy = Math.random();
+        
+        int intro1Andy = 0;
+        int intro2Andy = 0;
+        int inicioAndy = 0;
+        int cierreAndy = 0;
+        int credito1Andy = 0;
+        int credito2Andy = 0;
+        
+        if(intro1ProbAndy < 0.75){
+            intro1Andy = 1;
+        }else{
+            intro1Andy = 0;            
+        }
+        
+        if(intro2ProbAndy < 0.75){
+            intro2Andy = 1;
+        }else{
+            intro2Andy = 0;            
+        }
+        
+        if(inicioProbAndy < 0.75){
+            inicioAndy = 1;
+        }else{
+            inicioAndy = 0;            
+        }
+        
+        if(cierreProbAndy < 0.75){
+            cierreAndy = 1;
+        }else{
+            cierreAndy = 0;            
+        }
+        
+        if(credito1ProbAndy < 0.75){
+            credito1Andy = 1;
+        }else{
+            credito1Andy = 0;            
+        }
+        
+        if(credito2ProbAndy < 0.75){
+            credito2Andy = 1;
+        }else{
+            credito2Andy = 0;            
+        }
+        
+        total = intro1Andy + intro2Andy + inicioAndy + cierreAndy + credito1Andy + credito2Andy;
+        
+        if(total >= 5){
+            serieAndy.setNivelPrioridad(1);
+            serieAndy.setNivelPrioridadInicio(1);
+        }else if(total >= 3){
+            serieAndy.setNivelPrioridad(2);
+            serieAndy.setNivelPrioridadInicio(2);
+            
+        }else{
+            serieAndy.setNivelPrioridad(3);
+            serieAndy.setNivelPrioridadInicio(3);
+            
+        }
+        
+//        Game of Thrones (Useche)
+        double introProbUseche = Math.random();
+        double inicioProbUseche = Math.random(); 
+        double cierre1ProbUseche = Math.random();
+        double cierre2ProbUseche = Math.random();
+        double creditoProbUseche = Math.random();
+        
+        int introUseche = 0;
+        int inicioUseche = 0;
+        int cierre1Useche = 0;
+        int cierre2Useche = 0;
+        int creditoUseche = 0;
+        
+        if(introProbUseche <= 0.75){
+            introUseche = 1;
+        }else{
+            introUseche = 0;
+            
+        }
+        
+        if(inicioProbUseche <= 0.84){
+            inicioUseche = 1;
+        }else{
+            inicioUseche = 0;
+            
+        }
+        
+        if(cierre1ProbUseche <= 0.80){
+            cierre1Useche = 1;
+        }else{
+            cierre1Useche = 0;
+        }
+        
+        if(cierre2ProbUseche <= 0.80){
+            cierre2Useche = 1;
+        }else{
+            cierre2Useche = 0;
+        }
+        
+        if(creditoProbUseche <= 0.85){
+            creditoUseche = 1;
+        }else{
+            creditoUseche = 0;
+        }
+        
+        total = introUseche + inicioUseche + cierre1Useche + cierre2Useche + creditoUseche;
+        
+        if(total == 5){
+            serieUseche.setNivelPrioridad(1);
+            serieUseche.setNivelPrioridadInicio(1);
+        }else if(total >= 3){
+            serieUseche.setNivelPrioridad(2);
+            serieUseche.setNivelPrioridadInicio(2);
+            
+        }else{
+            serieUseche.setNivelPrioridad(3);
+            serieUseche.setNivelPrioridadInicio(3);
+            
+        }
+        
+        
+        
+        
+        
+        
+//        double introProb = Math.random();
+//        double inicio1Prob = Math.random();
+//        double inicio2Prob = Math.random();
+//        double cierreProb = Math.random();
+//        double creditosProb = Math.random();
+//        
+//        int intro;
+//        int inicio1;
+//        int inicio2;
+//        int cierre;
+//        int creditos;
+//        
+//        if (introProb <= 0.75){
+//            intro = 1;
+//        }else{
+//            intro = 0;
+//        }
+//        
+//        if (inicio1Prob <= 0.84){
+//            inicio1 = 1;
+//        }else{
+//            inicio1 = 0;
+//            
+//        }
+//        
+//        if (inicio2Prob <= 0.84){            
+//            inicio2 = 1;
+//        }else{            
+//            inicio2 = 0;
+//        }
+//        
+//        if (cierreProb <= 0.80){
+//            cierre = 1;
+//        }else{
+//            cierre = 0;            
+//        }
+//        
+//        if (creditosProb <= 0.85){
+//            creditos = 1;
+//        }else{
+//            creditos = 0;            
+//        }
+//        
+//        int total = intro + inicio1 + inicio2 + cierre + creditos;
+//        
+//        
+//        switch (total) {
+//            case 5 ->                 {
+//                    //            prioridad 1
+//                    serieNombreRodaje.setNivelPrioridad(1);
+//                    serieNombreRodaje.setNivelPrioridadInicio(1);
+//                    int duracionMinutos = (int) (Math.random()*90 + 90);
+//                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
+//                    break;
+//                }
+//            case 4 ->                 {
+//                    //            prioridad 2
+//                    serieNombreRodaje.setNivelPrioridad(2);
+//                    serieNombreRodaje.setNivelPrioridadInicio(2);
+//                    int duracionMinutos = (int) (Math.random()*30 + 60);
+//                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
+//                    break;
+//                }
+//            default ->                 {
+//                    //            prioridad 3
+//                    serieNombreRodaje.setNivelPrioridad(3);
+//                    serieNombreRodaje.setNivelPrioridadInicio(3);
+//                    int duracionMinutos = (int) (Math.random()*59);
+//                    serieNombreRodaje.setDuracionMinutos(duracionMinutos);
+//                }
+//        }
     }
     
     /**
