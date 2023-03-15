@@ -53,7 +53,7 @@ public class Administrador extends Thread{
     }
     
     /**
-     * Determina cual debería ser la prioridad de la serie que se le pase
+     * Determina cual debería ser la prioridad de la serie que se le pase , duracion, puntosPoder
      * @param serieNombreRodaje
      */
     public void establecerPrioridad(Serie serieJose, Serie serieAndy, Serie serieUseche){
