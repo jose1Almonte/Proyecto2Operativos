@@ -50,7 +50,6 @@ public class Administrador extends Thread{
                           this.establecerPrioridad(serieJose, serieAndy, serieUseche);
                           this.encolarSerie(serieJose, serieAndy, serieUseche);
 
-//                          System.out.println( "Tamaño nivel 1: " + Administrador.colaNivel1Jose.size() + " Tamaño nivel 2: " + Administrador.colaNivel2Jose.size() +  " Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
                           variablesGenerales.numeroCiclos = 0;
                 }
 
