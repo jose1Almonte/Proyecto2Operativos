@@ -95,7 +95,7 @@ public class Procesador extends Thread{
             
             int randomTemp = (int) randomDoubleTemp;
             
-            System.out.println(randomTemp);
+            
             
             switch (randomTemp) {
                 case 1 -> {
