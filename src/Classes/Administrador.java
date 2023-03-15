@@ -61,8 +61,6 @@ public class Administrador extends Thread{
                 this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
                 variablesGenerales.numeroCiclos++;
                 
-//                Thread.sleep(1000);
-                
             }catch(Exception e){
                 System.out.println(e);
             }    
@@ -427,6 +425,9 @@ public class Administrador extends Thread{
     
     /**
      * Encola las series en su respectivo rodaje en su respectiva cola de prioridad
+     * @param serieJose
+     * @param serieAndy
+     * @param serieUseche
      */
     public void encolarSerie(Serie serieJose, Serie serieAndy, Serie serieUseche){
         serieJose.setNivelPrioridad(serieJose.getNivelPrioridadInicio());
