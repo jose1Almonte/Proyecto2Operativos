@@ -65,6 +65,9 @@ public class Administrador extends Thread{
         double cierre1Prob = Math.random();
         double cierre2Prob = Math.random();
         double creditoProb = Math.random();
+        double peleaProb1 = Math.random();
+        double peleaProb2 = Math.random();
+        double peleaProb3 = Math.random();
         
         int intro = 0;
         int inicio1 = 0;
@@ -114,13 +117,16 @@ public class Administrador extends Thread{
         if(total >= 5){
             serieJose.setNivelPrioridad(1);
             serieJose.setNivelPrioridadInicio(1);
+            serieJose.setPuntosPoder((int) (peleaProb3*2+5));
         }else if(total >= 3){
             serieJose.setNivelPrioridad(2);
             serieJose.setNivelPrioridadInicio(2);
+            serieJose.setPuntosPoder((int) (peleaProb3*2+3));
             
         }else{
             serieJose.setNivelPrioridad(3);
             serieJose.setNivelPrioridadInicio(3);
+            serieJose.setPuntosPoder((int) (peleaProb3*2+1));
             
         }
         
@@ -182,13 +188,15 @@ public class Administrador extends Thread{
         if(total >= 5){
             serieAndy.setNivelPrioridad(1);
             serieAndy.setNivelPrioridadInicio(1);
+            serieAndy.setPuntosPoder((int) (peleaProb1*2+5));
         }else if(total >= 3){
             serieAndy.setNivelPrioridad(2);
             serieAndy.setNivelPrioridadInicio(2);
-            
+            serieAndy.setPuntosPoder((int) (peleaProb1*2+3));
         }else{
             serieAndy.setNivelPrioridad(3);
             serieAndy.setNivelPrioridadInicio(3);
+            serieAndy.setPuntosPoder((int) (peleaProb1*2+1));
             
         }
         
@@ -242,13 +250,15 @@ public class Administrador extends Thread{
         if(total == 5){
             serieUseche.setNivelPrioridad(1);
             serieUseche.setNivelPrioridadInicio(1);
+            serieUseche.setPuntosPoder((int) (peleaProb2*2+5));
         }else if(total >= 3){
             serieUseche.setNivelPrioridad(2);
             serieUseche.setNivelPrioridadInicio(2);
-            
+            serieUseche.setPuntosPoder((int) (peleaProb2*2+3));
         }else{
             serieUseche.setNivelPrioridad(3);
             serieUseche.setNivelPrioridadInicio(3);
+            serieUseche.setPuntosPoder((int) (peleaProb2*2+1));
             
         }
         
@@ -431,7 +441,6 @@ public class Administrador extends Thread{
             
                 Administrador.colaNivel1Jose.addLast(serieTemp);
             }
-            i++;
         }
         
         for(int i = 0; i < sizeColaNivel3Jose; i++){
@@ -451,7 +460,6 @@ public class Administrador extends Thread{
             
                 Administrador.colaNivel2Jose.addLast(serieTemp1);
             }
-            i++;
         }
         
         
@@ -472,7 +480,6 @@ public class Administrador extends Thread{
             
                 Administrador.colaNivel1Andy.addLast(serieTemp2);
             }
-            i++;
         }
         
         for(int i = 0; i < sizeColaNivel3Andy; i++){
@@ -492,7 +499,6 @@ public class Administrador extends Thread{
             
                 Administrador.colaNivel2Andy.addLast(serieTemp3);
             }
-            i++;
         }
         
         for(int i = 0; i < sizeColaNivel2Useche; i++){
@@ -512,7 +518,6 @@ public class Administrador extends Thread{
             
                 Administrador.colaNivel1Useche.addLast(serieTemp4);
             }
-            i++;
         }
         
         for(int i = 0; i < sizeColaNivel3Useche; i++){
@@ -532,7 +537,6 @@ public class Administrador extends Thread{
             
                 Administrador.colaNivel2Useche.addLast(serieTemp5);
             }
-            i++;
         }
         
         for(int i = 0; i < sizeColaRefuerzoAndy; i++){
@@ -588,7 +592,6 @@ public class Administrador extends Thread{
             
             Administrador.colaRefuerzoJose.addLast(serieTemp8);
             
-            i++;
         }
         
         
@@ -617,64 +620,61 @@ public class Administrador extends Thread{
             
             Administrador.colaRefuerzoUseche.addLast(serieTemp9);
             
-            i++;
         }
         
         
     }
     
-    public void SeleccionarSeriesParaCombate(){
-        double ProbRefuerzo = Math.random();
-        Serie serie1=null;
-        if (ProbRefuerzo<0.4){
-            serie1 = (Serie) Administrador.colaRefuerzoAndy.getHead().getData();
-            Administrador.colaRefuerzoAndy.deleteFirst();
-        }
-        else{
-            if(Administrador.colaNivel1Andy.getHead() != null){
-                serie1 = (Serie) Administrador.colaNivel1Andy.getHead().getData();
-            }
-            else if(Administrador.colaNivel2Andy.getHead() != null){
-                serie1 = (Serie) Administrador.colaNivel2Andy.getHead().getData();
-            }
-            else if(Administrador.colaNivel3Andy.getHead() != null){
-                serie1 = (Serie) Administrador.colaNivel3Andy.getHead().getData();
-            }
-        }
+    /**
+     * Saca serie de la cabeza de la cola de refuerzo y se pone en su cola correspondiente
+     */
+    public void sacarCabezaRefuerzo(){
+        double probRefuerzoJose = Math.random();
+        double probRefuerzoAndy = Math.random();
+        double probRefuerzoUseche = Math.random();
         
-        double ProbRefuerzo2 = Math.random();
-        Serie serie2=null;
-        if (ProbRefuerzo2<0.4){
-            serie2 = (Serie) Administrador.colaRefuerzoJose.getHead().getData();
+        if (probRefuerzoJose <= 0.40){
+            Serie serieJose = (Serie) Administrador.colaRefuerzoJose.getHead().getData();
             Administrador.colaRefuerzoJose.deleteFirst();
-        }
-        else{
-            if(Administrador.colaNivel1Jose.getHead() != null){
-                serie2 = (Serie) Administrador.colaNivel1Jose.getHead().getData();
-            }
-            else if(Administrador.colaNivel2Jose.getHead() != null){
-                serie2 = (Serie) Administrador.colaNivel2Jose.getHead().getData();
-            }
-            else if(Administrador.colaNivel3Jose.getHead() != null){
-                serie2 = (Serie) Administrador.colaNivel3Jose.getHead().getData();
+            
+            serieJose.setPuntosPoder(serieJose.getPuntosPoder() + 1);
+            
+            if(serieJose.getNivelPrioridad() == 1){
+                Administrador.colaNivel1Jose.addLast(serieJose);
+            }else if(serieJose.getNivelPrioridad() == 2){
+                Administrador.colaNivel2Jose.addLast(serieJose);                
+            }else{
+                Administrador.colaNivel3Jose.addLast(serieJose);                
             }
         }
         
-        double ProbRefuerzo3 = Math.random();
-        Serie serie3=null;
-        if (ProbRefuerzo3<0.4){
-            serie3 = (Serie) Administrador.colaRefuerzoUseche.getHead().getData();
-            Administrador.colaRefuerzoUseche.deleteFirst();
+        if (probRefuerzoAndy <= 0.40){
+            Serie serieAndy = (Serie) Administrador.colaRefuerzoAndy.getHead().getData();
+            Administrador.colaRefuerzoAndy.deleteFirst();
+            
+            serieAndy.setPuntosPoder(serieAndy.getPuntosPoder() + 1);
+            
+            if(serieAndy.getNivelPrioridad() == 1){
+                Administrador.colaNivel1Andy.addLast(serieAndy);
+            }else if(serieAndy.getNivelPrioridad() == 2){
+                Administrador.colaNivel2Andy.addLast(serieAndy);                
+            }else{
+                Administrador.colaNivel3Andy.addLast(serieAndy);                
+            }
         }
-        else{
-            if(Administrador.colaNivel1Useche.getHead() != null){
-                serie3 = (Serie) Administrador.colaNivel1Useche.getHead().getData();
-            }
-            else if(Administrador.colaNivel2Useche.getHead() != null){
-                serie3 = (Serie) Administrador.colaNivel2Useche.getHead().getData();
-            }
-            else if(Administrador.colaNivel3Useche.getHead() != null){
-                serie3 = (Serie) Administrador.colaNivel3Useche.getHead().getData();
+        
+        if (probRefuerzoUseche <= 0.40){
+            Serie serieUseche = (Serie) Administrador.colaRefuerzoUseche.getHead().getData();
+            Administrador.colaRefuerzoUseche.deleteFirst();
+            
+            serieUseche.setPuntosPoder(serieUseche.getPuntosPoder() + 1);
+            
+            if(serieUseche.getNivelPrioridad() == 1){
+                Administrador.colaNivel1Useche.addLast(serieUseche);
+            }else if(serieUseche.getNivelPrioridad() == 2){
+                Administrador.colaNivel2Useche.addLast(serieUseche);                
+            }else{
+                Administrador.colaNivel3Useche.addLast(serieUseche);
             }
         }
         
