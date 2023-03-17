@@ -17,7 +17,6 @@ import java.util.logging.Logger;
 public class Administrador extends Thread{
     
     private int ciclo;
-
     public static LinkedList colaNivel1Jose = new LinkedList();
     public static LinkedList colaNivel2Jose = new LinkedList();
     public static LinkedList colaNivel3Jose = new LinkedList();
@@ -50,22 +49,22 @@ public class Administrador extends Thread{
         while(variablesGenerales.keep){
                    
             try{
-                Thread.sleep(2*ciclo*1000);
+                Thread.sleep(ciclo*1000);
                 
-                Serie serieJose = new Serie();
-                Serie serieAndy = new Serie();
-                Serie serieUseche = new Serie();
+                if(variablesGenerales.numeroCiclos==2){
+                    Serie serieJose = new Serie();
+                    Serie serieAndy = new Serie();
+                    Serie serieUseche = new Serie();
 
-                this.establecerPrioridad(serieJose, serieAndy, serieUseche);
-                this.encolarSerie(serieJose, serieAndy, serieUseche);
-                this.asignarId(serieJose, serieAndy, serieUseche);
+                    this.establecerPrioridad(serieJose, serieAndy, serieUseche);
+                    this.asignarId(serieJose, serieAndy, serieUseche);
+                    this.encolarSerie(serieJose, serieAndy, serieUseche);
+                    
+                    System.out.print(serieJose.getId()+" "+serieAndy.getId()+" "+ serieUseche.getId());
+                    variablesGenerales.numeroCiclos=0;
+                }
                 
-                System.out.print(serieJose.getId()+" "+serieAndy.getId()+" "+ serieUseche.getId());
                 
-
-                         
-                
-
     //            Series que van a la IA
                 Serie serieJoseProcesador = this.CampeonJose();
                 Serie serieAndyProcesador = this.CampeonAndy();
@@ -75,8 +74,7 @@ public class Administrador extends Thread{
                 
                 this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
                 
-                variablesGenerales.numeroCiclos++;
-                
+                variablesGenerales.numeroCiclos=variablesGenerales.numeroCiclos+1;
                 
                 
             }catch(Exception e){

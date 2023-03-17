@@ -22,7 +22,7 @@ public class variablesGenerales {
     public static Semaphore darPasoIA = new Semaphore(0);
     public static Semaphore darPasoAdmin = new Semaphore(0);
     
-    public static int numeroCiclos = 2;
+    public static int numeroCiclos = 0;
     
     public static int terminalCedulaJose = 9; // Probablemente no se usen todos
     public static int terminalCedulaAndy = 8; // Probablemente no se usen todos
