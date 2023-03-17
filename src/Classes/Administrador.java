@@ -31,7 +31,15 @@ public class Administrador extends Thread{
     public static LinkedList colaNivel3Useche = new LinkedList();
     public static LinkedList colaRefuerzoUseche = new LinkedList();
     
-
+    javax.swing.JTextField colaNivel1JoseTextField;
+    
+    public Administrador(){
+        
+    }
+    
+    public Administrador(javax.swing.JTextField colaNivel1JoseTextField){
+        this.colaNivel1JoseTextField = colaNivel1JoseTextField;
+    }
     
     @Override
     public void run(){
@@ -39,69 +47,88 @@ public class Administrador extends Thread{
         
         while(variablesGenerales.keep){
                    
-                   
+            try{
+                
+                if(variablesGenerales.numeroCiclos >= 2){
+
+                          Serie serieJose = new Serie();
+                          Serie serieAndy = new Serie();
+                          Serie serieUseche = new Serie();
+
+                          this.establecerPrioridad(serieJose, serieAndy, serieUseche);
+                          this.encolarSerie(serieJose, serieAndy, serieUseche);
+
+                          variablesGenerales.numeroCiclos = 0;
+                }
+
+    //            Series que van a la IA
+                Serie serieJoseProcesador = this.CampeonJose();
+                Serie serieAndyProcesador = this.CampeonAndy();
+                Serie serieUsecheProcesador = this.CampeonUseche();
+
+                this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+                
+                this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
+                
+                variablesGenerales.numeroCiclos++;
+                
+                
+                
+            }catch(Exception e){
+                System.out.println(e);
+            }    
             
-            if(variablesGenerales.numeroCiclos >= 2){
-                      
-                      Serie serieJose = new Serie();
-                      Serie serieAndy = new Serie();
-                      Serie serieUseche = new Serie();
-                       
-                      this.establecerPrioridad(serieJose, serieAndy, serieUseche);
-                      this.encolarSerie(serieJose, serieAndy, serieUseche);
-                      
-                      System.out.println( "Prioridad: " + serieJose.getNivelPrioridad() + ". Duración: " + serieJose.getDuracionMinutos());
-            }
-            
-            Serie Jose;
-            Serie Andy;
-            Serie Useche;
             
             
-            
-            
-            
-            Serie serieJoseProcesador = CampeonJose();
-            Serie serieAndyProcesador = CampeonAndy();
-            Serie serieUsecheProcesador = CampeonUseche();
-            
-            if( serieJoseProcesador == null || serieAndyProcesador == null || serieUsecheProcesador == null){
-                       
-                       if(serieJoseProcesador != null){
-                                  serieJoseProcesador.setNivelPrioridad(1);
-                                  colaNivel1Jose.addFirst(serieJoseProcesador);
-                       }
-                       
-                       if(serieAndyProcesador != null){
-                                  serieAndyProcesador.setNivelPrioridad(1);
-                                  Administrador.colaNivel1Andy.addFirst(serieAndyProcesador);
-                       }
-                       
-                       
-                       if(serieUsecheProcesador != null){
-                                  serieUsecheProcesador.setNivelPrioridad(1);
-                                  Administrador.colaNivel1Useche.addFirst(serieUsecheProcesador);
-                       }          
-            }else{
-                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
-                       IA.start();
-                       
-                       try {
-                                  
-                                  variablesGenerales.darPasoAdmin.acquire(1);
-                                  
-                       } catch (InterruptedException ex) {
-                                  Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
-                       }
-                       
-            } 
         }
     }
     
-    /**
-     * Saca las series de las colas 
-     */
     
+    /**
+     * Envía las series a enfrentar a la IA <=> todos los rodajes pueden aportar una serie, de caso contrario, pone de primeras a las series que no son nulas a esperar hasta que pueda haber un enfrentamiento 
+     * @param serieJoseProcesador
+     * @param serieAndyProcesador
+     * @param serieUsecheProcesador 
+     */
+    public void seriesALaIA(Serie serieJoseProcesador, Serie serieAndyProcesador, Serie serieUsecheProcesador){
+        
+        try{
+            
+            if( serieJoseProcesador == null || serieAndyProcesador == null || serieUsecheProcesador == null){
+
+               if(serieJoseProcesador != null){
+                          serieJoseProcesador.setNivelPrioridad(1);
+                          colaNivel1Jose.addFirst(serieJoseProcesador);
+               }
+
+               if(serieAndyProcesador != null){
+                          serieAndyProcesador.setNivelPrioridad(1);
+                          Administrador.colaNivel1Andy.addFirst(serieAndyProcesador);
+               }
+
+
+               if(serieUsecheProcesador != null){
+                          serieUsecheProcesador.setNivelPrioridad(1);
+                          Administrador.colaNivel1Useche.addFirst(serieUsecheProcesador);
+               }          
+            }else{
+                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+                       IA.start();
+
+                       variablesGenerales.darPasoAdmin.acquire(1);
+
+
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+    }
+    
+    /**
+     * Saca la cabeza de la cola NO VACIA respetando las colas de prioridad
+     * @return Serie
+     */    
     public Serie CampeonJose(){
                
                Serie CampeonJose;
@@ -126,6 +153,10 @@ public class Administrador extends Thread{
             }
     }
     
+    /**
+     * Saca la cabeza de la cola NO VACIA respetando las colas de prioridad
+     * @return Serie
+     */
     public Serie CampeonAndy(){
                Serie CampeonAndy;
                if(colaNivel1Andy.isEmpty()){
@@ -149,6 +180,10 @@ public class Administrador extends Thread{
             }
     }
     
+    /**
+     * Saca la cabeza de la cola NO VACIA respetando las colas de prioridad
+     * @return Serie
+     */
     public Serie CampeonUseche(){
                Serie CampeonUseche;
                if(colaNivel1Useche.isEmpty()){
@@ -174,8 +209,10 @@ public class Administrador extends Thread{
     
     
     /**
-     * Determina cual debería ser la prioridad de la serie que se le pase
-     * @param serieNombreRodaje
+     * Determina cual debería ser la prioridad de la serie que se le pase. Setea tambien: prioridad inicio, duracion, puntos de poder y nro rodaje
+     * @param serieJose
+     * @param serieAndy
+     * @param serieUseche
      */
     public void establecerPrioridad(Serie serieJose, Serie serieAndy, Serie serieUseche){
         
@@ -254,6 +291,8 @@ public class Administrador extends Thread{
             
         }
         
+        serieJose.setRodajePertenece(1);
+        
         
         // VELMA (Andy)
         
@@ -327,6 +366,8 @@ public class Administrador extends Thread{
             
         }
         
+        serieAndy.setRodajePertenece(2);
+        
 //        Game of Thrones (Useche)
         double introProbUseche = Math.random();
         double inicioProbUseche = Math.random(); 
@@ -391,10 +432,15 @@ public class Administrador extends Thread{
             serieUseche.setDuracionMinutos( (int) (Math.random()*60));
             
         }
+        
+        serieUseche.setRodajePertenece(3);
     }
     
     /**
      * Encola las series en su respectivo rodaje en su respectiva cola de prioridad
+     * @param serieJose
+     * @param serieAndy
+     * @param serieUseche
      */
     public void encolarSerie(Serie serieJose, Serie serieAndy, Serie serieUseche){
         serieJose.setNivelPrioridad(serieJose.getNivelPrioridadInicio());
@@ -491,6 +537,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp.setContador(0);
+                serieTemp.setNivelPrioridad(1);
             
                 Administrador.colaNivel1Jose.addLast(serieTemp);
             }
@@ -510,6 +557,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp1.setContador(0);
+                serieTemp1.setNivelPrioridad(2);
             
                 Administrador.colaNivel2Jose.addLast(serieTemp1);
             }
@@ -530,6 +578,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp2.setContador(0);
+                serieTemp2.setNivelPrioridad(1);
             
                 Administrador.colaNivel1Andy.addLast(serieTemp2);
             }
@@ -549,6 +598,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp3.setContador(0);
+                serieTemp3.setNivelPrioridad(2);
             
                 Administrador.colaNivel2Andy.addLast(serieTemp3);
             }
@@ -568,6 +618,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp4.setContador(0);
+                serieTemp4.setNivelPrioridad(1);
             
                 Administrador.colaNivel1Useche.addLast(serieTemp4);
             }
@@ -587,98 +638,16 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp5.setContador(0);
+                serieTemp5.setNivelPrioridad(2);
             
                 Administrador.colaNivel2Useche.addLast(serieTemp5);
             }
         }
         
-//        for(int i = 0; i < sizeColaRefuerzoAndy; i++){
-//            
-//            Serie serieTemp7 = (Serie) (Administrador.colaRefuerzoAndy.getHead().getData());
-//            
-//            Administrador.colaRefuerzoAndy.deleteFirst();
-//            
-//            if(serieTemp7.getContador() < 7){
-//                
-//                serieTemp7.setContador(serieTemp7.getContador() + 1);
-//                
-//            }else{
-//                
-//                if(serieTemp7.getNivelPrioridad() == 2){
-//                    serieTemp7.setNivelPrioridad(1);
-//                }else if(serieTemp7.getNivelPrioridad() == 3){
-//                    serieTemp7.setNivelPrioridad(2);
-//                    
-//                }
-//                
-//                serieTemp7.setContador(0);
-//            }
-//            
-//            
-//            Administrador.colaRefuerzoAndy.addLast(serieTemp7);
-//            
-//        }
-//        
-//        for(int i = 0; i < sizeColaRefuerzoJose; i++){
-//            
-//            Serie serieTemp8 = (Serie) (Administrador.colaRefuerzoJose.getHead().getData());
-//            
-//            Administrador.colaRefuerzoJose.deleteFirst();
-//            
-//            if(serieTemp8.getContador() < 7){
-//                
-//                serieTemp8.setContador(serieTemp8.getContador() + 1);
-//                
-//            }else{
-//                
-//                if(serieTemp8.getNivelPrioridad() == 2){
-//                    serieTemp8.setNivelPrioridad(1);
-//                }else if(serieTemp8.getNivelPrioridad() == 3){
-//                    serieTemp8.setNivelPrioridad(2);
-//                    
-//                }
-//                
-//                serieTemp8.setContador(0);
-//            }
-//            
-//            
-//            Administrador.colaRefuerzoJose.addLast(serieTemp8);
-//            
-//        }
-//        
-//        
-//        for(int i = 0; i < sizeColaRefuerzoUseche; i++){
-//            
-//            Serie serieTemp9 = (Serie) (Administrador.colaRefuerzoUseche.getHead().getData());
-//            
-//            Administrador.colaRefuerzoUseche.deleteFirst();
-//            
-//            if(serieTemp9.getContador() < 7){
-//                
-//                serieTemp9.setContador(serieTemp9.getContador() + 1);
-//                
-//            }else{
-//                
-//                if(serieTemp9.getNivelPrioridad() == 2){
-//                    serieTemp9.setNivelPrioridad(1);
-//                }else if(serieTemp9.getNivelPrioridad() == 3){
-//                    serieTemp9.setNivelPrioridad(2);
-//                    
-//                }
-//                
-//                serieTemp9.setContador(0);
-//            }
-//            
-//            
-//            Administrador.colaRefuerzoUseche.addLast(serieTemp9);
-//            
-//        }
-//        
-//        
     }
     
     /**
-     * Saca serie de la cabeza de la cola de refuerzo y se pone en su cola correspondiente
+     * Saca serie de la cabeza de la cola de refuerzo y se pone en su cola correspondiente (Ya tiene la probabilidad incluida)
      */
     public void sacarCabezaRefuerzo(){
         double probRefuerzoJose = Math.random();
@@ -730,6 +699,36 @@ public class Administrador extends Thread{
             }
         }
         
+    }
+    
+    /**
+     * Recibe una cola que se le pase y la imprime sobre un jtextfield que se le pase
+     * @param colaCualquiera
+     * @param textField
+     * @return 
+     */
+    public void imprimirCola(LinkedList colaCualquiera, javax.swing.JTextField textField){
+        
+        int sizeCola = colaCualquiera.size();
+        Serie arrayTemp[] = new Serie[sizeCola];
+        
+        for (int i = 0; i < sizeCola; i++){
+            
+            Serie serieTemp = (Serie) (colaCualquiera.getHead().getData());
+            
+            colaCualquiera.deleteFirst();
+            
+            arrayTemp[i] = serieTemp;
+            
+            colaCualquiera.addLast(serieTemp);
+            
+        }
+        
+        textField.setText("");
+        
+        for (int i = 0; i < sizeCola; i++){
+            textField.setText(textField.getText() + " (" + arrayTemp[i].getRodajePertenece() + ", rodaje: " + arrayTemp[i].getContador() + ", ptos poder: "  + arrayTemp[i].getPuntosPoder() + " ), " );
+        }
     }
     
 }

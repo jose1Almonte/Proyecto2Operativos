@@ -4,6 +4,9 @@
  */
 package Classes;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Hallo
@@ -23,25 +26,36 @@ public class Procesador extends Thread{
     @Override
     public void run(){
         
-        double probBatalla = Math.random();
-        
-        if (this.probHayGanador(probBatalla)){
+        try{
+//            System.out.println("Evaluando...");
+//            Thread.sleep(1000);
+//            System.out.println("Ya evalué");
             
-            Serie serieGanadora = this.puntosPoderMasAlto();
-            
-        }else if(this.probHayEmpate(probBatalla)){
-            
-//            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
+            double probBatalla = Math.random();
 
-            Administrador admin = new Administrador();
-            admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
+
+            if (this.probHayGanador(probBatalla)){
+
+                Serie serieGanadora = this.puntosPoderMasAlto();
+    //            System.out.println("Soy la IA, y estoy trabajando con: "+ serieGanadora.getRodajePertenece() + " "  + serieGanadora.getNivelPrioridad() + " " + serieGanadora.getDuracionMinutos() );
+
+            }else if(this.probHayEmpate(probBatalla)){
+
+    //            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
+
+                Administrador admin = new Administrador();
+                admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
+
+            }else{
+
+    //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
+                Administrador admin = new Administrador();
+                admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
+
+            }
             
-        }else{
-            
-//            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
-            Administrador admin = new Administrador();
-            admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
-            
+        }catch(Exception e){
+            System.out.println(e);
         }
         
         
@@ -72,6 +86,10 @@ public class Procesador extends Thread{
      */
     public Serie puntosPoderMasAlto(){
         
+//        System.out.println("Jose: " + this.serieJose.getPuntosPoder());
+//        System.out.println("Andy: " + this.serieAndy.getPuntosPoder());
+//        System.out.println("Useche: " + this.serieUseche.getPuntosPoder());
+        
         if(this.serieJose.getPuntosPoder() > this.serieAndy.getPuntosPoder() && this.serieJose.getPuntosPoder() > this.serieUseche.getPuntosPoder()){
             return this.serieJose;
             
@@ -83,10 +101,15 @@ public class Procesador extends Thread{
             
         }else{
             
-            int randomTemp = 1 + (int) (Math.random() + 2);
+            
+            double randomDoubleTemp = (Math.random()*3);
+            
+            
+            int randomTemp = (int) randomDoubleTemp;   
+            
             
             switch (randomTemp) {
-                case 3 -> {
+                case 1 -> {
                     return this.serieAndy;
                 }
                 case 2 -> {

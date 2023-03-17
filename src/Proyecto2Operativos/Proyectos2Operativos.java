@@ -5,6 +5,7 @@
 package Proyecto2Operativos;
 
 import Classes.Administrador;
+import Interfaces.Interfaz;
 import Interfaces.Prueba;
 
 /**
@@ -20,9 +21,9 @@ public class Proyectos2Operativos {
         Prueba p =new Prueba();
         p.setVisible(true);
         
-        Administrador admin = new Administrador();
+        Interfaz interfaz = new Interfaz();
         
-        admin.start();
+        interfaz.setVisible(true);
     }
     
 }
