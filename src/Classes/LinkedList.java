@@ -47,7 +47,7 @@ public class LinkedList<T> {
      * Checks whether list is empty or not
      * @return 
      */
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return this.head == null;
     }
     
