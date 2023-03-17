@@ -516,8 +516,15 @@ public class Interfaz extends javax.swing.JFrame {
         this.botonEmpezar.setEnabled(false);
         this.botonParar.setEnabled(true);
         Administrador admin = new Administrador(this.colaNivel1JoseTextField);
+        try{
+            int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
+            admin.setCiclo(tiempo);
+            admin.start();
+        }
+        catch(Exception e){
+            System.out.print("Error");
+        }
         
-        admin.start();
     }//GEN-LAST:event_botonEmpezarActionPerformed
 
     /**

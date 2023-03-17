@@ -15,6 +15,7 @@ import java.util.logging.Logger;
  */
 public class Administrador extends Thread{
     
+    private int ciclo;
 
     public static LinkedList colaNivel1Jose = new LinkedList();
     public static LinkedList colaNivel2Jose = new LinkedList();
@@ -48,18 +49,20 @@ public class Administrador extends Thread{
         while(variablesGenerales.keep){
                    
             try{
+                Thread.sleep(2*ciclo*1000);
                 
-                if(variablesGenerales.numeroCiclos >= 2){
+                Serie serieJose = new Serie();
+                Serie serieAndy = new Serie();
+                Serie serieUseche = new Serie();
 
-                          Serie serieJose = new Serie();
-                          Serie serieAndy = new Serie();
-                          Serie serieUseche = new Serie();
+                this.establecerPrioridad(serieJose, serieAndy, serieUseche);
+                this.encolarSerie(serieJose, serieAndy, serieUseche);
+                
+                System.out.print(serieJose.getId()+" "+serieAndy.getId()+" "+ serieUseche.getId());
+                
 
-                          this.establecerPrioridad(serieJose, serieAndy, serieUseche);
-                          this.encolarSerie(serieJose, serieAndy, serieUseche);
-
-                          variablesGenerales.numeroCiclos = 0;
-                }
+                         
+                
 
     //            Series que van a la IA
                 Serie serieJoseProcesador = this.CampeonJose();
@@ -729,6 +732,13 @@ public class Administrador extends Thread{
         for (int i = 0; i < sizeCola; i++){
             textField.setText(textField.getText() + " (" + arrayTemp[i].getRodajePertenece() + ", rodaje: " + arrayTemp[i].getContador() + ", ptos poder: "  + arrayTemp[i].getPuntosPoder() + " ), " );
         }
+    }
+
+    /**
+     * @param ciclo the ciclo to set
+     */
+    public void setCiclo(int ciclo) {
+        this.ciclo = ciclo;
     }
     
 }
