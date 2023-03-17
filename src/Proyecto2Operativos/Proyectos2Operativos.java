@@ -21,10 +21,6 @@ public class Proyectos2Operativos {
         Prueba p =new Prueba();
         p.setVisible(true);
         
-        Administrador admin = new Administrador();
-        
-        admin.start();
-        
         Interfaz interfaz = new Interfaz();
         
         interfaz.setVisible(true);

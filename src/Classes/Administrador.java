@@ -31,7 +31,15 @@ public class Administrador extends Thread{
     public static LinkedList colaNivel3Useche = new LinkedList();
     public static LinkedList colaRefuerzoUseche = new LinkedList();
     
-
+    javax.swing.JTextField colaNivel1JoseTextField;
+    
+    public Administrador(){
+        
+    }
+    
+    public Administrador(javax.swing.JTextField colaNivel1JoseTextField){
+        this.colaNivel1JoseTextField = colaNivel1JoseTextField;
+    }
     
     @Override
     public void run(){
@@ -59,7 +67,12 @@ public class Administrador extends Thread{
                 Serie serieUsecheProcesador = this.CampeonUseche();
 
                 this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+                
+                this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
+                
                 variablesGenerales.numeroCiclos++;
+                
+                
                 
             }catch(Exception e){
                 System.out.println(e);
@@ -686,6 +699,36 @@ public class Administrador extends Thread{
             }
         }
         
+    }
+    
+    /**
+     * Recibe una cola que se le pase y la imprime sobre un jtextfield que se le pase
+     * @param colaCualquiera
+     * @param textField
+     * @return 
+     */
+    public void imprimirCola(LinkedList colaCualquiera, javax.swing.JTextField textField){
+        
+        int sizeCola = colaCualquiera.size();
+        Serie arrayTemp[] = new Serie[sizeCola];
+        
+        for (int i = 0; i < sizeCola; i++){
+            
+            Serie serieTemp = (Serie) (colaCualquiera.getHead().getData());
+            
+            colaCualquiera.deleteFirst();
+            
+            arrayTemp[i] = serieTemp;
+            
+            colaCualquiera.addLast(serieTemp);
+            
+        }
+        
+        textField.setText("");
+        
+        for (int i = 0; i < sizeCola; i++){
+            textField.setText(textField.getText() + " (" + arrayTemp[i].getRodajePertenece() + ", rodaje: " + arrayTemp[i].getContador() + ", ptos poder: "  + arrayTemp[i].getPuntosPoder() + " ), " );
+        }
     }
     
 }
