@@ -521,15 +521,23 @@ public Administrador admin;
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void botonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEmpezarActionPerformed
-        admin.setKeep(true);
+
         this.botonEmpezar.setEnabled(false);
         this.botonParar.setEnabled(true);
         
         try{
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
             admin.setCiclo(tiempo);
-            admin = new Administrador(this.colaNivel1JoseTextField);
-            admin.start();
+            if(admin.isKeep()==false){
+                admin = new Administrador(this.colaNivel1JoseTextField);
+                admin.setKeep(true);
+                admin.setCiclo(tiempo);
+                admin.start();
+            }
+            else{
+                admin.setKeep(true);
+                admin.start();
+            }
         }
         catch(Exception e){
             System.out.print("Error");

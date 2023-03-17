@@ -83,8 +83,6 @@ public class Administrador extends Thread{
                 System.out.println(e);
             }    
             
-            
-            
         }
     }
     
@@ -779,6 +777,7 @@ public class Administrador extends Thread{
     public boolean isKeep() {
         return keep;
     }
+    
 
     /**
      * @param keep the keep to set
