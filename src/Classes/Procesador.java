@@ -27,9 +27,9 @@ public class Procesador extends Thread{
     public void run(){
         
         try{
-            System.out.println("Evaluando...");
-            Thread.sleep(22000);
-            System.out.println("Ya evalué");
+//            System.out.println("Evaluando...");
+//            Thread.sleep(1000);
+//            System.out.println("Ya evalué");
             
             double probBatalla = Math.random();
 

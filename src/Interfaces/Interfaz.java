@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import Classes.Administrador;
 import java.awt.Color;
 
 /**
@@ -60,7 +61,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        colaNivel1JoseTextField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -88,6 +89,8 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
+        botonEmpezar = new javax.swing.JButton();
+        botonParar = new javax.swing.JButton();
         jLabel49 = new javax.swing.JLabel();
         tiempoSegundosTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -271,16 +274,16 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel13.setText("Tail");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 30, -1));
 
-        jTextField4.setBackground(new java.awt.Color(204, 255, 255));
-        jTextField4.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        colaNivel1JoseTextField.setBackground(new java.awt.Color(204, 255, 255));
+        colaNivel1JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
+        colaNivel1JoseTextField.setForeground(new java.awt.Color(0, 0, 0));
+        colaNivel1JoseTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel1JoseTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                colaNivel1JoseTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 310, -1));
+        jPanel1.add(colaNivel1JoseTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 310, -1));
 
         jLabel14.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -421,6 +424,17 @@ public class Interfaz extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 1060, 320));
 
+        botonEmpezar.setText("Empezar");
+        botonEmpezar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEmpezarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(botonEmpezar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        botonParar.setText("Parar");
+        getContentPane().add(botonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 230, -1, -1));
+
         jLabel49.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setText("Tiempo (seg)");
@@ -481,9 +495,9 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tiempoSegundosTextFieldFocusLost
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void colaNivel1JoseTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colaNivel1JoseTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_colaNivel1JoseTextFieldActionPerformed
 
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
         // TODO add your handling code here:
@@ -496,6 +510,14 @@ public class Interfaz extends javax.swing.JFrame {
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void botonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEmpezarActionPerformed
+        this.botonEmpezar.setEnabled(false);
+        this.botonParar.setEnabled(true);
+        Administrador admin = new Administrador(this.colaNivel1JoseTextField);
+        
+        admin.start();
+    }//GEN-LAST:event_botonEmpezarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -533,6 +555,9 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonEmpezar;
+    private javax.swing.JButton botonParar;
+    private javax.swing.JTextField colaNivel1JoseTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -592,7 +617,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
