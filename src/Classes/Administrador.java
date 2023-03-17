@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import Proyecto2Operativos.Proyectos2Operativos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,6 +58,7 @@ public class Administrador extends Thread{
 
                 this.establecerPrioridad(serieJose, serieAndy, serieUseche);
                 this.encolarSerie(serieJose, serieAndy, serieUseche);
+                this.asignarId(serieJose, serieAndy, serieUseche);
                 
                 System.out.print(serieJose.getId()+" "+serieAndy.getId()+" "+ serieUseche.getId());
                 
@@ -741,4 +743,33 @@ public class Administrador extends Thread{
         this.ciclo = ciclo;
     }
     
+    public void asignarId(Serie serieJose, Serie serieAndy, Serie serieUseche){
+            
+            variablesGenerales f = new variablesGenerales();
+            int counter;
+            int ev;
+            try{
+                ev=f.leerJson();
+            }
+            catch(Exception e){
+                ev=-1;
+            }
+            
+            if(ev==-1){
+                counter = 0;
+            }
+            else{
+                counter = ev;
+            }
+            counter =counter +1;
+            serieJose.setId(counter);
+            counter =counter +1;
+            serieAndy.setId(counter);
+            counter =counter +1;
+            serieUseche.setId(counter);
+            f.guardarJson(counter);
+            
+            
+            
+    }
 }

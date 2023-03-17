@@ -5,14 +5,21 @@
 package Proyecto2Operativos;
 
 import Classes.Administrador;
+import Classes.counter;
+import Classes.variablesGenerales;
 import Interfaces.Interfaz;
 import Interfaces.Prueba;
+import com.google.gson.Gson;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Andy
  */
 public class Proyectos2Operativos {
+    
+    
 
     /**
      * @param args the command line arguments
@@ -20,10 +27,18 @@ public class Proyectos2Operativos {
     public static void main(String[] args) {
         Prueba p =new Prueba();
         p.setVisible(true);
-        
         Interfaz interfaz = new Interfaz();
-        
+        variablesGenerales f = new variablesGenerales();
+        int counter=0;
+        try{
+            counter = f.leerJson();
+        }catch(Exception e){
+        }
         interfaz.setVisible(true);
+        while(true){
+            
+        }
+       
     }
     
 }
