@@ -524,6 +524,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp.setContador(0);
+                serieTemp.setNivelPrioridad(1);
             
                 Administrador.colaNivel1Jose.addLast(serieTemp);
             }
@@ -543,6 +544,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp1.setContador(0);
+                serieTemp1.setNivelPrioridad(2);
             
                 Administrador.colaNivel2Jose.addLast(serieTemp1);
             }
@@ -563,6 +565,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp2.setContador(0);
+                serieTemp2.setNivelPrioridad(1);
             
                 Administrador.colaNivel1Andy.addLast(serieTemp2);
             }
@@ -582,6 +585,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp3.setContador(0);
+                serieTemp3.setNivelPrioridad(2);
             
                 Administrador.colaNivel2Andy.addLast(serieTemp3);
             }
@@ -601,6 +605,7 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp4.setContador(0);
+                serieTemp4.setNivelPrioridad(1);
             
                 Administrador.colaNivel1Useche.addLast(serieTemp4);
             }
@@ -620,94 +625,12 @@ public class Administrador extends Thread{
             }
             else{
                 serieTemp5.setContador(0);
+                serieTemp5.setNivelPrioridad(2);
             
                 Administrador.colaNivel2Useche.addLast(serieTemp5);
             }
         }
         
-//        for(int i = 0; i < sizeColaRefuerzoAndy; i++){
-//            
-//            Serie serieTemp7 = (Serie) (Administrador.colaRefuerzoAndy.getHead().getData());
-//            
-//            Administrador.colaRefuerzoAndy.deleteFirst();
-//            
-//            if(serieTemp7.getContador() < 7){
-//                
-//                serieTemp7.setContador(serieTemp7.getContador() + 1);
-//                
-//            }else{
-//                
-//                if(serieTemp7.getNivelPrioridad() == 2){
-//                    serieTemp7.setNivelPrioridad(1);
-//                }else if(serieTemp7.getNivelPrioridad() == 3){
-//                    serieTemp7.setNivelPrioridad(2);
-//                    
-//                }
-//                
-//                serieTemp7.setContador(0);
-//            }
-//            
-//            
-//            Administrador.colaRefuerzoAndy.addLast(serieTemp7);
-//            
-//        }
-//        
-//        for(int i = 0; i < sizeColaRefuerzoJose; i++){
-//            
-//            Serie serieTemp8 = (Serie) (Administrador.colaRefuerzoJose.getHead().getData());
-//            
-//            Administrador.colaRefuerzoJose.deleteFirst();
-//            
-//            if(serieTemp8.getContador() < 7){
-//                
-//                serieTemp8.setContador(serieTemp8.getContador() + 1);
-//                
-//            }else{
-//                
-//                if(serieTemp8.getNivelPrioridad() == 2){
-//                    serieTemp8.setNivelPrioridad(1);
-//                }else if(serieTemp8.getNivelPrioridad() == 3){
-//                    serieTemp8.setNivelPrioridad(2);
-//                    
-//                }
-//                
-//                serieTemp8.setContador(0);
-//            }
-//            
-//            
-//            Administrador.colaRefuerzoJose.addLast(serieTemp8);
-//            
-//        }
-//        
-//        
-//        for(int i = 0; i < sizeColaRefuerzoUseche; i++){
-//            
-//            Serie serieTemp9 = (Serie) (Administrador.colaRefuerzoUseche.getHead().getData());
-//            
-//            Administrador.colaRefuerzoUseche.deleteFirst();
-//            
-//            if(serieTemp9.getContador() < 7){
-//                
-//                serieTemp9.setContador(serieTemp9.getContador() + 1);
-//                
-//            }else{
-//                
-//                if(serieTemp9.getNivelPrioridad() == 2){
-//                    serieTemp9.setNivelPrioridad(1);
-//                }else if(serieTemp9.getNivelPrioridad() == 3){
-//                    serieTemp9.setNivelPrioridad(2);
-//                    
-//                }
-//                
-//                serieTemp9.setContador(0);
-//            }
-//            
-//            
-//            Administrador.colaRefuerzoUseche.addLast(serieTemp9);
-//            
-//        }
-//        
-//        
     }
     
     /**
