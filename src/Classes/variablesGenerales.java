@@ -40,7 +40,7 @@ public class variablesGenerales {
         Gson gson = new Gson();
         String json = gson.toJson(contador);
         
-        try (FileWriter file = new FileWriter("contador.json")) {
+        try (FileWriter file = new FileWriter("src\\Archivos\\jsonfile.json")) {
             file.write(json);
             System.out.println("Contador guardado en archivo JSON");
          } catch (IOException e) {
@@ -51,7 +51,7 @@ public class variablesGenerales {
     public int leerJson(){
         Gson gson = new Gson();
         int co =0;
-        try (Reader reader = new FileReader("contador.json")) {
+        try (Reader reader = new FileReader("src\\Archivos\\jsonfile.json")) {
            counter contador = gson.fromJson(reader, counter.class);
            System.out.println("Valor del contador: " + contador.getValor());
            co = contador.getValor();
