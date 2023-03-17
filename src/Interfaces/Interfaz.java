@@ -110,7 +110,6 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField5.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(0, 0, 0));
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.setText("jTextField1");
         jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 310, -1));
 
         jLabel16.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -132,7 +131,11 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField6.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(0, 0, 0));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.setText("jTextField1");
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 310, -1));
 
         jLabel19.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -149,7 +152,6 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField7.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(0, 0, 0));
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.setText("jTextField1");
         jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 310, -1));
 
         jLabel21.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -171,7 +173,6 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField8.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(0, 0, 0));
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField8.setText("jTextField1");
         jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 310, -1));
 
         jLabel24.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -211,7 +212,11 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField3.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 0, 0));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("jTextField1");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 310, -1));
 
         jLabel4.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -314,7 +319,6 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField9.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(0, 0, 0));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField9.setText("jTextField1");
         jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 310, -1));
 
         jLabel29.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -336,7 +340,6 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField10.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         jTextField10.setForeground(new java.awt.Color(0, 0, 0));
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField10.setText("jTextField1");
         jPanel3.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 310, -1));
 
         jLabel32.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -353,7 +356,6 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField11.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         jTextField11.setForeground(new java.awt.Color(0, 0, 0));
         jTextField11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField11.setText("jTextField1");
         jPanel3.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 310, -1));
 
         jLabel34.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -375,7 +377,6 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField12.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         jTextField12.setForeground(new java.awt.Color(0, 0, 0));
         jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField12.setText("jTextField1");
         jTextField12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField12ActionPerformed(evt);
@@ -487,6 +488,14 @@ public class Interfaz extends javax.swing.JFrame {
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField12ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**
      * @param args the command line arguments
