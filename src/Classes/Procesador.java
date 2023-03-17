@@ -37,7 +37,7 @@ public class Procesador extends Thread{
             if (this.probHayGanador(probBatalla)){
 
                 Serie serieGanadora = this.puntosPoderMasAlto();
-    //            System.out.println("Soy la IA, y estoy trabajando con: "+ serieGanadora.getRodajePertenece() + " "  + serieGanadora.getNivelPrioridad() + " " + serieGanadora.getDuracionMinutos() );
+                System.out.println("Hay ganador" );
 
             }else if(this.probHayEmpate(probBatalla)){
 
@@ -45,13 +45,14 @@ public class Procesador extends Thread{
 
                 Administrador admin = new Administrador();
                 admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
+                System.out.println("Empataron");
 
             }else{
 
     //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
                 Administrador admin = new Administrador();
                 admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
-
+                System.out.println("Se mandaron a refuerzo");
             }
             
         }catch(Exception e){

@@ -5,19 +5,22 @@
 package Interfaces;
 
 import Classes.Administrador;
+import Classes.variablesGenerales;
 import java.awt.Color;
 
 /**
  *
  * @author Hallo
  */
-public class Interfaz extends javax.swing.JFrame {
 
+public class Interfaz extends javax.swing.JFrame {
+public Administrador admin; 
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
         initComponents();
+        admin = new Administrador(this.colaNivel1JoseTextField);
     }
 
     /**
@@ -439,6 +442,11 @@ public class Interfaz extends javax.swing.JFrame {
         getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         botonParar.setText("Parar");
+        botonParar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonPararActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 230, -1, -1));
 
         tiempoSegundosTextField.setBackground(new java.awt.Color(204, 255, 255));
@@ -513,12 +521,14 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void botonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEmpezarActionPerformed
+        admin.setKeep(true);
         this.botonEmpezar.setEnabled(false);
         this.botonParar.setEnabled(true);
-        Administrador admin = new Administrador(this.colaNivel1JoseTextField);
+        
         try{
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
             admin.setCiclo(tiempo);
+            admin = new Administrador(this.colaNivel1JoseTextField);
             admin.start();
         }
         catch(Exception e){
@@ -526,6 +536,12 @@ public class Interfaz extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_botonEmpezarActionPerformed
+
+    private void botonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPararActionPerformed
+        admin.setKeep(false);
+        this.botonEmpezar.setEnabled(true);
+        
+    }//GEN-LAST:event_botonPararActionPerformed
 
     /**
      * @param args the command line arguments

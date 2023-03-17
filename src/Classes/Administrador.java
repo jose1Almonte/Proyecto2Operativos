@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  */
 public class Administrador extends Thread{
     
+    private volatile boolean keep = true;
     private int ciclo;
     public static LinkedList colaNivel1Jose = new LinkedList();
     public static LinkedList colaNivel2Jose = new LinkedList();
@@ -46,7 +47,7 @@ public class Administrador extends Thread{
     public void run(){
         
         
-        while(variablesGenerales.keep){
+        while(isKeep()){
                    
             try{
                 Thread.sleep(ciclo*1000);
@@ -75,6 +76,7 @@ public class Administrador extends Thread{
                 this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
                 
                 variablesGenerales.numeroCiclos=variablesGenerales.numeroCiclos+1;
+                
                 
                 
             }catch(Exception e){
@@ -769,5 +771,19 @@ public class Administrador extends Thread{
             
             
             
+    }
+
+    /**
+     * @return the keep
+     */
+    public boolean isKeep() {
+        return keep;
+    }
+
+    /**
+     * @param keep the keep to set
+     */
+    public void setKeep(boolean keep) {
+        this.keep = keep;
     }
 }
