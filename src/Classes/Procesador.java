@@ -66,10 +66,7 @@ public class Procesador extends Thread{
         double probcampeon1 = Math.random();
             double probcampeon2 = Math.random();
             double probcampeon3 = Math.random();
-            double winnerProb = Math.random();
-//            System.out.println("Evaluando...");
-//            Thread.sleep(1000);
-//            System.out.println("Ya evalué");
+            
             this.winner.setIcon(null);
             int x1=0;
             int x2=0;
@@ -137,11 +134,13 @@ public class Procesador extends Thread{
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
+                
                 Serie serieGanadora = this.puntosPoderMasAlto();
                 
                 System.out.println("RODAJE GANADOR: " + serieGanadora.getRodajePertenece());
                 
-                if(serieGanadora.getRodajePertenece() == 1){
+            switch (serieGanadora.getRodajePertenece()) {
+                case 1 -> {
                     if(x1==1){
                         ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/12.gif"));
                         this.winner.setIcon(gift);
@@ -160,9 +159,7 @@ public class Procesador extends Thread{
                     }
                     var.guardarSerieJson(serieJose.getId(), serieJose.getNivelPrioridad(), serieJose.getNivelPrioridadInicio(), serieJose.getRodajePertenece(), serieJose.getDuracionMinutos(), serieJose.getContador(), serieJose.getPuntosPoder(), serieJose.getVida());
                 }
-                
-                else if(serieGanadora.getRodajePertenece() == 2){
-                    
+                case 2 -> {
                     if(x2==1){
                         ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/jeryr.gif"));
                         this.winner.setIcon(gift);
@@ -178,7 +175,7 @@ public class Procesador extends Thread{
                     }
                     var.guardarSerieJson(serieAndy.getId(), serieAndy.getNivelPrioridad(), serieAndy.getNivelPrioridadInicio(), serieAndy.getRodajePertenece(), serieAndy.getDuracionMinutos(), serieAndy.getContador(), serieAndy.getPuntosPoder(), serieAndy.getVida());
                 }
-                else{
+                default -> {
                     if(x3==1){
                         ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/13.gif"));
                         this.winner.setIcon(gift);
@@ -195,8 +192,8 @@ public class Procesador extends Thread{
                         var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
                         
                     }
-                    
                 }
+            }
 //                System.out.println("Hay ganador" );
                 
                 try {
