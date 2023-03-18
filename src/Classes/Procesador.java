@@ -25,10 +25,31 @@ public class Procesador extends Thread{
     private javax.swing.JLabel LOU;
     private javax.swing.JLabel VELMA;
     private javax.swing.JLabel OTRO;
+    
+    javax.swing.JLabel serieJoseCombatiendo;
+    javax.swing.JLabel serieAndyCombatiendo;
+    javax.swing.JLabel serieUsecheCombatiendo;
+    javax.swing.JLabel serieGanadoraText;
+    
     variablesGenerales var=new variablesGenerales();
             
     
-    public Procesador(Serie serieJose, Serie serieAndy, Serie serieUseche,javax.swing.JLabel camp1, javax.swing.JLabel camp2, javax.swing.JLabel camp3, javax.swing.JLabel winner,javax.swing.JLabel central,javax.swing.JLabel LOU,javax.swing.JLabel VELMA,javax.swing.JLabel OTRO  ){
+    public Procesador(Serie serieJose,
+            Serie serieAndy, 
+            Serie serieUseche,
+            javax.swing.JLabel camp1, 
+            javax.swing.JLabel camp2, 
+            javax.swing.JLabel camp3, 
+            javax.swing.JLabel winner,
+            javax.swing.JLabel central,
+            javax.swing.JLabel LOU,
+            javax.swing.JLabel VELMA,
+            javax.swing.JLabel OTRO,
+            javax.swing.JLabel serieJoseCombatiendo, 
+            javax.swing.JLabel serieAndyCombatiendo, 
+            javax.swing.JLabel serieUsecheCombatiendo, 
+            javax.swing.JLabel serieGanadoraText
+    ){
         this.serieJose = serieJose;
         this.serieAndy = serieAndy;
         this.serieUseche = serieUseche;
@@ -40,14 +61,23 @@ public class Procesador extends Thread{
         this.LOU=LOU;
         this.VELMA=VELMA;
         this.OTRO=OTRO;
+        this.serieJoseCombatiendo = serieJoseCombatiendo;
+        this.serieAndyCombatiendo = serieAndyCombatiendo;
+        this.serieUsecheCombatiendo = serieUsecheCombatiendo;
+        this.serieGanadoraText = serieGanadoraText;
     }
     
     @Override
     public void run(){
         
         try{
+            this.serieJoseCombatiendo.setText("( " + this.serieJose.getId() + ", " + this.serieJose.getRodajePertenece() + " )");
+            this.serieAndyCombatiendo.setText("( " + this.serieAndy.getId() + ", " + this.serieAndy.getRodajePertenece() + " )");
+            this.serieUsecheCombatiendo.setText("( " + this.serieUseche.getId() + ", " + this.serieUseche.getRodajePertenece() + " )");
+            
             
             this.probabilidadesBatalla();
+            
             
         }catch(Exception e){
 //            System.out.println(e);
@@ -115,9 +145,16 @@ public class Procesador extends Thread{
             double probBatalla = Math.random();
             
             
+            this.serieGanadoraText.setText("");
             Thread.sleep(2000);
+            
             this.probabilidadesBatallaAuxiliar(probBatalla, x1, x2, x3);
+            
             Thread.sleep(2000);
+            this.serieJoseCombatiendo.setText("");
+            this.serieAndyCombatiendo.setText("");
+            this.serieUsecheCombatiendo.setText("");
+            this.serieGanadoraText.setText("");
     }
     
     /**
@@ -129,6 +166,7 @@ public class Procesador extends Thread{
      * @throws IOException 
      */
     private void probabilidadesBatallaAuxiliar(double probBatalla, int x1, int x2, int x3) throws IOException{
+        
         if (this.probHayGanador(probBatalla)){
                 
                 this.camp1.setIcon(null);
@@ -138,6 +176,7 @@ public class Procesador extends Thread{
                 Serie serieGanadora = this.puntosPoderMasAlto();
                 
                 System.out.println("RODAJE GANADOR: " + serieGanadora.getRodajePertenece());
+                
                 
             switch (serieGanadora.getRodajePertenece()) {
                 case 1 -> {
@@ -195,12 +234,13 @@ public class Procesador extends Thread{
                 }
             }
 //                System.out.println("Hay ganador" );
-                
+                this.serieGanadoraText.setText("Serie Ganadora: (ID: " + serieGanadora.getId() + ", RODAJE: " + serieGanadora.getRodajePertenece() + ")");
+
                 try {
                     var.leerSerieJson(this.LOU, this.VELMA, this.OTRO);
                 } catch (IOException ex) {
                     Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                }
 
             }else if(this.probHayEmpate(probBatalla)){
                 this.camp1.setIcon(null);
@@ -231,6 +271,10 @@ public class Procesador extends Thread{
                 admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
 //                System.out.println("Se mandaron a refuerzo");
             }
+        
+            this.serieJoseCombatiendo.setText("");
+            this.serieAndyCombatiendo.setText("");
+            this.serieUsecheCombatiendo.setText("");
     }
     
     /**

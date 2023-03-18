@@ -40,7 +40,7 @@ public Administrador admin;
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         this.Central.setText("BIENVENIDO");
-        admin = new Administrador(this.colaNivel1JoseTextField, this.colaNivel2JoseTextField, this.colaNivel3JoseTextField, this.colaRefuerzoJoseTextField, this.colaNivel1AndyTextField, this.colaNivel2AndyTextField,this.colaNivel3AndyTextField,this.colaRefuerzoAndyTextField,this.colaNivel1UsecheTextField,this.colaNivel2UsecheTextField,this.colaNivel3UsecheTextField,this.colaRefuerzoUsecheTextField, this.Camp1,this.Camp2,this.Camp3,this.winner,this.Central,this.LOU,this.VELMA,this.OTRO);
+        admin = new Administrador(this.colaNivel1JoseTextField, this.colaNivel2JoseTextField, this.colaNivel3JoseTextField, this.colaRefuerzoJoseTextField, this.colaNivel1AndyTextField, this.colaNivel2AndyTextField,this.colaNivel3AndyTextField,this.colaRefuerzoAndyTextField,this.colaNivel1UsecheTextField,this.colaNivel2UsecheTextField,this.colaNivel3UsecheTextField,this.colaRefuerzoUsecheTextField, this.Camp1,this.Camp2,this.Camp3,this.winner,this.Central,this.LOU,this.VELMA,this.OTRO, this.serieJoseCombatiendo, this.serieAndyCombatiendo, this.serieUsecheCombatiendo, this.serieGanadora);
     }
 
     /**
@@ -120,12 +120,16 @@ public Administrador admin;
         jLabel53 = new javax.swing.JLabel();
         botonEmpezar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        serieGanadora = new javax.swing.JLabel();
+        serieAndyCombatiendo = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         Central = new javax.swing.JLabel();
         winner = new javax.swing.JLabel();
         Camp2 = new javax.swing.JLabel();
         Camp1 = new javax.swing.JLabel();
         Camp3 = new javax.swing.JLabel();
+        serieUsecheCombatiendo = new javax.swing.JLabel();
+        serieJoseCombatiendo = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
@@ -501,6 +505,16 @@ public Administrador admin;
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        serieGanadora.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        serieGanadora.setForeground(new java.awt.Color(255, 255, 255));
+        serieGanadora.setText("jLabel57");
+        jPanel4.add(serieGanadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
+
+        serieAndyCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        serieAndyCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
+        serieAndyCombatiendo.setText("jLabel57");
+        jPanel4.add(serieAndyCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, -1, -1));
+
         jLabel47.setFont(new java.awt.Font("Hack NF", 1, 24)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -525,6 +539,16 @@ public Administrador admin;
 
         Camp3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9.gif"))); // NOI18N
         jPanel4.add(Camp3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, -1, -1));
+
+        serieUsecheCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        serieUsecheCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
+        serieUsecheCombatiendo.setText("jLabel57");
+        jPanel4.add(serieUsecheCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 290, -1, -1));
+
+        serieJoseCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        serieJoseCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
+        serieJoseCombatiendo.setText("jLabel57");
+        jPanel4.add(serieJoseCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
 
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         jPanel4.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 320));
@@ -628,7 +652,30 @@ public Administrador admin;
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
             admin.setCiclo(tiempo);
             if(admin.isKeep()==false){
-                admin = new Administrador(this.colaNivel1JoseTextField, this.colaNivel2JoseTextField, this.colaNivel3JoseTextField, this.colaRefuerzoJoseTextField, this.colaNivel1AndyTextField, this.colaNivel2AndyTextField,this.colaNivel3AndyTextField,this.colaRefuerzoAndyTextField,this.colaNivel1UsecheTextField,this.colaNivel2UsecheTextField,this.colaNivel3UsecheTextField,this.colaRefuerzoUsecheTextField, this.Camp1,this.Camp2,this.Camp3,this.winner, this.Central,this.LOU,this.VELMA,this.OTRO);
+                admin = new Administrador(this.colaNivel1JoseTextField, 
+                        this.colaNivel2JoseTextField, 
+                        this.colaNivel3JoseTextField, 
+                        this.colaRefuerzoJoseTextField, 
+                        this.colaNivel1AndyTextField, 
+                        this.colaNivel2AndyTextField,
+                        this.colaNivel3AndyTextField,
+                        this.colaRefuerzoAndyTextField,
+                        this.colaNivel1UsecheTextField,
+                        this.colaNivel2UsecheTextField,
+                        this.colaNivel3UsecheTextField,
+                        this.colaRefuerzoUsecheTextField, 
+                        this.Camp1,
+                        this.Camp2,
+                        this.Camp3,
+                        this.winner, 
+                        this.Central,
+                        this.LOU,
+                        this.VELMA,
+                        this.OTRO, 
+                        this.serieJoseCombatiendo, 
+                        this.serieAndyCombatiendo, 
+                        this.serieUsecheCombatiendo, 
+                        this.serieGanadora);
                 admin.setKeep(true);
                 admin.setCiclo(tiempo);
                 admin.start();
@@ -790,6 +837,10 @@ public Administrador admin;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel serieAndyCombatiendo;
+    private javax.swing.JLabel serieGanadora;
+    private javax.swing.JLabel serieJoseCombatiendo;
+    private javax.swing.JLabel serieUsecheCombatiendo;
     private javax.swing.JTextField tiempoSegundosTextField;
     private javax.swing.JLabel winner;
     // End of variables declaration//GEN-END:variables

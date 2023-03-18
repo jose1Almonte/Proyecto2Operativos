@@ -53,9 +53,14 @@ public class Administrador extends Thread{
     private javax.swing.JLabel camp3;
     private javax.swing.JLabel winner;
     private javax.swing.JLabel central;
-     private javax.swing.JLabel LOU;
+    private javax.swing.JLabel LOU;
     private javax.swing.JLabel VELMA;
     private javax.swing.JLabel OTRO;
+    
+    javax.swing.JLabel serieJoseCombatiendo;
+    javax.swing.JLabel serieAndyCombatiendo;
+    javax.swing.JLabel serieUsecheCombatiendo;
+    javax.swing.JLabel serieGanadoraText;
     
     public Administrador(){
         
@@ -76,7 +81,12 @@ public class Administrador extends Thread{
             javax.swing.JLabel camp1, javax.swing.JLabel camp2, 
             javax.swing.JLabel camp3, javax.swing.JLabel winner, 
             javax.swing.JLabel central,
-            javax.swing.JLabel LOU,javax.swing.JLabel VELMA,javax.swing.JLabel OTRO 
+            javax.swing.JLabel LOU,javax.swing.JLabel VELMA,
+            javax.swing.JLabel OTRO,
+            javax.swing.JLabel serieJoseCombatiendo, 
+            javax.swing.JLabel serieAndyCombatiendo, 
+            javax.swing.JLabel serieUsecheCombatiendo, 
+            javax.swing.JLabel serieGanadoraText
             ){
         this.colaNivel1JoseTextField = colaNivel1JoseTextField;
         this.colaNivel2JoseTextField = colaNivel2JoseTextField;
@@ -98,6 +108,11 @@ public class Administrador extends Thread{
         this.LOU=LOU;
         this.VELMA=VELMA;
         this.OTRO=OTRO;
+        this.serieJoseCombatiendo = serieJoseCombatiendo;
+        this.serieAndyCombatiendo = serieAndyCombatiendo;
+        this.serieUsecheCombatiendo = serieUsecheCombatiendo;
+        this.serieGanadoraText = serieGanadoraText;
+        
                 
     }
     
@@ -198,7 +213,7 @@ public class Administrador extends Thread{
                           Administrador.colaNivel1Useche.addFirst(serieUsecheProcesador);
                }          
             }else{
-                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador, this.camp1,this.camp2,this.camp3,this.winner, this.central,this.LOU,this.VELMA,this.OTRO);
+                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador, this.camp1,this.camp2,this.camp3,this.winner, this.central,this.LOU,this.VELMA,this.OTRO, this.serieJoseCombatiendo, this.serieAndyCombatiendo, this.serieUsecheCombatiendo, this.serieGanadoraText);
                        
                        this.imprimirColas();
                        
@@ -818,7 +833,7 @@ public class Administrador extends Thread{
         textField.setText("");
         
         for (int i = 0; i < sizeCola; i++){
-            textField.setText(textField.getText() + " (" + arrayTemp[i].getId() + ", " + arrayTemp[i].getContador() + " )," );
+            textField.setText(textField.getText() + " (" + arrayTemp[i].getId() + ", " + arrayTemp[i].getContador() + ")," );
         }
     }
 
