@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -43,7 +44,7 @@ public class Procesador extends Thread{
             double probcampeon1 = Math.random();
             double probcampeon2 = Math.random();
             double probcampeon3 = Math.random();
-            double winnerProb = Math.random();
+//            winnerProb.simuladorBatalla();
 //            System.out.println("Evaluando...");
 //            Thread.sleep(1000);
 //            System.out.println("Ya evalué");
@@ -100,8 +101,9 @@ public class Procesador extends Thread{
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
+                int serieGanadora = simuladorBatalla(); 
                 
-                if(winnerProb<=0.33){
+                if(serieGanadora == this.serieJose.getId()){
                     if(x1==1){
                         ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/12.gif"));
                         this.winner.setIcon(gift);
@@ -121,7 +123,7 @@ public class Procesador extends Thread{
                     var.guardarSerieJson(serieJose.getId(), serieJose.getNivelPrioridad(), serieJose.getNivelPrioridadInicio(), serieJose.getRodajePertenece(), serieJose.getDuracionMinutos(), serieJose.getContador(), serieJose.getPuntosPoder(), serieJose.getVida());
                 }
                 
-                else if(winnerProb<=0.66){
+                else if(serieGanadora == this.serieAndy.getId()){
                     
                     if(x2==1){
                         ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/jeryr.gif"));
@@ -157,7 +159,7 @@ public class Procesador extends Thread{
                     }
                     
                 }
-                Serie serieGanadora = this.puntosPoderMasAlto();
+//                Serie serieGanadora = this.puntosPoderMasAlto();
                 System.out.println("Hay ganador" );
 
             }else if(this.probHayEmpate(probBatalla)){
@@ -221,45 +223,119 @@ public class Procesador extends Thread{
      * Te indica cual serie, de las tres que pasaron, es la ganadora
      * @return Serie 
      */
-    public Serie puntosPoderMasAlto(){
+    public int simuladorBatalla() {
         
 //        System.out.println("Jose: " + this.serieJose.getPuntosPoder());
 //        System.out.println("Andy: " + this.serieAndy.getPuntosPoder());
 //        System.out.println("Useche: " + this.serieUseche.getPuntosPoder());
+           Serie campeonJose = this.serieJose;
+           Serie campeonAndy = this.serieAndy;
+           Serie campeonUseche = this.serieUseche;
+           
+           Serie[] jugadores = {campeonJose,campeonAndy,campeonUseche};
+           Random rand = new Random();
+           
+           boolean listo = true;
+           while( listo){
+                      
+                      aleatarioJugadores(jugadores, rand);
+                      
+                      for (int i = 0; i < jugadores.length; i++) {
+                                 Serie atacante = jugadores[i];
+                                 
+                                 if (atacante.getVida() <= 0){
+                                            continue;
+                                 }
+                                 
+                                 Serie[] targets = elegirPersonajeObjetivo(jugadores, atacante);
+                                 int objetivoIndex  = rand.nextInt(targets.length);
+                                 Serie target = targets[objetivoIndex];
+                                 
+                                 
+                                 int damage = atacante.getPuntosPoder();
+                                 target.setVida(target.getVida()-damage);
+                                 
+                                 if(todosCampeonesMuertos(jugadores)){
+                                            listo = false;
+                                 }
+                      }
+                                 
+                              
+//                      atacar ( this.serieJose, this.serieAndy, this.serieUseche);
+//                      atacar ( this.serieAndy, this.serieJose, this.serieUseche);
+//                      atacar ( this.serieUseche, this.serieJose, this.serieAndy );
+           }
         
-        if(this.serieJose.getPuntosPoder() > this.serieAndy.getPuntosPoder() && this.serieJose.getPuntosPoder() > this.serieUseche.getPuntosPoder()){
-            return this.serieJose;
+        if(campeonJose.getVida() > 0){
+            return this.serieJose.getId();
             
-        }else if(this.serieAndy.getPuntosPoder() > this.serieJose.getPuntosPoder() && this.serieAndy.getPuntosPoder() > this.serieUseche.getPuntosPoder()){
-            return this.serieAndy;
-            
-        }else if(this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder() && this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder()){
-            return this.serieUseche;
+        }else if(campeonAndy.getVida() > 0 ){
+            return this.serieAndy.getId();
             
         }else{
+            return this.serieUseche.getId();
             
-            
-            double randomDoubleTemp = (Math.random()*3);
-            
-            
-            int randomTemp = (int) randomDoubleTemp;   
-            
-            
-            switch (randomTemp) {
-                case 1 -> {
-                    return this.serieAndy;
-                }
-                case 2 -> {
-                    return this.serieUseche;
-                }
-                default -> {
-                    return this.serieJose;
-                }
-            }
-            
+//        }else{
+//            
+//            
+//            double randomDoubleTemp = (Math.random()*3);
+//            
+//            
+//            int randomTemp = (int) randomDoubleTemp;   
+//            
+//            
+//            switch (randomTemp) {
+//                case 1 -> {
+//                    return this.serieAndy;
+//                }
+//                case 2 -> {
+//                    return this.serieUseche;
+//                }
+//                default -> {
+//                    return this.serieJose;
+//                }
+//            }
+//            
         }
-        
+   
     }
+    
+    public static <T> void aleatarioJugadores(T[] lista, Random rand){
+               for(int i = lista.length-1; i >0; i--){
+                          int j = rand.nextInt(i + 1);
+                          T temp = lista[i];
+                          lista[i] = lista[j];
+                          lista[j] = temp;
+               }
+    }
+    
+    public static Serie[] elegirPersonajeObjetivo(Serie[] campeones, Serie campeon) {
+        Serie[] otrosCampeones = new Serie[campeones.length - 1];
+        int j = 0;
+        for (int i = 0; i < campeones.length; i++) {
+            if (campeones[i] != campeon) {
+                otrosCampeones[j++] = campeones[i];
+            }
+        }
+        return otrosCampeones;
+    }
+    
+    public static boolean todosCampeonesMuertos(Serie[] campeones) {
+        int muertos = 0;
+        for (int i = 0; i < campeones.length; i++) {
+            if (campeones[i].getVida() < 0) {
+                muertos++;
+            }
+        }
+        if(muertos >= 2){
+                   return true;
+        }
+               return false;
+    }
+    
+    
+    
+    
 
     /**
      * @return the camp1
@@ -316,6 +392,12 @@ public class Procesador extends Thread{
     public void setWinner(javax.swing.JLabel winner) {
         this.winner = winner;
     }
+    
+
+
+    
+    
+    
     
     
     
