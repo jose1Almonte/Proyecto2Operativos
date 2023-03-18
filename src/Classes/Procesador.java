@@ -55,15 +55,15 @@ public class Procesador extends Thread{
                 this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             }
             
-            if(probcampeon1<=0.5){
-                ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/5.gif"));
-                this.camp1.setIcon(gift);
-                this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            if(probcampeon2<=0.5){
+                ImageIcon gift2 = new ImageIcon(getClass().getResource("/Imagenes/5.gif"));
+                this.camp2.setIcon(gift2);
+                this.camp2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             }
             else{
-                ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/3.gif"));
-                this.camp1.setIcon(gift);
-                this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                ImageIcon gift2 = new ImageIcon(getClass().getResource("/Imagenes/6.gif"));
+                this.camp2.setIcon(gift2);
+                this.camp2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             }
 
             double probBatalla = Math.random();
