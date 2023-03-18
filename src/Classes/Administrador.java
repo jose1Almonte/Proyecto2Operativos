@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import Proyecto2Operativos.Proyectos2Operativos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,7 +16,8 @@ import java.util.logging.Logger;
  */
 public class Administrador extends Thread{
     
-
+    private volatile boolean keep = true;
+    private int ciclo;
     public static LinkedList colaNivel1Jose = new LinkedList();
     public static LinkedList colaNivel2Jose = new LinkedList();
     public static LinkedList colaNivel3Jose = new LinkedList();
@@ -45,22 +47,25 @@ public class Administrador extends Thread{
     public void run(){
         
         
-        while(variablesGenerales.keep){
+        while(isKeep()){
                    
             try{
+                Thread.sleep(ciclo*1000);
                 
-                if(variablesGenerales.numeroCiclos >= 2){
+                if(variablesGenerales.numeroCiclos==2){
+                    Serie serieJose = new Serie();
+                    Serie serieAndy = new Serie();
+                    Serie serieUseche = new Serie();
 
-                          Serie serieJose = new Serie();
-                          Serie serieAndy = new Serie();
-                          Serie serieUseche = new Serie();
-
-                          this.establecerPrioridad(serieJose, serieAndy, serieUseche);
-                          this.encolarSerie(serieJose, serieAndy, serieUseche);
-
-                          variablesGenerales.numeroCiclos = 0;
+                    this.establecerPrioridad(serieJose, serieAndy, serieUseche);
+                    this.asignarId(serieJose, serieAndy, serieUseche);
+                    this.encolarSerie(serieJose, serieAndy, serieUseche);
+                    
+                    System.out.print(serieJose.getId()+" "+serieAndy.getId()+" "+ serieUseche.getId());
+                    variablesGenerales.numeroCiclos=0;
                 }
-
+                
+                
     //            Series que van a la IA
                 Serie serieJoseProcesador = this.CampeonJose();
                 Serie serieAndyProcesador = this.CampeonAndy();
@@ -70,15 +75,13 @@ public class Administrador extends Thread{
                 
                 this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
                 
-                variablesGenerales.numeroCiclos++;
+                variablesGenerales.numeroCiclos=variablesGenerales.numeroCiclos+1;
                 
                 
                 
             }catch(Exception e){
                 System.out.println(e);
             }    
-            
-            
             
         }
     }
@@ -730,5 +733,56 @@ public class Administrador extends Thread{
             textField.setText(textField.getText() + " (" + arrayTemp[i].getRodajePertenece() + ", rodaje: " + arrayTemp[i].getContador() + ", ptos poder: "  + arrayTemp[i].getPuntosPoder() + " ), " );
         }
     }
+
+    /**
+     * @param ciclo the ciclo to set
+     */
+    public void setCiclo(int ciclo) {
+        this.ciclo = ciclo;
+    }
     
+    public void asignarId(Serie serieJose, Serie serieAndy, Serie serieUseche){
+            
+            variablesGenerales f = new variablesGenerales();
+            int counter;
+            int ev;
+            try{
+                ev=f.leerJson();
+            }
+            catch(Exception e){
+                ev=-1;
+            }
+            
+            if(ev==-1){
+                counter = 0;
+            }
+            else{
+                counter = ev;
+            }
+            counter =counter +1;
+            serieJose.setId(counter);
+            counter =counter +1;
+            serieAndy.setId(counter);
+            counter =counter +1;
+            serieUseche.setId(counter);
+            f.guardarJson(counter);
+            
+            
+            
+    }
+
+    /**
+     * @return the keep
+     */
+    public boolean isKeep() {
+        return keep;
+    }
+    
+
+    /**
+     * @param keep the keep to set
+     */
+    public void setKeep(boolean keep) {
+        this.keep = keep;
+    }
 }
