@@ -57,6 +57,7 @@ public class Procesador extends Thread{
                 this.camp1.setIcon(gift);
                 this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 x1=1;
+                
             }
             else{
                 ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/3.gif"));
@@ -89,7 +90,7 @@ public class Procesador extends Thread{
                 this.camp3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 x3=2;
             }
-
+            
             double probBatalla = Math.random();
 
 

@@ -34,6 +34,20 @@ public class Administrador extends Thread{
     public static LinkedList colaRefuerzoUseche = new LinkedList();
     
     javax.swing.JTextField colaNivel1JoseTextField;
+    javax.swing.JTextField colaNivel2JoseTextField;
+    javax.swing.JTextField colaNivel3JoseTextField;
+    javax.swing.JTextField colaRefuerzoJoseTextField;
+    javax.swing.JTextField colaNivel1AndyTextField;
+    javax.swing.JTextField colaNivel2AndyTextField;
+    javax.swing.JTextField colaNivel3AndyTextField;
+    javax.swing.JTextField colaRefuerzoAndyTextField;
+    javax.swing.JTextField colaNivel1UsecheTextField;
+    javax.swing.JTextField colaNivel2UsecheTextField;
+    javax.swing.JTextField colaNivel3UsecheTextField;
+    javax.swing.JTextField colaRefuerzoUsecheTextField;
+    
+    
+    
     private javax.swing.JLabel camp1;
     private javax.swing.JLabel camp2;
     private javax.swing.JLabel camp3;
@@ -45,8 +59,34 @@ public class Administrador extends Thread{
         
     }
     
-    public Administrador(javax.swing.JTextField colaNivel1JoseTextField,javax.swing.JLabel camp1, javax.swing.JLabel camp2, javax.swing.JLabel camp3, javax.swing.JLabel winner, javax.swing.JLabel central){
+    public Administrador(javax.swing.JTextField colaNivel1JoseTextField, 
+            javax.swing.JTextField colaNivel2JoseTextField, 
+            javax.swing.JTextField colaNivel3JoseTextField,
+            javax.swing.JTextField colaRefuerzoJoseTextField,
+            javax.swing.JTextField colaNivel1AndyTextField,
+            javax.swing.JTextField colaNivel2AndyTextField,
+            javax.swing.JTextField colaNivel3AndyTextField,
+            javax.swing.JTextField colaRefuerzoAndyTextField,
+            javax.swing.JTextField colaNivel1UsecheTextField,
+            javax.swing.JTextField colaNivel2UsecheTextField,
+            javax.swing.JTextField colaNivel3UsecheTextField,
+            javax.swing.JTextField colaRefuerzoUsecheTextField,
+            javax.swing.JLabel camp1, javax.swing.JLabel camp2, 
+            javax.swing.JLabel camp3, javax.swing.JLabel winner, 
+            javax.swing.JLabel central
+            ){
         this.colaNivel1JoseTextField = colaNivel1JoseTextField;
+        this.colaNivel2JoseTextField = colaNivel2JoseTextField;
+        this.colaNivel3JoseTextField = colaNivel3JoseTextField;
+        this.colaRefuerzoJoseTextField = colaRefuerzoJoseTextField; 
+        this.colaNivel1AndyTextField = colaNivel1AndyTextField;
+        this.colaNivel2AndyTextField = colaNivel2AndyTextField;
+        this.colaNivel3AndyTextField = colaNivel3AndyTextField;
+        this.colaRefuerzoAndyTextField = colaRefuerzoAndyTextField;
+        this.colaNivel1UsecheTextField = colaNivel1UsecheTextField;
+        this.colaNivel2UsecheTextField = colaNivel2UsecheTextField;
+        this.colaNivel3UsecheTextField = colaNivel3UsecheTextField;
+        this.colaRefuerzoUsecheTextField = colaRefuerzoUsecheTextField;
         this.camp1= camp1;
         this.camp2= camp2;
         this.camp3= camp3;
@@ -72,9 +112,13 @@ public class Administrador extends Thread{
                     this.asignarId(serieJose, serieAndy, serieUseche);
                     this.encolarSerie(serieJose, serieAndy, serieUseche);
                     
+                    
+                    
                     System.out.print(serieJose.getId()+" "+serieAndy.getId()+" "+ serieUseche.getId());
                     variablesGenerales.numeroCiclos=0;
                 }
+                
+                
                 
                 
     //            Series que van a la IA
@@ -82,12 +126,19 @@ public class Administrador extends Thread{
                 Serie serieAndyProcesador = this.CampeonAndy();
                 Serie serieUsecheProcesador = this.CampeonUseche();
                 
-                if(this.keep==true){
-                    this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+                
+                this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+                
+                this.sumar1ContadorSeries();
+                
+                this.sacarCabezaRefuerzo();
+                
+                
 
-                    this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
-                }
-                variablesGenerales.numeroCiclos=variablesGenerales.numeroCiclos+1;
+//                this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
+                this.imprimirColas();
+                
+                variablesGenerales.numeroCiclos++;
                 
                 
                 
@@ -96,6 +147,21 @@ public class Administrador extends Thread{
             }    
             
         }
+    }
+    
+    public void imprimirColas(){
+        this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
+        this.imprimirCola(Administrador.colaNivel2Jose, this.colaNivel2JoseTextField);
+        this.imprimirCola(Administrador.colaNivel3Jose, this.colaNivel3JoseTextField);
+        this.imprimirCola(Administrador.colaRefuerzoJose, this.colaRefuerzoJoseTextField);
+        this.imprimirCola(Administrador.colaNivel1Andy, this.colaNivel1AndyTextField);
+        this.imprimirCola(Administrador.colaNivel2Andy, this.colaNivel2AndyTextField);
+        this.imprimirCola(Administrador.colaNivel3Andy, this.colaNivel3AndyTextField);
+        this.imprimirCola(Administrador.colaRefuerzoAndy, this.colaRefuerzoAndyTextField);
+        this.imprimirCola(Administrador.colaNivel1Useche, this.colaNivel1UsecheTextField);
+        this.imprimirCola(Administrador.colaNivel2Useche, this.colaNivel2UsecheTextField);
+        this.imprimirCola(Administrador.colaNivel3Useche, this.colaNivel3UsecheTextField);
+        this.imprimirCola(Administrador.colaRefuerzoUseche, this.colaRefuerzoUsecheTextField);
     }
     
     
@@ -128,10 +194,15 @@ public class Administrador extends Thread{
                }          
             }else{
                        Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador, this.camp1,this.camp2,this.camp3,this.winner, this.central);
+                       
+                       this.imprimirColas();
+                       
                        IA.start();
-
+                       
+                       
                        variablesGenerales.darPasoAdmin.acquire(1);
-
+                       
+                       this.imprimirColas();
 
             }
         }catch(Exception e){
@@ -147,23 +218,23 @@ public class Administrador extends Thread{
     public Serie CampeonJose(){
                
                Serie CampeonJose;
-           if(colaNivel1Jose.isEmpty()){
-                       if(colaNivel2Jose.isEmpty()){
-                                  if(colaNivel3Jose.isEmpty()){
+           if(Administrador.colaNivel1Jose.isEmpty()){
+                       if(Administrador.colaNivel2Jose.isEmpty()){
+                                  if(Administrador.colaNivel3Jose.isEmpty()){
                                              return CampeonJose = null;
                                   }else{
                                             CampeonJose = (Serie) (Administrador.colaNivel3Jose.getHead().getData());
-                                            colaNivel1Jose.deleteFirst();
+                                            Administrador.colaNivel3Jose.deleteFirst();
                                             return CampeonJose;
                                   }                   
                        }else{
                                 CampeonJose = (Serie) (Administrador.colaNivel2Jose.getHead().getData());
-                                 colaNivel1Jose.deleteFirst();  
+                                 Administrador.colaNivel2Jose.deleteFirst();  
                                  return CampeonJose;
                        }
             }else{
                        CampeonJose = (Serie) (Administrador.colaNivel1Jose.getHead().getData());
-                       colaNivel1Jose.deleteFirst();
+                       Administrador.colaNivel1Jose.deleteFirst();
                        return CampeonJose;
             }
     }
@@ -174,23 +245,23 @@ public class Administrador extends Thread{
      */
     public Serie CampeonAndy(){
                Serie CampeonAndy;
-               if(colaNivel1Andy.isEmpty()){
-                       if(colaNivel2Andy.isEmpty()){
-                                  if(colaNivel3Andy.isEmpty()){
+               if(Administrador.colaNivel1Andy.isEmpty()){
+                       if(Administrador.colaNivel2Andy.isEmpty()){
+                                  if(Administrador.colaNivel3Andy.isEmpty()){
                                              return CampeonAndy = null;
                                   }else{
                                             CampeonAndy = (Serie) (Administrador.colaNivel3Andy.getHead().getData());
-                                            colaNivel1Andy.deleteFirst();
+                                            Administrador.colaNivel3Andy.deleteFirst();
                                             return CampeonAndy;
                                   }                   
                        }else{
                                  CampeonAndy = (Serie) (Administrador.colaNivel2Andy.getHead().getData());
-                                 colaNivel1Andy.deleteFirst();  
+                                 Administrador.colaNivel2Andy.deleteFirst();  
                                  return CampeonAndy;
                        }
             }else{
                        CampeonAndy = (Serie) (Administrador.colaNivel1Andy.getHead().getData());
-                       colaNivel1Andy.deleteFirst();
+                       Administrador.colaNivel1Andy.deleteFirst();
                        return CampeonAndy;
             }
     }
@@ -201,23 +272,23 @@ public class Administrador extends Thread{
      */
     public Serie CampeonUseche(){
                Serie CampeonUseche;
-               if(colaNivel1Useche.isEmpty()){
-                       if(colaNivel2Useche.isEmpty()){
-                                  if(colaNivel3Useche.isEmpty()){
+               if(Administrador.colaNivel1Useche.isEmpty()){
+                       if(Administrador.colaNivel2Useche.isEmpty()){
+                                  if(Administrador.colaNivel3Useche.isEmpty()){
                                             return CampeonUseche = null;
                                   }else{
                                             CampeonUseche = (Serie) (Administrador.colaNivel3Useche.getHead().getData());
-                                            colaNivel1Useche.deleteFirst();
+                                            Administrador.colaNivel3Useche.deleteFirst();
                                             return CampeonUseche;
                                   }                   
                        }else{
                                  CampeonUseche = (Serie) (Administrador.colaNivel2Useche.getHead().getData());
-                                 colaNivel1Useche.deleteFirst();
+                                 Administrador.colaNivel2Useche.deleteFirst();
                                  return CampeonUseche;
                        }
             }else{
                        CampeonUseche = (Serie) (Administrador.colaNivel1Useche.getHead().getData());
-                       colaNivel1Useche.deleteFirst();
+                       Administrador.colaNivel1Useche.deleteFirst();
                        return CampeonUseche;
             }
         }
@@ -742,7 +813,7 @@ public class Administrador extends Thread{
         textField.setText("");
         
         for (int i = 0; i < sizeCola; i++){
-            textField.setText(textField.getText() + " (" + arrayTemp[i].getRodajePertenece() + ", rodaje: " + arrayTemp[i].getContador() + ", ptos poder: "  + arrayTemp[i].getPuntosPoder() + " ), " );
+            textField.setText(textField.getText() + " (" + arrayTemp[i].getId() + " )," );
         }
     }
 
