@@ -20,9 +20,10 @@ public class Procesador extends Thread{
     private javax.swing.JLabel camp2;
     private javax.swing.JLabel camp3;
     private javax.swing.JLabel winner;
+    private javax.swing.JLabel central;
             
     
-    public Procesador(Serie serieJose, Serie serieAndy, Serie serieUseche,javax.swing.JLabel camp1, javax.swing.JLabel camp2, javax.swing.JLabel camp3, javax.swing.JLabel winner ){
+    public Procesador(Serie serieJose, Serie serieAndy, Serie serieUseche,javax.swing.JLabel camp1, javax.swing.JLabel camp2, javax.swing.JLabel camp3, javax.swing.JLabel winner,javax.swing.JLabel central ){
         this.serieJose = serieJose;
         this.serieAndy = serieAndy;
         this.serieUseche = serieUseche;
@@ -30,6 +31,7 @@ public class Procesador extends Thread{
         this.camp2=camp2;
         this.camp3=camp3;
         this.winner=winner;
+        this.central=central;
     }
     
     @Override
@@ -39,45 +41,124 @@ public class Procesador extends Thread{
             double probcampeon1 = Math.random();
             double probcampeon2 = Math.random();
             double probcampeon3 = Math.random();
+            double winnerProb = Math.random();
 //            System.out.println("Evaluando...");
 //            Thread.sleep(1000);
 //            System.out.println("Ya evalué");
             this.winner.setIcon(null);
-
+            int x1=0;
+            int x2=0;
+            int x3=0;
+            this.central.setText("");
             if(probcampeon1<=0.5){
                 ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/2.gif"));
                 this.camp1.setIcon(gift);
                 this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                x1=1;
             }
             else{
                 ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/3.gif"));
                 this.camp1.setIcon(gift);
                 this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                x1=2;
             }
             
             if(probcampeon2<=0.5){
                 ImageIcon gift2 = new ImageIcon(getClass().getResource("/Imagenes/5.gif"));
                 this.camp2.setIcon(gift2);
                 this.camp2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                x2=1;
             }
             else{
                 ImageIcon gift2 = new ImageIcon(getClass().getResource("/Imagenes/6.gif"));
                 this.camp2.setIcon(gift2);
                 this.camp2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                x2=2;
+            }
+            if(probcampeon3<=0.5){
+                ImageIcon gift3 = new ImageIcon(getClass().getResource("/Imagenes/9.gif"));
+                this.camp3.setIcon(gift3);
+                this.camp3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                x3=1;
+            }
+            else{
+                ImageIcon gift3 = new ImageIcon(getClass().getResource("/Imagenes/10.gif"));
+                this.camp3.setIcon(gift3);
+                this.camp3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                x3=2;
             }
 
             double probBatalla = Math.random();
 
 
             if (this.probHayGanador(probBatalla)){
-
+                
+                Thread.sleep(1000);
+                this.camp1.setIcon(null);
+                this.camp2.setIcon(null);
+                this.camp3.setIcon(null);
+                
+                if(winnerProb<=0.33){
+                    if(x1==1){
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/12.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganador RICK");
+                    }
+                    else if(x1==2){
+                        
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/29.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganador MORTY");
+                    }
+                }
+                
+                else if(winnerProb<=0.66){
+                    
+                    if(x2==1){
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/jeryr.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganador JERRY");
+                    }
+                    else if(x2==2){
+                        
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/17.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganadora SUMMER");
+                    }
+                }
+                else{
+                    if(x3==1){
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/13.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganador BIRD PERSON");
+                    }
+                    else if(x3==2){
+                        
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/26.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganadora BETH");
+                    }
+                }
                 Serie serieGanadora = this.puntosPoderMasAlto();
                 System.out.println("Hay ganador" );
 
             }else if(this.probHayEmpate(probBatalla)){
+                Thread.sleep(1000);
+                this.camp1.setIcon(null);
+                this.camp2.setIcon(null);
+                this.camp3.setIcon(null);
 
     //            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
-
+                ImageIcon gifto2 = new ImageIcon(getClass().getResource("/Imagenes/chill.gif"));
+                this.winner.setIcon(gifto2);
+                this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                this.central.setText("EMPATE");
                 Administrador admin = new Administrador();
                 admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
                 System.out.println("Empataron");
@@ -85,6 +166,14 @@ public class Procesador extends Thread{
             }else{
 
     //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
+                Thread.sleep(1000);
+                this.camp1.setIcon(null);
+                this.camp2.setIcon(null);
+                this.camp3.setIcon(null);
+                ImageIcon gifto3 = new ImageIcon(getClass().getResource("/Imagenes/refuerzo.gif"));
+                this.winner.setIcon(gifto3);
+                this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                this.central.setText("REFUERZO");
                 Administrador admin = new Administrador();
                 admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
                 System.out.println("Se mandaron a refuerzo");

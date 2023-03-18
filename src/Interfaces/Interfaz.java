@@ -7,6 +7,9 @@ package Interfaces;
 import Classes.Administrador;
 import Classes.variablesGenerales;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -20,7 +23,14 @@ public Administrador admin;
      */
     public Interfaz() {
         initComponents();
-        admin = new Administrador(this.colaNivel1JoseTextField,this.Camp1,this.Camp2,this.Camp3,this.winner);
+        this.Camp1.setIcon(null);
+        this.Camp2.setIcon(null);
+        this.Camp3.setIcon(null);
+        ImageIcon giftInicio = new ImageIcon(getClass().getResource("/Imagenes/chill.gif"));
+        this.winner.setIcon(giftInicio);
+        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        this.Central.setText("BIENVENIDO");
+        admin = new Administrador(this.colaNivel1JoseTextField,this.Camp1,this.Camp2,this.Camp3,this.winner,this.Central);
     }
 
     /**
@@ -93,6 +103,7 @@ public Administrador admin;
         botonEmpezar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
+        Central = new javax.swing.JLabel();
         winner = new javax.swing.JLabel();
         Camp2 = new javax.swing.JLabel();
         Camp1 = new javax.swing.JLabel();
@@ -440,12 +451,19 @@ public Administrador admin;
         jLabel47.setText("ZONA DE BATALLA");
         jPanel4.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 10, 1250, -1));
 
+        Central.setBackground(new java.awt.Color(204, 204, 204));
+        Central.setFont(new java.awt.Font("Hack NF", 1, 48)); // NOI18N
+        Central.setForeground(new java.awt.Color(255, 51, 51));
+        Central.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Central.setText("jLabel50");
+        jPanel4.add(Central, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
+
         winner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/21.gif"))); // NOI18N
         winner.setText("W");
-        jPanel4.add(winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+        jPanel4.add(winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
 
         Camp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/10.gif"))); // NOI18N
-        jPanel4.add(Camp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+        jPanel4.add(Camp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
 
         Camp1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.gif"))); // NOI18N
         jPanel4.add(Camp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 360, 250));
@@ -554,7 +572,7 @@ public Administrador admin;
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
             admin.setCiclo(tiempo);
             if(admin.isKeep()==false){
-                admin = new Administrador(this.colaNivel1JoseTextField, this.Camp1,this.Camp2,this.Camp3,this.winner);
+                admin = new Administrador(this.colaNivel1JoseTextField, this.Camp1,this.Camp2,this.Camp3,this.winner, this.Central);
                 admin.setKeep(true);
                 admin.setCiclo(tiempo);
                 admin.start();
@@ -566,6 +584,7 @@ public Administrador admin;
         }
         catch(Exception e){
             System.out.print("Error");
+            this.botonEmpezar.setEnabled(true);
         }
         
     }//GEN-LAST:event_botonEmpezarActionPerformed
@@ -573,6 +592,27 @@ public Administrador admin;
     private void botonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPararActionPerformed
         admin.setKeep(false);
         this.botonEmpezar.setEnabled(true);
+        this.Camp1.setIcon(null);
+        this.Camp2.setIcon(null);
+        this.Camp3.setIcon(null);
+        this.Central.setText("");
+        ImageIcon giftInicio = new ImageIcon(getClass().getResource("/Imagenes/chill.gif"));
+        this.winner.setIcon(giftInicio);
+        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        admin.setKeep(false);
+        this.botonEmpezar.setEnabled(true);
+        this.Camp1.setIcon(null);
+        this.Camp2.setIcon(null);
+        this.Camp3.setIcon(null);
+        this.Central.setText("");
+        this.winner.setIcon(giftInicio);
+        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        
         
     }//GEN-LAST:event_botonPararActionPerformed
 
@@ -615,6 +655,7 @@ public Administrador admin;
     private javax.swing.JLabel Camp1;
     private javax.swing.JLabel Camp2;
     private javax.swing.JLabel Camp3;
+    private javax.swing.JLabel Central;
     private javax.swing.JButton botonEmpezar;
     private javax.swing.JButton botonParar;
     private javax.swing.JTextField colaNivel1JoseTextField;
