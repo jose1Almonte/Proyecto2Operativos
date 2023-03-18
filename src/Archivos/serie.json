@@ -28,3 +28,5 @@
 {"id":128,"nivelPrioridad":1,"nivelPrioridadInicio":2,"rodajePertenece":2,"duracionMinutos":77,"contador":3,"puntosPoder":6,"vida":0}
 {"id":134,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":97,"contador":0,"puntosPoder":8,"vida":0}
 {"id":127,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":129,"contador":0,"puntosPoder":9,"vida":0}
+{"id":156,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":3,"duracionMinutos":67,"contador":0,"puntosPoder":4,"vida":0}
+{"id":161,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":2,"duracionMinutos":80,"contador":0,"puntosPoder":4,"vida":0}

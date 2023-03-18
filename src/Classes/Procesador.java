@@ -46,7 +46,24 @@ public class Procesador extends Thread{
     public void run(){
         
         try{
-            double probcampeon1 = Math.random();
+            
+            this.probabilidadesBatalla();
+            
+        }catch(Exception e){
+//            System.out.println(e);
+        }
+        
+        
+        variablesGenerales.darPasoAdmin.release();
+    }
+    
+    /**
+     * Selecciona GIFS de cada Rodaje, y utiliza un metodo auxiliar para determinar si se gana, empata o pierde
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    public void probabilidadesBatalla() throws IOException, InterruptedException{
+        double probcampeon1 = Math.random();
             double probcampeon2 = Math.random();
             double probcampeon3 = Math.random();
             double winnerProb = Math.random();
@@ -99,10 +116,23 @@ public class Procesador extends Thread{
             }
             
             double probBatalla = Math.random();
-
-
+            
+            
             Thread.sleep(2000);
-            if (this.probHayGanador(probBatalla)){
+            this.probabilidadesBatallaAuxiliar(probBatalla, x1, x2, x3);
+            Thread.sleep(2000);
+    }
+    
+    /**
+     * Metodo auxiliar de probabilidadesBatalla, indica si se gana empata o pierde y las acciones a hacer en cada caso
+     * @param probBatalla
+     * @param x1
+     * @param x2
+     * @param x3
+     * @throws IOException 
+     */
+    private void probabilidadesBatallaAuxiliar(double probBatalla, int x1, int x2, int x3) throws IOException{
+        if (this.probHayGanador(probBatalla)){
                 
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
@@ -204,15 +234,6 @@ public class Procesador extends Thread{
                 admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
 //                System.out.println("Se mandaron a refuerzo");
             }
-            
-            Thread.sleep(2000);
-            
-        }catch(Exception e){
-//            System.out.println(e);
-        }
-        
-        
-        variablesGenerales.darPasoAdmin.release();
     }
     
     /**
