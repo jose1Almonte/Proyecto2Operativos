@@ -166,7 +166,7 @@ public class Procesador extends Thread{
                 this.camp3.setIcon(null);
 
     //            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
-                ImageIcon gifto2 = new ImageIcon(getClass().getResource("/Imagenes/chill.gif"));
+                ImageIcon gifto2 = new ImageIcon(getClass().getResource("/Imagenes/empate.gif"));
                 this.winner.setIcon(gifto2);
                 this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 this.central.setText("EMPATE");
