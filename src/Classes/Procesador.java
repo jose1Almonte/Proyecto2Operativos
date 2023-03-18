@@ -6,6 +6,7 @@ package Classes;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,22 +16,56 @@ public class Procesador extends Thread{
     Serie serieJose;
     Serie serieAndy;
     Serie serieUseche;
+    private javax.swing.JLabel camp1;
+    private javax.swing.JLabel camp2;
+    private javax.swing.JLabel camp3;
+    private javax.swing.JLabel winner;
             
     
-    public Procesador(Serie serieJose, Serie serieAndy, Serie serieUseche){
+    public Procesador(Serie serieJose, Serie serieAndy, Serie serieUseche,javax.swing.JLabel camp1, javax.swing.JLabel camp2, javax.swing.JLabel camp3, javax.swing.JLabel winner ){
         this.serieJose = serieJose;
         this.serieAndy = serieAndy;
         this.serieUseche = serieUseche;
+        this.camp1=camp1;
+        this.camp2=camp2;
+        this.camp3=camp3;
+        this.winner=winner;
     }
     
     @Override
     public void run(){
         
         try{
+            double probcampeon1 = Math.random();
+            double probcampeon2 = Math.random();
+            double probcampeon3 = Math.random();
 //            System.out.println("Evaluando...");
 //            Thread.sleep(1000);
 //            System.out.println("Ya evalué");
+            this.winner.setIcon(null);
+
+            if(probcampeon1<=0.5){
+                ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/2.gif"));
+                this.camp1.setIcon(gift);
+                this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            }
+            else{
+                ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/3.gif"));
+                this.camp1.setIcon(gift);
+                this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            }
             
+            if(probcampeon1<=0.5){
+                ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/5.gif"));
+                this.camp1.setIcon(gift);
+                this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            }
+            else{
+                ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/3.gif"));
+                this.camp1.setIcon(gift);
+                this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+            }
+
             double probBatalla = Math.random();
 
 
@@ -123,6 +158,62 @@ public class Procesador extends Thread{
             
         }
         
+    }
+
+    /**
+     * @return the camp1
+     */
+    public javax.swing.JLabel getCamp1() {
+        return camp1;
+    }
+
+    /**
+     * @param camp1 the camp1 to set
+     */
+    public void setCamp1(javax.swing.JLabel camp1) {
+        this.camp1 = camp1;
+    }
+
+    /**
+     * @return the camp2
+     */
+    public javax.swing.JLabel getCamp2() {
+        return camp2;
+    }
+
+    /**
+     * @param camp2 the camp2 to set
+     */
+    public void setCamp2(javax.swing.JLabel camp2) {
+        this.camp2 = camp2;
+    }
+
+    /**
+     * @return the camp3
+     */
+    public javax.swing.JLabel getCamp3() {
+        return camp3;
+    }
+
+    /**
+     * @param camp3 the camp3 to set
+     */
+    public void setCamp3(javax.swing.JLabel camp3) {
+        this.camp3 = camp3;
+    }
+
+    /**
+     * @return the winner
+     */
+    public javax.swing.JLabel getWinner() {
+        return winner;
+    }
+
+    /**
+     * @param winner the winner to set
+     */
+    public void setWinner(javax.swing.JLabel winner) {
+        this.winner = winner;
     }
     
     

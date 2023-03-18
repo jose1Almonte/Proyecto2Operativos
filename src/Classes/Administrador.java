@@ -34,13 +34,22 @@ public class Administrador extends Thread{
     public static LinkedList colaRefuerzoUseche = new LinkedList();
     
     javax.swing.JTextField colaNivel1JoseTextField;
+    private javax.swing.JLabel camp1;
+    private javax.swing.JLabel camp2;
+    private javax.swing.JLabel camp3;
+    private javax.swing.JLabel winner;
+    
     
     public Administrador(){
         
     }
     
-    public Administrador(javax.swing.JTextField colaNivel1JoseTextField){
+    public Administrador(javax.swing.JTextField colaNivel1JoseTextField,javax.swing.JLabel camp1, javax.swing.JLabel camp2, javax.swing.JLabel camp3, javax.swing.JLabel winner ){
         this.colaNivel1JoseTextField = colaNivel1JoseTextField;
+        this.camp1= camp1;
+        this.camp2= camp2;
+        this.camp3= camp3;
+        this.winner= winner;
     }
     
     @Override
@@ -115,7 +124,7 @@ public class Administrador extends Thread{
                           Administrador.colaNivel1Useche.addFirst(serieUsecheProcesador);
                }          
             }else{
-                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador, this.camp1,this.camp2,this.camp3,this.winner);
                        IA.start();
 
                        variablesGenerales.darPasoAdmin.acquire(1);
@@ -784,5 +793,61 @@ public class Administrador extends Thread{
      */
     public void setKeep(boolean keep) {
         this.keep = keep;
+    }
+
+    /**
+     * @return the camp1
+     */
+    public javax.swing.JLabel getCamp1() {
+        return camp1;
+    }
+
+    /**
+     * @param camp1 the camp1 to set
+     */
+    public void setCamp1(javax.swing.JLabel camp1) {
+        this.camp1 = camp1;
+    }
+
+    /**
+     * @return the camp2
+     */
+    public javax.swing.JLabel getCamp2() {
+        return camp2;
+    }
+
+    /**
+     * @param camp2 the camp2 to set
+     */
+    public void setCamp2(javax.swing.JLabel camp2) {
+        this.camp2 = camp2;
+    }
+
+    /**
+     * @return the camp3
+     */
+    public javax.swing.JLabel getCamp3() {
+        return camp3;
+    }
+
+    /**
+     * @param camp3 the camp3 to set
+     */
+    public void setCamp3(javax.swing.JLabel camp3) {
+        this.camp3 = camp3;
+    }
+
+    /**
+     * @return the winner
+     */
+    public javax.swing.JLabel getWinner() {
+        return winner;
+    }
+
+    /**
+     * @param winner the winner to set
+     */
+    public void setWinner(javax.swing.JLabel winner) {
+        this.winner = winner;
     }
 }

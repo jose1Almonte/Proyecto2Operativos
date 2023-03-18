@@ -20,7 +20,7 @@ public Administrador admin;
      */
     public Interfaz() {
         initComponents();
-        admin = new Administrador(this.colaNivel1JoseTextField);
+        admin = new Administrador(this.colaNivel1JoseTextField,this.Camp1,this.Camp2,this.Camp3,this.winner);
     }
 
     /**
@@ -33,6 +33,7 @@ public Administrador admin;
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
+        jLabel54 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -92,7 +93,12 @@ public Administrador admin;
         botonEmpezar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
+        winner = new javax.swing.JLabel();
+        Camp2 = new javax.swing.JLabel();
+        Camp1 = new javax.swing.JLabel();
+        Camp3 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         botonParar = new javax.swing.JButton();
         tiempoSegundosTextField = new javax.swing.JTextField();
@@ -106,6 +112,9 @@ public Administrador admin;
 
         jPanel2.setToolTipText("");
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel54.setText("jLabel54");
+        jPanel2.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -431,8 +440,24 @@ public Administrador admin;
         jLabel47.setText("ZONA DE BATALLA");
         jPanel4.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 10, 1250, -1));
 
+        winner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/21.gif"))); // NOI18N
+        winner.setText("W");
+        jPanel4.add(winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+
+        Camp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/10.gif"))); // NOI18N
+        jPanel4.add(Camp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, -1, -1));
+
+        Camp1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.gif"))); // NOI18N
+        jPanel4.add(Camp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 360, 250));
+
+        Camp3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/9.gif"))); // NOI18N
+        jPanel4.add(Camp3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, -1, -1));
+
         jLabel48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         jPanel4.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 320));
+
+        jLabel52.setText("jLabel51");
+        jPanel4.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 1060, 320));
 
@@ -529,7 +554,7 @@ public Administrador admin;
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
             admin.setCiclo(tiempo);
             if(admin.isKeep()==false){
-                admin = new Administrador(this.colaNivel1JoseTextField);
+                admin = new Administrador(this.colaNivel1JoseTextField, this.Camp1,this.Camp2,this.Camp3,this.winner);
                 admin.setKeep(true);
                 admin.setCiclo(tiempo);
                 admin.start();
@@ -587,6 +612,9 @@ public Administrador admin;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Camp1;
+    private javax.swing.JLabel Camp2;
+    private javax.swing.JLabel Camp3;
     private javax.swing.JButton botonEmpezar;
     private javax.swing.JButton botonParar;
     private javax.swing.JTextField colaNivel1JoseTextField;
@@ -635,6 +663,8 @@ public Administrador admin;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -655,5 +685,6 @@ public Administrador admin;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField tiempoSegundosTextField;
+    private javax.swing.JLabel winner;
     // End of variables declaration//GEN-END:variables
 }
