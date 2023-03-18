@@ -101,6 +101,8 @@ public class Procesador extends Thread{
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
+                
+                
                 int serieGanadora = simuladorBatalla(); 
                 
                 if(serieGanadora == this.serieJose.getId()){
@@ -238,6 +240,11 @@ public class Procesador extends Thread{
            boolean listo = true;
            while( listo){
                       
+                      try {
+                                 Thread.sleep(500);
+                      } catch (InterruptedException ex) {
+                                 Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
+                      }
                       aleatarioJugadores(jugadores, rand);
                       
                       for (int i = 0; i < jugadores.length; i++) {
@@ -255,7 +262,13 @@ public class Procesador extends Thread{
                                  int damage = atacante.getPuntosPoder();
                                  target.setVida(target.getVida()-damage);
                                  
+                                 System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+                                 
+                                 if(target.getVida() <= 0){
+                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
+                                 }
                                  if(todosCampeonesMuertos(jugadores)){
+                                            System.out.println("tenemos un ganador ");
                                             listo = false;
                                  }
                       }
@@ -297,6 +310,7 @@ public class Procesador extends Thread{
 //            }
 //            
         }
+        
    
     }
     

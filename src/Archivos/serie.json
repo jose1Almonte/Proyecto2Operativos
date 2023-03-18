@@ -39,3 +39,13 @@
 {"id":144,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":121,"contador":0,"puntosPoder":6,"vida":0}
 {"id":130,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":131,"contador":0,"puntosPoder":7,"vida":0}
 {"id":139,"nivelPrioridad":1,"nivelPrioridadInicio":2,"rodajePertenece":1,"duracionMinutos":69,"contador":0,"puntosPoder":3,"vida":0}
+{"id":155,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":164,"contador":0,"puntosPoder":52,"vida":30}
+{"id":164,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":143,"contador":0,"puntosPoder":51,"vida":213}
+{"id":170,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":153,"contador":0,"puntosPoder":52,"vida":44}
+{"id":172,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":138,"contador":0,"puntosPoder":51,"vida":111}
+{"id":180,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":3,"duracionMinutos":77,"contador":1,"puntosPoder":31,"vida":48}
+{"id":173,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":118,"contador":0,"puntosPoder":52,"vida":107}
+{"id":187,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":116,"contador":0,"puntosPoder":51,"vida":58}
+{"id":190,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":173,"contador":0,"puntosPoder":51,"vida":47}
+{"id":175,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":148,"contador":0,"puntosPoder":52,"vida":140}
+{"id":193,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":139,"contador":0,"puntosPoder":51,"vida":63}
