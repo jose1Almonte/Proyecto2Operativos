@@ -7,6 +7,7 @@ package Interfaces;
 import Classes.Administrador;
 import Classes.variablesGenerales;
 import java.awt.Color;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -23,6 +24,15 @@ public Administrador admin;
      */
     public Interfaz() {
         initComponents();
+        variablesGenerales var =new variablesGenerales();
+        try {
+            var.leerSerieJson(this.LOU,this.VELMA,this.OTRO);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         this.Camp1.setIcon(null);
         this.Camp2.setIcon(null);
         this.Camp3.setIcon(null);
@@ -30,7 +40,7 @@ public Administrador admin;
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         this.Central.setText("BIENVENIDO");
-        admin = new Administrador(this.colaNivel1JoseTextField, this.colaNivel2JoseTextField, this.colaNivel3JoseTextField, this.colaRefuerzoJoseTextField, this.colaNivel1AndyTextField, this.colaNivel2AndyTextField,this.colaNivel3AndyTextField,this.colaRefuerzoAndyTextField,this.colaNivel1UsecheTextField,this.colaNivel2UsecheTextField,this.colaNivel3UsecheTextField,this.colaRefuerzoUsecheTextField, this.Camp1,this.Camp2,this.Camp3,this.winner,this.Central);
+        admin = new Administrador(this.colaNivel1JoseTextField, this.colaNivel2JoseTextField, this.colaNivel3JoseTextField, this.colaRefuerzoJoseTextField, this.colaNivel1AndyTextField, this.colaNivel2AndyTextField,this.colaNivel3AndyTextField,this.colaRefuerzoAndyTextField,this.colaNivel1UsecheTextField,this.colaNivel2UsecheTextField,this.colaNivel3UsecheTextField,this.colaRefuerzoUsecheTextField, this.Camp1,this.Camp2,this.Camp3,this.winner,this.Central,this.LOU,this.VELMA,this.OTRO);
     }
 
     /**
@@ -61,6 +71,8 @@ public Administrador admin;
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
+        OTRO = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -68,6 +80,8 @@ public Administrador admin;
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        LOU = new javax.swing.JLabel();
         colaNivel3JoseTextField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -81,6 +95,7 @@ public Administrador admin;
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         colaRefuerzoAndyTextField = new javax.swing.JTextField();
@@ -96,10 +111,13 @@ public Administrador admin;
         jLabel36 = new javax.swing.JLabel();
         colaNivel1AndyTextField = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
+        VELMA = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
         botonEmpezar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel47 = new javax.swing.JLabel();
@@ -221,6 +239,16 @@ public Administrador admin;
         jLabel27.setText("Tail");
         jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
+        OTRO.setBackground(new java.awt.Color(255, 255, 255));
+        OTRO.setForeground(new java.awt.Color(255, 255, 255));
+        OTRO.setText("jLabel50");
+        jPanel2.add(OTRO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+
+        jLabel56.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel56.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel56.setText("ganadoras:");
+        jPanel2.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+
         jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         jPanel2.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 280));
 
@@ -259,6 +287,16 @@ public Administrador admin;
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Head");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+
+        jLabel50.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("ganadoras:");
+        jPanel1.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        LOU.setBackground(new java.awt.Color(255, 255, 255));
+        LOU.setForeground(new java.awt.Color(255, 255, 255));
+        LOU.setText("jLabel50");
+        jPanel1.add(LOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
         colaNivel3JoseTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel3JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -330,6 +368,11 @@ public Administrador admin;
 
         jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 280));
+
+        jLabel51.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel51.setText("ganadoras:");
+        jPanel1.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 380, 280));
 
@@ -415,6 +458,11 @@ public Administrador admin;
         jLabel37.setText("Cola de Nivel 1");
         jPanel3.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
+        jLabel55.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel55.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel55.setText("ganadoras:");
+        jPanel3.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+
         jLabel38.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("VELMA (2)");
@@ -430,8 +478,16 @@ public Administrador admin;
         jLabel40.setText("Head");
         jPanel3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
 
+        VELMA.setBackground(new java.awt.Color(255, 255, 255));
+        VELMA.setForeground(new java.awt.Color(255, 255, 255));
+        VELMA.setText("jLabel50");
+        jPanel3.add(VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
         jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         jPanel3.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 280));
+
+        jLabel53.setText("jLabel53");
+        jPanel3.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 380, 280));
 
@@ -564,6 +620,7 @@ public Administrador admin;
 
     private void botonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEmpezarActionPerformed
 
+        
         this.botonEmpezar.setEnabled(false);
         this.botonParar.setEnabled(true);
         
@@ -571,7 +628,7 @@ public Administrador admin;
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
             admin.setCiclo(tiempo);
             if(admin.isKeep()==false){
-                admin = new Administrador(this.colaNivel1JoseTextField, this.colaNivel2JoseTextField, this.colaNivel3JoseTextField, this.colaRefuerzoJoseTextField, this.colaNivel1AndyTextField, this.colaNivel2AndyTextField,this.colaNivel3AndyTextField,this.colaRefuerzoAndyTextField,this.colaNivel1UsecheTextField,this.colaNivel2UsecheTextField,this.colaNivel3UsecheTextField,this.colaRefuerzoUsecheTextField, this.Camp1,this.Camp2,this.Camp3,this.winner, this.Central);
+                admin = new Administrador(this.colaNivel1JoseTextField, this.colaNivel2JoseTextField, this.colaNivel3JoseTextField, this.colaRefuerzoJoseTextField, this.colaNivel1AndyTextField, this.colaNivel2AndyTextField,this.colaNivel3AndyTextField,this.colaRefuerzoAndyTextField,this.colaNivel1UsecheTextField,this.colaNivel2UsecheTextField,this.colaNivel3UsecheTextField,this.colaRefuerzoUsecheTextField, this.Camp1,this.Camp2,this.Camp3,this.winner, this.Central,this.LOU,this.VELMA,this.OTRO);
                 admin.setKeep(true);
                 admin.setCiclo(tiempo);
                 admin.start();
@@ -600,7 +657,7 @@ public Administrador admin;
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -656,6 +713,9 @@ public Administrador admin;
     private javax.swing.JLabel Camp2;
     private javax.swing.JLabel Camp3;
     private javax.swing.JLabel Central;
+    private javax.swing.JLabel LOU;
+    private javax.swing.JLabel OTRO;
+    private javax.swing.JLabel VELMA;
     private javax.swing.JButton botonEmpezar;
     private javax.swing.JButton botonParar;
     private javax.swing.JTextField colaNivel1AndyTextField;
@@ -715,8 +775,13 @@ public Administrador admin;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

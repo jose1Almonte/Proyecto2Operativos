@@ -53,7 +53,9 @@ public class Administrador extends Thread{
     private javax.swing.JLabel camp3;
     private javax.swing.JLabel winner;
     private javax.swing.JLabel central;
-    
+     private javax.swing.JLabel LOU;
+    private javax.swing.JLabel VELMA;
+    private javax.swing.JLabel OTRO;
     
     public Administrador(){
         
@@ -73,7 +75,8 @@ public class Administrador extends Thread{
             javax.swing.JTextField colaRefuerzoUsecheTextField,
             javax.swing.JLabel camp1, javax.swing.JLabel camp2, 
             javax.swing.JLabel camp3, javax.swing.JLabel winner, 
-            javax.swing.JLabel central
+            javax.swing.JLabel central,
+            javax.swing.JLabel LOU,javax.swing.JLabel VELMA,javax.swing.JLabel OTRO 
             ){
         this.colaNivel1JoseTextField = colaNivel1JoseTextField;
         this.colaNivel2JoseTextField = colaNivel2JoseTextField;
@@ -92,6 +95,10 @@ public class Administrador extends Thread{
         this.camp3= camp3;
         this.winner= winner;
         this.central=central;
+        this.LOU=LOU;
+        this.VELMA=VELMA;
+        this.OTRO=OTRO;
+                
     }
     
     @Override
@@ -193,7 +200,7 @@ public class Administrador extends Thread{
                           Administrador.colaNivel1Useche.addFirst(serieUsecheProcesador);
                }          
             }else{
-                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador, this.camp1,this.camp2,this.camp3,this.winner, this.central);
+                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador, this.camp1,this.camp2,this.camp3,this.winner, this.central,this.LOU,this.VELMA,this.OTRO);
                        
                        this.imprimirColas();
                        

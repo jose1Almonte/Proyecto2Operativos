@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -21,10 +22,13 @@ public class Procesador extends Thread{
     private javax.swing.JLabel camp3;
     private javax.swing.JLabel winner;
     private javax.swing.JLabel central;
+    private javax.swing.JLabel LOU;
+    private javax.swing.JLabel VELMA;
+    private javax.swing.JLabel OTRO;
     variablesGenerales var=new variablesGenerales();
             
     
-    public Procesador(Serie serieJose, Serie serieAndy, Serie serieUseche,javax.swing.JLabel camp1, javax.swing.JLabel camp2, javax.swing.JLabel camp3, javax.swing.JLabel winner,javax.swing.JLabel central ){
+    public Procesador(Serie serieJose, Serie serieAndy, Serie serieUseche,javax.swing.JLabel camp1, javax.swing.JLabel camp2, javax.swing.JLabel camp3, javax.swing.JLabel winner,javax.swing.JLabel central,javax.swing.JLabel LOU,javax.swing.JLabel VELMA,javax.swing.JLabel OTRO  ){
         this.serieJose = serieJose;
         this.serieAndy = serieAndy;
         this.serieUseche = serieUseche;
@@ -33,7 +37,9 @@ public class Procesador extends Thread{
         this.camp3=camp3;
         this.winner=winner;
         this.central=central;
-        
+        this.LOU=LOU;
+        this.VELMA=VELMA;
+        this.OTRO=OTRO;
     }
     
     @Override
@@ -159,6 +165,11 @@ public class Procesador extends Thread{
                 }
                 Serie serieGanadora = this.puntosPoderMasAlto();
                 System.out.println("Hay ganador" );
+                try {
+                    var.leerSerieJson(this.LOU, this.VELMA, this.OTRO);
+                } catch (IOException ex) {
+                    Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
             }else if(this.probHayEmpate(probBatalla)){
                 Thread.sleep(1000);
