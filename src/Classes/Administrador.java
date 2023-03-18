@@ -820,7 +820,7 @@ public class Administrador extends Thread{
         textField.setText("");
         
         for (int i = 0; i < sizeCola; i++){
-            textField.setText(textField.getText() + " (" + arrayTemp[i].getId() + " )," );
+            textField.setText(textField.getText() + " (" + arrayTemp[i].getId() + ", " + arrayTemp[i].getContador() + " )," );
         }
     }
 

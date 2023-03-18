@@ -148,7 +148,7 @@ public Administrador admin;
         jLabel15.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Head");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 30, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 30, -1));
 
         colaRefuerzoUsecheTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaRefuerzoUsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -164,12 +164,12 @@ public Administrador admin;
         jLabel17.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Tail");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Tail");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
 
         colaNivel3UsecheTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel3UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -185,7 +185,7 @@ public Administrador admin;
         jLabel19.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Head");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 30, -1));
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 30, -1));
 
         jLabel20.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -201,7 +201,7 @@ public Administrador admin;
         jLabel21.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Head");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 30, -1));
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 30, -1));
 
         jLabel22.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,7 +211,7 @@ public Administrador admin;
         jLabel23.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Head");
-        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 30, -1));
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 30, -1));
 
         colaNivel1UsecheTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel1UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -232,12 +232,12 @@ public Administrador admin;
         jLabel26.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Tail");
-        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
 
         jLabel27.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Tail");
-        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
 
         OTRO.setBackground(new java.awt.Color(255, 255, 255));
         OTRO.setForeground(new java.awt.Color(255, 255, 255));
@@ -260,7 +260,7 @@ public Administrador admin;
         jLabel12.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Tail");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 30, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 30, -1));
 
         colaRefuerzoJoseTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaRefuerzoJoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -281,12 +281,12 @@ public Administrador admin;
         jLabel10.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Head");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Head");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
         jLabel50.setBackground(new java.awt.Color(255, 255, 255));
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
@@ -307,7 +307,7 @@ public Administrador admin;
         jLabel11.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Tail");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 30, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 30, -1));
 
         jLabel3.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -323,7 +323,7 @@ public Administrador admin;
         jLabel9.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Tail");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 30, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 30, -1));
 
         jLabel1.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -333,7 +333,7 @@ public Administrador admin;
         jLabel13.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Tail");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 30, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 30, -1));
 
         colaNivel1JoseTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel1JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -359,12 +359,12 @@ public Administrador admin;
         jLabel5.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Head");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Head");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
 
         jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 280));
@@ -382,7 +382,7 @@ public Administrador admin;
         jLabel28.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Tail");
-        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 30, -1));
+        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 30, -1));
 
         colaRefuerzoAndyTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaRefuerzoAndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -398,12 +398,12 @@ public Administrador admin;
         jLabel30.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Head");
-        jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+        jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
 
         jLabel31.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Head");
-        jPanel3.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+        jPanel3.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
         colaNivel3AndyTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel3AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -414,7 +414,7 @@ public Administrador admin;
         jLabel32.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("Tail");
-        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 30, -1));
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 30, -1));
 
         jLabel33.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
@@ -430,7 +430,7 @@ public Administrador admin;
         jLabel34.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Tail");
-        jPanel3.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 30, -1));
+        jPanel3.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 30, -1));
 
         jLabel35.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
@@ -440,7 +440,7 @@ public Administrador admin;
         jLabel36.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Tail");
-        jPanel3.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 30, -1));
+        jPanel3.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 30, -1));
 
         colaNivel1AndyTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel1AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -471,12 +471,12 @@ public Administrador admin;
         jLabel39.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setText("Head");
-        jPanel3.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
+        jPanel3.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
         jLabel40.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setText("Head");
-        jPanel3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
+        jPanel3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
 
         VELMA.setBackground(new java.awt.Color(255, 255, 255));
         VELMA.setForeground(new java.awt.Color(255, 255, 255));
