@@ -48,7 +48,7 @@ public class variablesGenerales {
         
         try (FileWriter file = new FileWriter("src\\Archivos\\jsonfile.json")) {
             file.write(json);
-            System.out.println("Contador guardado en archivo JSON");
+//            System.out.println("Contador guardado en archivo JSON");
          } catch (IOException e) {
             e.printStackTrace();
          }   
@@ -59,7 +59,7 @@ public class variablesGenerales {
         int co =0;
         try (Reader reader = new FileReader("src\\Archivos\\jsonfile.json")) {
            counter contador = gson.fromJson(reader, counter.class);
-           System.out.println("Valor del contador: " + contador.getValor());
+//           System.out.println("Valor del contador: " + contador.getValor());
            co = contador.getValor();
         } catch (IOException e) {
            e.printStackTrace();
@@ -105,7 +105,7 @@ public class variablesGenerales {
                 else{
                     o++;
                 }
-                System.out.println(obj.getRodajePertenece());
+//                System.out.println(obj.getRodajePertenece());
             }
 
             bufferedReader.close();

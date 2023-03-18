@@ -58,6 +58,7 @@ public class Procesador extends Thread{
             int x2=0;
             int x3=0;
             this.central.setText("");
+            
             if(probcampeon1<=0.5){
                 ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/2.gif"));
                 this.camp1.setIcon(gift);
@@ -106,8 +107,11 @@ public class Procesador extends Thread{
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
+                Serie serieGanadora = this.puntosPoderMasAlto();
                 
-                if(winnerProb<=0.33){
+                System.out.println("RODAJE GANADOR: " + serieGanadora.getRodajePertenece());
+                
+                if(serieGanadora.getRodajePertenece() == 1){
                     if(x1==1){
                         ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/12.gif"));
                         this.winner.setIcon(gift);
@@ -127,7 +131,7 @@ public class Procesador extends Thread{
                     var.guardarSerieJson(serieJose.getId(), serieJose.getNivelPrioridad(), serieJose.getNivelPrioridadInicio(), serieJose.getRodajePertenece(), serieJose.getDuracionMinutos(), serieJose.getContador(), serieJose.getPuntosPoder(), serieJose.getVida());
                 }
                 
-                else if(winnerProb<=0.66){
+                else if(serieGanadora.getRodajePertenece() == 2){
                     
                     if(x2==1){
                         ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/jeryr.gif"));
@@ -163,8 +167,7 @@ public class Procesador extends Thread{
                     }
                     
                 }
-                Serie serieGanadora = this.puntosPoderMasAlto();
-                System.out.println("Hay ganador" );
+//                System.out.println("Hay ganador" );
                 
                 try {
                     var.leerSerieJson(this.LOU, this.VELMA, this.OTRO);
@@ -184,7 +187,7 @@ public class Procesador extends Thread{
                 this.central.setText("EMPATE");
                 Administrador admin = new Administrador();
                 admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
-                System.out.println("Empataron");
+//                System.out.println("Empataron");
                 
 
             }else{
@@ -199,13 +202,13 @@ public class Procesador extends Thread{
                 this.central.setText("REFUERZO");
                 Administrador admin = new Administrador();
                 admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
-                System.out.println("Se mandaron a refuerzo");
+//                System.out.println("Se mandaron a refuerzo");
             }
             
             Thread.sleep(2000);
             
         }catch(Exception e){
-            System.out.println(e);
+//            System.out.println(e);
         }
         
         
@@ -249,8 +252,7 @@ public class Procesador extends Thread{
         }else if(this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder() && this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder()){
             return this.serieUseche;
             
-        }else{
-            
+        }else{            
             
             double randomDoubleTemp = (Math.random()*3);
             

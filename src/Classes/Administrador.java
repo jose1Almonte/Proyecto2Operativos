@@ -120,8 +120,6 @@ public class Administrador extends Thread{
                     this.encolarSerie(serieJose, serieAndy, serieUseche);
                     
                     
-                    
-                    System.out.print(serieJose.getId()+" "+serieAndy.getId()+" "+ serieUseche.getId());
                     variablesGenerales.numeroCiclos=0;
                 }
                 
@@ -150,7 +148,7 @@ public class Administrador extends Thread{
                 
                 
             }catch(Exception e){
-                System.out.println(e);
+//                System.out.println(e);
             }    
             
         }
@@ -213,7 +211,7 @@ public class Administrador extends Thread{
 
             }
         }catch(Exception e){
-            System.out.println(e);
+//            System.out.println(e);
         }
         
     }
