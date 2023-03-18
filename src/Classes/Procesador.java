@@ -170,11 +170,12 @@ public class Procesador extends Thread{
         
         if (this.probHayGanador(probBatalla)){
                 
+                Serie serieGanadora = this.simuladorBatalla();
+                
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
                 
-                Serie serieGanadora = this.puntosPoderMasAlto();
                 
                 System.out.println("RODAJE GANADOR: " + serieGanadora.getRodajePertenece());
                 
@@ -300,7 +301,7 @@ public class Procesador extends Thread{
      * Te indica cual serie, de las tres que pasaron, es la ganadora
      * @return Serie 
      */
-    public int simuladorBatalla() {
+    public Serie simuladorBatalla() {
         
 //        System.out.println("Jose: " + this.serieJose.getPuntosPoder());
 //        System.out.println("Andy: " + this.serieAndy.getPuntosPoder());
@@ -355,30 +356,14 @@ public class Procesador extends Thread{
            }
         
         if(campeonJose.getVida() > 0){
-            return this.serieJose.getId();
+            return this.serieJose;
             
         }else if(campeonAndy.getVida() > 0 ){
-            return this.serieAndy.getId();
+            return this.serieAndy;
             
         }else{            
             
-            double randomDoubleTemp = (Math.random()*3);
-            
-            
-            int randomTemp = (int) randomDoubleTemp;   
-            
-            
-            switch (randomTemp) {
-                case 1 -> {
-                    return this.serieAndy;
-                }
-                case 2 -> {
-                    return this.serieUseche;
-                }
-                default -> {
-                    return this.serieJose;
-                }
-            }
+            return this.serieUseche;
             
         }
         

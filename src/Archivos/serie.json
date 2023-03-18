@@ -52,3 +52,9 @@
 {"id":197,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":2,"duracionMinutos":63,"contador":0,"puntosPoder":30,"vida":26}
 {"id":200,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":172,"contador":0,"puntosPoder":51,"vida":194}
 {"id":205,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":155,"contador":0,"puntosPoder":51,"vida":246}
+{"id":208,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":96,"contador":0,"puntosPoder":51,"vida":228}
+{"id":211,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":114,"contador":0,"puntosPoder":51,"vida":70}
+{"id":214,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":129,"contador":0,"puntosPoder":51,"vida":138}
+{"id":224,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":96,"contador":0,"puntosPoder":51,"vida":134}
+{"id":227,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":97,"contador":0,"puntosPoder":51,"vida":145}
+{"id":242,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":135,"contador":0,"puntosPoder":50,"vida":135}

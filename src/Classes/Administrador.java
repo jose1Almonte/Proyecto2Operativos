@@ -213,7 +213,22 @@ public class Administrador extends Thread{
                           Administrador.colaNivel1Useche.addFirst(serieUsecheProcesador);
                }          
             }else{
-                       Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador, this.camp1,this.camp2,this.camp3,this.winner, this.central,this.LOU,this.VELMA,this.OTRO, this.serieJoseCombatiendo, this.serieAndyCombatiendo, this.serieUsecheCombatiendo, this.serieGanadoraText);
+                       Procesador IA = new Procesador(
+                               serieJoseProcesador, 
+                               serieAndyProcesador, 
+                               serieUsecheProcesador, 
+                               this.camp1,
+                               this.camp2,
+                               this.camp3,
+                               this.winner, 
+                               this.central,
+                               this.LOU,
+                               this.VELMA,
+                               this.OTRO, 
+                               this.serieJoseCombatiendo, 
+                               this.serieAndyCombatiendo, 
+                               this.serieUsecheCombatiendo, 
+                               this.serieGanadoraText);
                        
                        this.imprimirColas();
                        
