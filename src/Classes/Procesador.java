@@ -96,6 +96,8 @@ public class Procesador extends Thread{
 
 
             if (this.probHayGanador(probBatalla)){
+                       
+                int serieGanadora = simuladorBatalla(); 
                 
                 Thread.sleep(1000);
                 this.camp1.setIcon(null);
@@ -103,7 +105,7 @@ public class Procesador extends Thread{
                 this.camp3.setIcon(null);
                 
                 
-                int serieGanadora = simuladorBatalla(); 
+                
                 
                 if(serieGanadora == this.serieJose.getId()){
                     if(x1==1){

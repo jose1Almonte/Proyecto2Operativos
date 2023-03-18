@@ -49,3 +49,6 @@
 {"id":190,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":173,"contador":0,"puntosPoder":51,"vida":47}
 {"id":175,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":148,"contador":0,"puntosPoder":52,"vida":140}
 {"id":193,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":139,"contador":0,"puntosPoder":51,"vida":63}
+{"id":197,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":2,"duracionMinutos":63,"contador":0,"puntosPoder":30,"vida":26}
+{"id":200,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":172,"contador":0,"puntosPoder":51,"vida":194}
+{"id":205,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":155,"contador":0,"puntosPoder":51,"vida":246}
