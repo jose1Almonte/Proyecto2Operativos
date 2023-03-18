@@ -382,18 +382,21 @@ public class Administrador extends Thread{
             serieJose.setNivelPrioridad(1);
             serieJose.setNivelPrioridadInicio(1);
             serieJose.setDuracionMinutos( (int) (Math.random()*90 + 90));
-            serieJose.setPuntosPoder((int) (peleaProb3*2+5));
+            serieJose.setPuntosPoder((int) (peleaProb3*2+50));
+            serieJose.setVida((int) (peleaProb3*2+500));
         }else if(total >= 3){
             serieJose.setNivelPrioridad(2);
             serieJose.setNivelPrioridadInicio(2);
             serieJose.setDuracionMinutos( (int) (Math.random()*30 + 60));
-            serieJose.setPuntosPoder((int) (peleaProb3*2+3));
+            serieJose.setPuntosPoder((int) (peleaProb3*2+30));
+            serieJose.setVida((int) (peleaProb3*2+300));
             
         }else{
             serieJose.setNivelPrioridad(3);
             serieJose.setNivelPrioridadInicio(3);
             serieJose.setDuracionMinutos( (int) (Math.random()*60));
-            serieJose.setPuntosPoder((int) (peleaProb3*2+1));
+            serieJose.setPuntosPoder((int) (peleaProb3*2+10));
+            serieJose.setVida((int) (peleaProb3*2+100));
             
         }
         
@@ -457,17 +460,20 @@ public class Administrador extends Thread{
         if(total >= 5){
             serieAndy.setNivelPrioridad(1);
             serieAndy.setNivelPrioridadInicio(1);
-            serieAndy.setPuntosPoder((int) (peleaProb1*2+5));
+            serieAndy.setPuntosPoder((int) (peleaProb1*2+50));
+            serieAndy.setVida((int) (peleaProb1*2+500));
             serieAndy.setDuracionMinutos( (int) (Math.random()*90 + 90));
         }else if(total >= 3){
             serieAndy.setNivelPrioridad(2);
             serieAndy.setNivelPrioridadInicio(2);
-            serieAndy.setPuntosPoder((int) (peleaProb1*2+3));
+            serieAndy.setPuntosPoder((int) (peleaProb1*2+30));
+            serieAndy.setVida((int) (peleaProb1*2+300));
             serieAndy.setDuracionMinutos( (int) (Math.random()*30 + 60));
         }else{
             serieAndy.setNivelPrioridad(3);
             serieAndy.setNivelPrioridadInicio(3);
-            serieAndy.setPuntosPoder((int) (peleaProb1*2+1));
+            serieAndy.setPuntosPoder((int) (peleaProb1*2+10));
+            serieAndy.setVida((int) (peleaProb1*2+100));
             serieAndy.setDuracionMinutos( (int) (Math.random()*60 ));
             
         }
@@ -524,17 +530,20 @@ public class Administrador extends Thread{
         if(total == 5){
             serieUseche.setNivelPrioridad(1);
             serieUseche.setNivelPrioridadInicio(1);
-            serieUseche.setPuntosPoder((int) (peleaProb2*2+5));
+            serieUseche.setPuntosPoder((int) (peleaProb2*2+50));
+            serieUseche.setVida((int) (peleaProb2*2+500));
             serieUseche.setDuracionMinutos( (int) (Math.random()*90 + 90));
         }else if(total >= 3){
             serieUseche.setNivelPrioridad(2);
             serieUseche.setNivelPrioridadInicio(2);
-            serieUseche.setPuntosPoder((int) (peleaProb2*2+3));
+            serieUseche.setPuntosPoder((int) (peleaProb2*2+30));
+            serieUseche.setVida((int) (peleaProb2*2+300));
             serieUseche.setDuracionMinutos( (int) (Math.random()*30 + 60));
         }else{
             serieUseche.setNivelPrioridad(3);
             serieUseche.setNivelPrioridadInicio(3);
-            serieUseche.setPuntosPoder((int) (peleaProb2*2+1));
+            serieUseche.setPuntosPoder((int) (peleaProb2*2+10));
+            serieUseche.setVida((int) (peleaProb2*2+100));
             serieUseche.setDuracionMinutos( (int) (Math.random()*60));
             
         }

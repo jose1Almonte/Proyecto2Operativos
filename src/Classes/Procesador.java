@@ -5,6 +5,7 @@
 package Classes;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -299,20 +300,65 @@ public class Procesador extends Thread{
      * Te indica cual serie, de las tres que pasaron, es la ganadora
      * @return Serie 
      */
-    public Serie puntosPoderMasAlto(){
+    public int simuladorBatalla() {
         
 //        System.out.println("Jose: " + this.serieJose.getPuntosPoder());
 //        System.out.println("Andy: " + this.serieAndy.getPuntosPoder());
 //        System.out.println("Useche: " + this.serieUseche.getPuntosPoder());
+           Serie campeonJose = this.serieJose;
+           Serie campeonAndy = this.serieAndy;
+           Serie campeonUseche = this.serieUseche;
+           
+           Serie[] jugadores = {campeonJose,campeonAndy,campeonUseche};
+           Random rand = new Random();
+           
+           boolean listo = true;
+           while( listo){
+                      
+                      try {
+                                 Thread.sleep(500);
+                      } catch (InterruptedException ex) {
+                                 Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                      aleatarioJugadores(jugadores, rand);
+                      
+                      for (int i = 0; i < jugadores.length; i++) {
+                                 Serie atacante = jugadores[i];
+                                 
+                                 if (atacante.getVida() <= 0){
+                                            continue;
+                                 }
+                                 
+                                 Serie[] targets = elegirPersonajeObjetivo(jugadores, atacante);
+                                 int objetivoIndex  = rand.nextInt(targets.length);
+                                 Serie target = targets[objetivoIndex];
+                                 
+                                 
+                                 int damage = atacante.getPuntosPoder();
+                                 target.setVida(target.getVida()-damage);
+                                 
+                                 System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+                                 
+                                 if(target.getVida() <= 0){
+                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
+                                 }
+                                 if(todosCampeonesMuertos(jugadores)){
+                                            System.out.println("tenemos un ganador ");
+                                            listo = false;
+                                 }
+                      }
+                                 
+                              
+//                      atacar ( this.serieJose, this.serieAndy, this.serieUseche);
+//                      atacar ( this.serieAndy, this.serieJose, this.serieUseche);
+//                      atacar ( this.serieUseche, this.serieJose, this.serieAndy );
+           }
         
-        if(this.serieJose.getPuntosPoder() > this.serieAndy.getPuntosPoder() && this.serieJose.getPuntosPoder() > this.serieUseche.getPuntosPoder()){
-            return this.serieJose;
+        if(campeonJose.getVida() > 0){
+            return this.serieJose.getId();
             
-        }else if(this.serieAndy.getPuntosPoder() > this.serieJose.getPuntosPoder() && this.serieAndy.getPuntosPoder() > this.serieUseche.getPuntosPoder()){
-            return this.serieAndy;
-            
-        }else if(this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder() && this.serieUseche.getPuntosPoder() > this.serieJose.getPuntosPoder()){
-            return this.serieUseche;
+        }else if(campeonAndy.getVida() > 0 ){
+            return this.serieAndy.getId();
             
         }else{            
             
@@ -336,7 +382,45 @@ public class Procesador extends Thread{
             
         }
         
+   
     }
+    
+    public static <T> void aleatarioJugadores(T[] lista, Random rand){
+               for(int i = lista.length-1; i >0; i--){
+                          int j = rand.nextInt(i + 1);
+                          T temp = lista[i];
+                          lista[i] = lista[j];
+                          lista[j] = temp;
+               }
+    }
+    
+    public static Serie[] elegirPersonajeObjetivo(Serie[] campeones, Serie campeon) {
+        Serie[] otrosCampeones = new Serie[campeones.length - 1];
+        int j = 0;
+        for (int i = 0; i < campeones.length; i++) {
+            if (campeones[i] != campeon) {
+                otrosCampeones[j++] = campeones[i];
+            }
+        }
+        return otrosCampeones;
+    }
+    
+    public static boolean todosCampeonesMuertos(Serie[] campeones) {
+        int muertos = 0;
+        for (int i = 0; i < campeones.length; i++) {
+            if (campeones[i].getVida() < 0) {
+                muertos++;
+            }
+        }
+        if(muertos >= 2){
+                   return true;
+        }
+               return false;
+    }
+    
+    
+    
+    
 
     /**
      * @return the camp1
@@ -393,6 +477,12 @@ public class Procesador extends Thread{
     public void setWinner(javax.swing.JLabel winner) {
         this.winner = winner;
     }
+    
+
+
+    
+    
+    
     
     
     
