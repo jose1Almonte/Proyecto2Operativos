@@ -26,7 +26,7 @@ public Administrador admin;
         this.Camp1.setIcon(null);
         this.Camp2.setIcon(null);
         this.Camp3.setIcon(null);
-        ImageIcon giftInicio = new ImageIcon(getClass().getResource("/Imagenes/chill.gif"));
+        ImageIcon giftInicio = new ImageIcon("/Imagenes/chill.gif");
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         this.Central.setText("BIENVENIDO");
@@ -458,8 +458,7 @@ public Administrador admin;
         Central.setText("jLabel50");
         jPanel4.add(Central, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
-        winner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/21.gif"))); // NOI18N
-        winner.setText("W");
+        winner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/chill.gif"))); // NOI18N
         jPanel4.add(winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
 
         Camp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/10.gif"))); // NOI18N
