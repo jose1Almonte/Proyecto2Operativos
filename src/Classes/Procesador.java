@@ -79,7 +79,7 @@ public class Procesador extends Thread{
                 x2=1;
             }
             else{
-                ImageIcon gift2 = new ImageIcon(getClass().getResource("/Imagenes/6.gif"));
+                ImageIcon gift2 = new ImageIcon(getClass().getResource("/Imagenes/Summer2.gif"));
                 this.camp2.setIcon(gift2);
                 this.camp2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 x2=2;
@@ -102,7 +102,7 @@ public class Procesador extends Thread{
 
             if (this.probHayGanador(probBatalla)){
                 
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
@@ -172,7 +172,7 @@ public class Procesador extends Thread{
         }
 
             }else if(this.probHayEmpate(probBatalla)){
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
@@ -189,7 +189,7 @@ public class Procesador extends Thread{
             }else{
 
     //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
