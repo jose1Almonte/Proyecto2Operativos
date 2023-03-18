@@ -21,6 +21,7 @@ public class Procesador extends Thread{
     private javax.swing.JLabel camp3;
     private javax.swing.JLabel winner;
     private javax.swing.JLabel central;
+    variablesGenerales var=new variablesGenerales();
             
     
     public Procesador(Serie serieJose, Serie serieAndy, Serie serieUseche,javax.swing.JLabel camp1, javax.swing.JLabel camp2, javax.swing.JLabel camp3, javax.swing.JLabel winner,javax.swing.JLabel central ){
@@ -32,6 +33,7 @@ public class Procesador extends Thread{
         this.camp3=camp3;
         this.winner=winner;
         this.central=central;
+        
     }
     
     @Override
@@ -104,6 +106,8 @@ public class Procesador extends Thread{
                         this.winner.setIcon(gift);
                         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                         this.central.setText("Ganador RICK");
+                        
+                        
                     }
                     else if(x1==2){
                         
@@ -111,7 +115,9 @@ public class Procesador extends Thread{
                         this.winner.setIcon(gift);
                         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                         this.central.setText("Ganador MORTY");
+                        
                     }
+                    var.guardarSerieJson(serieJose.getId(), serieJose.getNivelPrioridad(), serieJose.getNivelPrioridadInicio(), serieJose.getRodajePertenece(), serieJose.getDuracionMinutos(), serieJose.getContador(), serieJose.getPuntosPoder(), serieJose.getVida());
                 }
                 
                 else if(winnerProb<=0.66){
@@ -129,6 +135,7 @@ public class Procesador extends Thread{
                         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                         this.central.setText("Ganadora SUMMER");
                     }
+                    var.guardarSerieJson(serieAndy.getId(), serieAndy.getNivelPrioridad(), serieAndy.getNivelPrioridadInicio(), serieAndy.getRodajePertenece(), serieAndy.getDuracionMinutos(), serieAndy.getContador(), serieAndy.getPuntosPoder(), serieAndy.getVida());
                 }
                 else{
                     if(x3==1){
@@ -136,6 +143,7 @@ public class Procesador extends Thread{
                         this.winner.setIcon(gift);
                         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                         this.central.setText("Ganador BIRD PERSON");
+                        var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
                     }
                     else if(x3==2){
                         
@@ -143,7 +151,10 @@ public class Procesador extends Thread{
                         this.winner.setIcon(gift);
                         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                         this.central.setText("Ganadora BETH");
+                        var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
+                        
                     }
+                    
                 }
                 Serie serieGanadora = this.puntosPoderMasAlto();
                 System.out.println("Hay ganador" );

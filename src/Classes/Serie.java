@@ -28,6 +28,16 @@ public class Serie {
         
     }
     
+     public Serie(int id, int nivelPrioridad, int nivelPrioridadInicio, int rodajePertenece, int duracionMinutos, int contador, int puntosPoder, int vida){
+        this.id=id;
+        this.nivelPrioridad=nivelPrioridad;
+        this.nivelPrioridadInicio=nivelPrioridadInicio;
+        this.rodajePertenece=rodajePertenece;
+        this.duracionMinutos=duracionMinutos;
+        this.contador = contador;
+        this.puntosPoder=puntosPoder;
+        this.vida = vida;
+    }
 
     /**
      * @return the id

@@ -585,6 +585,7 @@ public Administrador admin;
         catch(Exception e){
             System.out.print("Error");
             this.botonEmpezar.setEnabled(true);
+            this.Central.setText("ERROR");
         }
         
     }//GEN-LAST:event_botonEmpezarActionPerformed

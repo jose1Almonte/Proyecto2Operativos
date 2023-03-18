@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.concurrent.Semaphore;
 
@@ -60,4 +61,20 @@ public class variablesGenerales {
         }
         return co;
     }
+    
+    public void guardarSerieJson(int id, int nivelPrioridad, int nivelPrioridadInicio, int rodajePertenece, int duracionMinutos, int contador, int puntosPoder, int vida) throws IOException{
+        
+        Serie ser = new Serie(id, nivelPrioridad, nivelPrioridadInicio, rodajePertenece, duracionMinutos, contador, puntosPoder, vida);
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(ser);
+        FileWriter fileWriter = new FileWriter("src\\Archivos\\serie.json",true);
+        try (PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            printWriter.print(jsonString);
+            printWriter.println();
+        } 
+
+        
+    }
+    
+    
 }
