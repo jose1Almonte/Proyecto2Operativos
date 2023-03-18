@@ -100,9 +100,9 @@ public class Procesador extends Thread{
             double probBatalla = Math.random();
 
 
+            Thread.sleep(2000);
             if (this.probHayGanador(probBatalla)){
                 
-                Thread.sleep(2000);
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
@@ -165,6 +165,7 @@ public class Procesador extends Thread{
                 }
                 Serie serieGanadora = this.puntosPoderMasAlto();
                 System.out.println("Hay ganador" );
+                
                 try {
                     var.leerSerieJson(this.LOU, this.VELMA, this.OTRO);
                 } catch (IOException ex) {
@@ -172,7 +173,6 @@ public class Procesador extends Thread{
         }
 
             }else if(this.probHayEmpate(probBatalla)){
-                Thread.sleep(2000);
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
@@ -185,11 +185,11 @@ public class Procesador extends Thread{
                 Administrador admin = new Administrador();
                 admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
                 System.out.println("Empataron");
+                
 
             }else{
 
     //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
-                Thread.sleep(2000);
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
@@ -201,6 +201,8 @@ public class Procesador extends Thread{
                 admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
                 System.out.println("Se mandaron a refuerzo");
             }
+            
+            Thread.sleep(2000);
             
         }catch(Exception e){
             System.out.println(e);
