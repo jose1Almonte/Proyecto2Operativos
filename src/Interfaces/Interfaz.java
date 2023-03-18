@@ -530,7 +530,7 @@ public Administrador admin;
 
         serieGanadora.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieGanadora.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(serieGanadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, -1, -1));
+        jPanel4.add(serieGanadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 380, 20));
 
         serieAndyCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieAndyCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
