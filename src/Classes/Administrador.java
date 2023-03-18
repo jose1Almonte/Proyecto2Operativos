@@ -34,13 +34,35 @@ public class Administrador extends Thread{
     public static LinkedList colaRefuerzoUseche = new LinkedList();
     
     javax.swing.JTextField colaNivel1JoseTextField;
+    javax.swing.JTextField colaNivel2JoseTextField;
+    javax.swing.JTextField colaNivel3JoseTextField;
+    javax.swing.JTextField colaRefuerzoJoseTextField;
+    javax.swing.JTextField colaNivel1AndyTextField;
+    javax.swing.JTextField colaNivel2AndyTextField;
+    javax.swing.JTextField colaNivel3AndyTextField;
+    javax.swing.JTextField colaRefuerzoAndyTextField;
+    javax.swing.JTextField colaNivel1UsecheTextField;
+    javax.swing.JTextField colaNivel2UsecheTextField;
+    javax.swing.JTextField colaNivel3UsecheTextField;
+    javax.swing.JTextField colaRefuerzoUsecheTextField;
     
     public Administrador(){
         
     }
     
-    public Administrador(javax.swing.JTextField colaNivel1JoseTextField){
+    public Administrador(javax.swing.JTextField colaNivel1JoseTextField, javax.swing.JTextField colaNivel2JoseTextField,javax.swing.JTextField colaNivel3JoseTextField,javax.swing.JTextField colaRefuerzoJoseTextField,     javax.swing.JTextField colaNivel1AndyTextField, javax.swing.JTextField colaNivel2AndyTextField, javax.swing.JTextField colaNivel3AndyTextField, javax.swing.JTextField colaRefuerzoAndyTextField,     javax.swing.JTextField colaNivel1UsecheTextField, javax.swing.JTextField colaNivel2UsecheTextField, javax.swing.JTextField colaNivel3UsecheTextField, javax.swing.JTextField colaRefuerzoUsecheTextField){
         this.colaNivel1JoseTextField = colaNivel1JoseTextField;
+        this.colaNivel2JoseTextField = colaNivel2JoseTextField;
+        this.colaNivel3JoseTextField = colaNivel2JoseTextField;
+        this.colaRefuerzoJoseTextField = colaRefuerzoJoseTextField;
+        this.colaNivel1AndyTextField = colaNivel1AndyTextField;
+        this.colaNivel2AndyTextField = colaNivel2AndyTextField;
+        this.colaNivel3AndyTextField = colaNivel3AndyTextField;
+        this.colaRefuerzoAndyTextField = colaRefuerzoAndyTextField;
+        this.colaNivel1UsecheTextField = colaNivel1UsecheTextField;
+        this.colaNivel2UsecheTextField = colaNivel2UsecheTextField;
+        this.colaNivel3UsecheTextField = colaNivel3UsecheTextField;
+        this.colaRefuerzoUsecheTextField = colaRefuerzoUsecheTextField;
     }
     
     @Override
@@ -72,9 +94,8 @@ public class Administrador extends Thread{
                 Serie serieUsecheProcesador = this.CampeonUseche();
 
                 this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
-                
-                this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
-                
+                this.sumar1ContadorSeries();
+                this.ImprimirColas();
                 variablesGenerales.numeroCiclos=variablesGenerales.numeroCiclos+1;
                 
                 
@@ -117,7 +138,8 @@ public class Administrador extends Thread{
             }else{
                        Procesador IA = new Procesador(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
                        IA.start();
-
+                       
+                       this.ImprimirColas();
                        variablesGenerales.darPasoAdmin.acquire(1);
 
 
@@ -730,7 +752,7 @@ public class Administrador extends Thread{
         textField.setText("");
         
         for (int i = 0; i < sizeCola; i++){
-            textField.setText(textField.getText() + " (" + arrayTemp[i].getRodajePertenece() + ", rodaje: " + arrayTemp[i].getContador() + ", ptos poder: "  + arrayTemp[i].getPuntosPoder() + " ), " );
+            textField.setText(" (" + arrayTemp[i].getId() + ", rodaje: " + arrayTemp[i].getRodajePertenece() + ", Contador "  + arrayTemp[i].getContador() + " ),  " + textField.getText()  );
         }
     }
 
@@ -769,6 +791,23 @@ public class Administrador extends Thread{
             
             
             
+    }
+    
+    
+    public void ImprimirColas(){
+                
+               this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
+                this.imprimirCola(Administrador.colaNivel2Jose, this.colaNivel2JoseTextField);
+                this.imprimirCola(Administrador.colaNivel3Jose, this.colaNivel3JoseTextField);
+                this.imprimirCola(Administrador.colaRefuerzoJose, this.colaRefuerzoJoseTextField);
+                this.imprimirCola(Administrador.colaNivel1Andy, this.colaNivel1AndyTextField);
+                this.imprimirCola(Administrador.colaNivel2Andy, this.colaNivel2AndyTextField);
+                this.imprimirCola(Administrador.colaNivel3Andy, this.colaNivel3AndyTextField);
+                this.imprimirCola(Administrador.colaRefuerzoAndy, this.colaRefuerzoAndyTextField);
+                this.imprimirCola(Administrador.colaNivel1Useche, this.colaNivel1UsecheTextField);
+                this.imprimirCola(Administrador.colaNivel2Useche, this.colaNivel2UsecheTextField);
+                this.imprimirCola(Administrador.colaNivel3Useche, this.colaNivel3UsecheTextField);
+                this.imprimirCola(Administrador.colaRefuerzoUseche, this.colaRefuerzoUsecheTextField);
     }
 
     /**
