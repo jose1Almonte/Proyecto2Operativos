@@ -7,6 +7,7 @@ package Interfaces;
 import Classes.Administrador;
 import Classes.variablesGenerales;
 import java.awt.Color;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -23,6 +24,15 @@ public Administrador admin;
      */
     public Interfaz() {
         initComponents();
+        variablesGenerales var =new variablesGenerales();
+        try {
+            var.leerSerieJson(this.LOU,this.VELMA,this.OTRO);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         this.Camp1.setIcon(null);
         this.Camp2.setIcon(null);
         this.Camp3.setIcon(null);
@@ -30,7 +40,30 @@ public Administrador admin;
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         this.Central.setText("BIENVENIDO");
-        admin = new Administrador(this.colaNivel1JoseTextField, this.colaNivel2JoseTextField, this.colaNivel3JoseTextField, this.colaRefuerzoJoseTextField, this.colaNivel1AndyTextField, this.colaNivel2AndyTextField,this.colaNivel3AndyTextField,this.colaRefuerzoAndyTextField,this.colaNivel1UsecheTextField,this.colaNivel2UsecheTextField,this.colaNivel3UsecheTextField,this.colaRefuerzoUsecheTextField, this.Camp1,this.Camp2,this.Camp3,this.winner,this.Central);
+        admin = new Administrador(this.colaNivel1JoseTextField,
+                this.colaNivel2JoseTextField,
+                this.colaNivel3JoseTextField,
+                this.colaRefuerzoJoseTextField,
+                this.colaNivel1AndyTextField,
+                this.colaNivel2AndyTextField,
+                this.colaNivel3AndyTextField,
+                this.colaRefuerzoAndyTextField,
+                this.colaNivel1UsecheTextField,
+                this.colaNivel2UsecheTextField,
+                this.colaNivel3UsecheTextField,
+                this.colaRefuerzoUsecheTextField, 
+                this.Camp1,
+                this.Camp2,
+                this.Camp3,
+                this.winner,
+                this.Central,
+                this.LOU,
+                this.VELMA,
+                this.OTRO, 
+                this.serieJoseCombatiendo, 
+                this.serieAndyCombatiendo, 
+                this.serieUsecheCombatiendo, 
+                this.serieGanadora);
     }
 
     /**
@@ -61,6 +94,8 @@ public Administrador admin;
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
+        OTRO = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -68,6 +103,8 @@ public Administrador admin;
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        LOU = new javax.swing.JLabel();
         colaNivel3JoseTextField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -81,6 +118,7 @@ public Administrador admin;
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         colaRefuerzoAndyTextField = new javax.swing.JTextField();
@@ -96,14 +134,21 @@ public Administrador admin;
         jLabel36 = new javax.swing.JLabel();
         colaNivel1AndyTextField = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
+        VELMA = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
         botonEmpezar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        serieGanadora = new javax.swing.JLabel();
+        serieAndyCombatiendo = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         Central = new javax.swing.JLabel();
+        serieJoseCombatiendo = new javax.swing.JLabel();
+        serieUsecheCombatiendo = new javax.swing.JLabel();
         winner = new javax.swing.JLabel();
         Camp2 = new javax.swing.JLabel();
         Camp1 = new javax.swing.JLabel();
@@ -130,7 +175,7 @@ public Administrador admin;
         jLabel15.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Head");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 30, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 30, -1));
 
         colaRefuerzoUsecheTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaRefuerzoUsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -146,12 +191,12 @@ public Administrador admin;
         jLabel17.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Tail");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Tail");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
 
         colaNivel3UsecheTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel3UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -167,7 +212,7 @@ public Administrador admin;
         jLabel19.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Head");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 30, -1));
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 30, -1));
 
         jLabel20.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -183,7 +228,7 @@ public Administrador admin;
         jLabel21.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Head");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 30, -1));
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 30, -1));
 
         jLabel22.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
@@ -193,7 +238,7 @@ public Administrador admin;
         jLabel23.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Head");
-        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 30, -1));
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 30, -1));
 
         colaNivel1UsecheTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel1UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -214,12 +259,22 @@ public Administrador admin;
         jLabel26.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Tail");
-        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
 
         jLabel27.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Tail");
-        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
+
+        OTRO.setBackground(new java.awt.Color(255, 255, 255));
+        OTRO.setForeground(new java.awt.Color(255, 255, 255));
+        OTRO.setText("jLabel50");
+        jPanel2.add(OTRO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+
+        jLabel56.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel56.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel56.setText("ganadoras:");
+        jPanel2.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
         jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         jPanel2.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 280));
@@ -232,7 +287,7 @@ public Administrador admin;
         jLabel12.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Tail");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 30, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 30, -1));
 
         colaRefuerzoJoseTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaRefuerzoJoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -253,12 +308,22 @@ public Administrador admin;
         jLabel10.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Head");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Head");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
+
+        jLabel50.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("ganadoras:");
+        jPanel1.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        LOU.setBackground(new java.awt.Color(255, 255, 255));
+        LOU.setForeground(new java.awt.Color(255, 255, 255));
+        LOU.setText("jLabel50");
+        jPanel1.add(LOU, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
         colaNivel3JoseTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel3JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -269,7 +334,7 @@ public Administrador admin;
         jLabel11.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Tail");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 30, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 30, -1));
 
         jLabel3.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -285,7 +350,7 @@ public Administrador admin;
         jLabel9.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Tail");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 30, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 30, -1));
 
         jLabel1.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,7 +360,7 @@ public Administrador admin;
         jLabel13.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Tail");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 30, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 30, -1));
 
         colaNivel1JoseTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel1JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -321,15 +386,20 @@ public Administrador admin;
         jLabel5.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Head");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Head");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
 
         jLabel45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 280));
+
+        jLabel51.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel51.setText("ganadoras:");
+        jPanel1.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 380, 280));
 
@@ -339,7 +409,7 @@ public Administrador admin;
         jLabel28.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Tail");
-        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 30, -1));
+        jPanel3.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 30, -1));
 
         colaRefuerzoAndyTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaRefuerzoAndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -355,12 +425,12 @@ public Administrador admin;
         jLabel30.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Head");
-        jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
+        jPanel3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, -1, -1));
 
         jLabel31.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Head");
-        jPanel3.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+        jPanel3.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
         colaNivel3AndyTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel3AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -371,7 +441,7 @@ public Administrador admin;
         jLabel32.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("Tail");
-        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 30, -1));
+        jPanel3.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 30, -1));
 
         jLabel33.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
@@ -387,7 +457,7 @@ public Administrador admin;
         jLabel34.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Tail");
-        jPanel3.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 30, -1));
+        jPanel3.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, 30, -1));
 
         jLabel35.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
@@ -397,7 +467,7 @@ public Administrador admin;
         jLabel36.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Tail");
-        jPanel3.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 30, -1));
+        jPanel3.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 30, -1));
 
         colaNivel1AndyTextField.setBackground(new java.awt.Color(204, 255, 255));
         colaNivel1AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -415,6 +485,11 @@ public Administrador admin;
         jLabel37.setText("Cola de Nivel 1");
         jPanel3.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
+        jLabel55.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel55.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel55.setText("ganadoras:");
+        jPanel3.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+
         jLabel38.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("VELMA (2)");
@@ -423,15 +498,23 @@ public Administrador admin;
         jLabel39.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setText("Head");
-        jPanel3.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
+        jPanel3.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
         jLabel40.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setText("Head");
-        jPanel3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, -1, -1));
+        jPanel3.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
+
+        VELMA.setBackground(new java.awt.Color(255, 255, 255));
+        VELMA.setForeground(new java.awt.Color(255, 255, 255));
+        VELMA.setText("jLabel50");
+        jPanel3.add(VELMA, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
         jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         jPanel3.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 280));
+
+        jLabel53.setText("jLabel53");
+        jPanel3.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 380, 280));
 
@@ -445,6 +528,14 @@ public Administrador admin;
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        serieGanadora.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        serieGanadora.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(serieGanadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 380, 20));
+
+        serieAndyCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        serieAndyCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(serieAndyCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, -1, -1));
+
         jLabel47.setFont(new java.awt.Font("Hack NF", 1, 24)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -457,6 +548,14 @@ public Administrador admin;
         Central.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Central.setText("jLabel50");
         jPanel4.add(Central, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
+
+        serieJoseCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        serieJoseCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(serieJoseCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        serieUsecheCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        serieUsecheCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(serieUsecheCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, -1, -1));
 
         winner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/chill.gif"))); // NOI18N
         jPanel4.add(winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
@@ -564,6 +663,7 @@ public Administrador admin;
 
     private void botonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEmpezarActionPerformed
 
+        
         this.botonEmpezar.setEnabled(false);
         this.botonParar.setEnabled(true);
         
@@ -571,7 +671,30 @@ public Administrador admin;
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
             admin.setCiclo(tiempo);
             if(admin.isKeep()==false){
-                admin = new Administrador(this.colaNivel1JoseTextField, this.colaNivel2JoseTextField, this.colaNivel3JoseTextField, this.colaRefuerzoJoseTextField, this.colaNivel1AndyTextField, this.colaNivel2AndyTextField,this.colaNivel3AndyTextField,this.colaRefuerzoAndyTextField,this.colaNivel1UsecheTextField,this.colaNivel2UsecheTextField,this.colaNivel3UsecheTextField,this.colaRefuerzoUsecheTextField, this.Camp1,this.Camp2,this.Camp3,this.winner, this.Central);
+                admin = new Administrador(this.colaNivel1JoseTextField, 
+                        this.colaNivel2JoseTextField, 
+                        this.colaNivel3JoseTextField, 
+                        this.colaRefuerzoJoseTextField, 
+                        this.colaNivel1AndyTextField, 
+                        this.colaNivel2AndyTextField,
+                        this.colaNivel3AndyTextField,
+                        this.colaRefuerzoAndyTextField,
+                        this.colaNivel1UsecheTextField,
+                        this.colaNivel2UsecheTextField,
+                        this.colaNivel3UsecheTextField,
+                        this.colaRefuerzoUsecheTextField, 
+                        this.Camp1,
+                        this.Camp2,
+                        this.Camp3,
+                        this.winner, 
+                        this.Central,
+                        this.LOU,
+                        this.VELMA,
+                        this.OTRO, 
+                        this.serieJoseCombatiendo, 
+                        this.serieAndyCombatiendo, 
+                        this.serieUsecheCombatiendo, 
+                        this.serieGanadora);
                 admin.setKeep(true);
                 admin.setCiclo(tiempo);
                 admin.start();
@@ -600,7 +723,7 @@ public Administrador admin;
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -656,6 +779,9 @@ public Administrador admin;
     private javax.swing.JLabel Camp2;
     private javax.swing.JLabel Camp3;
     private javax.swing.JLabel Central;
+    private javax.swing.JLabel LOU;
+    private javax.swing.JLabel OTRO;
+    private javax.swing.JLabel VELMA;
     private javax.swing.JButton botonEmpezar;
     private javax.swing.JButton botonParar;
     private javax.swing.JTextField colaNivel1AndyTextField;
@@ -715,8 +841,13 @@ public Administrador admin;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -725,6 +856,10 @@ public Administrador admin;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel serieAndyCombatiendo;
+    private javax.swing.JLabel serieGanadora;
+    private javax.swing.JLabel serieJoseCombatiendo;
+    private javax.swing.JLabel serieUsecheCombatiendo;
     private javax.swing.JTextField tiempoSegundosTextField;
     private javax.swing.JLabel winner;
     // End of variables declaration//GEN-END:variables
