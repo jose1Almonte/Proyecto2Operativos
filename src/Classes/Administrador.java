@@ -7,6 +7,7 @@ package Classes;
 import Proyecto2Operativos.Proyectos2Operativos;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.Clip;
 
 
 
@@ -56,7 +57,7 @@ public class Administrador extends Thread{
     private javax.swing.JLabel LOU;
     private javax.swing.JLabel VELMA;
     private javax.swing.JLabel OTRO;
-    
+    Clip clip4;
     javax.swing.JLabel serieJoseCombatiendo;
     javax.swing.JLabel serieAndyCombatiendo;
     javax.swing.JLabel serieUsecheCombatiendo;
@@ -86,7 +87,7 @@ public class Administrador extends Thread{
             javax.swing.JLabel serieJoseCombatiendo, 
             javax.swing.JLabel serieAndyCombatiendo, 
             javax.swing.JLabel serieUsecheCombatiendo, 
-            javax.swing.JLabel serieGanadoraText
+            javax.swing.JLabel serieGanadoraText,Clip clip4
             ){
         this.colaNivel1JoseTextField = colaNivel1JoseTextField;
         this.colaNivel2JoseTextField = colaNivel2JoseTextField;
@@ -112,7 +113,7 @@ public class Administrador extends Thread{
         this.serieAndyCombatiendo = serieAndyCombatiendo;
         this.serieUsecheCombatiendo = serieUsecheCombatiendo;
         this.serieGanadoraText = serieGanadoraText;
-        
+        this.clip4=clip4;
                 
     }
     
@@ -121,11 +122,11 @@ public class Administrador extends Thread{
         
         
         while(isKeep()){
-                   
             try{
                 Thread.sleep(ciclo*1000);
                 
                 if(variablesGenerales.numeroCiclos==2){
+                   
                     Serie serieJose = new Serie();
                     Serie serieAndy = new Serie();
                     Serie serieUseche = new Serie();
@@ -146,8 +147,7 @@ public class Administrador extends Thread{
                 Serie serieAndyProcesador = this.CampeonAndy();
                 Serie serieUsecheProcesador = this.CampeonUseche();
                 
-                
-                this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador);
+                this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador,clip4);
                 
                 this.sumar1ContadorSeries();
                 
@@ -160,13 +160,12 @@ public class Administrador extends Thread{
                 
                 variablesGenerales.numeroCiclos++;
                 
-                
-                
             }catch(Exception e){
 //                System.out.println(e);
             }    
             
         }
+        
     }
     
     public void imprimirColas(){
@@ -191,7 +190,7 @@ public class Administrador extends Thread{
      * @param serieAndyProcesador
      * @param serieUsecheProcesador 
      */
-    public void seriesALaIA(Serie serieJoseProcesador, Serie serieAndyProcesador, Serie serieUsecheProcesador){
+    public void seriesALaIA(Serie serieJoseProcesador, Serie serieAndyProcesador, Serie serieUsecheProcesador, Clip clip4){
         
         try{
             
@@ -228,14 +227,13 @@ public class Administrador extends Thread{
                                this.serieJoseCombatiendo, 
                                this.serieAndyCombatiendo, 
                                this.serieUsecheCombatiendo, 
-                               this.serieGanadoraText);
-                       
+                               this.serieGanadoraText,this.clip4);
+                               
                        this.imprimirColas();
                        
                        IA.start();
                        
                        
-                       variablesGenerales.darPasoAdmin.acquire(1);
                        
                        this.imprimirColas();
 

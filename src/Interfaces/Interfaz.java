@@ -7,9 +7,15 @@ package Interfaces;
 import Classes.Administrador;
 import Classes.variablesGenerales;
 import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
 /**
@@ -19,11 +25,29 @@ import javax.swing.ImageIcon;
 
 public class Interfaz extends javax.swing.JFrame {
 public Administrador admin; 
-    /**
-     * Creates new form Interfaz
-     */
-    public Interfaz() {
+    Clip clip = AudioSystem.getClip();
+    Clip clip2 = AudioSystem.getClip();
+    Clip clip4;
+    public Interfaz() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         initComponents();
+        File audio = new File("src\\Archivos\\intro.wav");
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
+        clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+            
+        File audio4 = new File("src\\Archivos\\pelea.wav");
+        AudioInputStream audioStream4 = AudioSystem.getAudioInputStream(audio4);
+        clip4 = AudioSystem.getClip();
+        clip4.open(audioStream4);
+        
+        
+        File audio2 = new File("src\\Archivos\\Boring.wav");
+        AudioInputStream audioStream2 = AudioSystem.getAudioInputStream(audio2);
+        clip2 = AudioSystem.getClip();
+        clip2.open(audioStream2);
+        
+        
         variablesGenerales var =new variablesGenerales();
         try {
             var.leerSerieJson(this.LOU,this.VELMA,this.OTRO);
@@ -63,7 +87,7 @@ public Administrador admin;
                 this.serieJoseCombatiendo, 
                 this.serieAndyCombatiendo, 
                 this.serieUsecheCombatiendo, 
-                this.serieGanadora);
+                this.serieGanadora,clip4);
     }
 
     /**
@@ -662,8 +686,10 @@ public Administrador admin;
     }//GEN-LAST:event_colaNivel3UsecheTextFieldActionPerformed
 
     private void botonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEmpezarActionPerformed
-
         
+        this.clip.stop();
+        this.clip2.stop();
+        clip4.loop(Clip.LOOP_CONTINUOUSLY);
         this.botonEmpezar.setEnabled(false);
         this.botonParar.setEnabled(true);
         
@@ -694,7 +720,9 @@ public Administrador admin;
                         this.serieJoseCombatiendo, 
                         this.serieAndyCombatiendo, 
                         this.serieUsecheCombatiendo, 
-                        this.serieGanadora);
+                        this.serieGanadora,
+                        this.clip4
+                );
                 admin.setKeep(true);
                 admin.setCiclo(tiempo);
                 admin.start();
@@ -709,11 +737,15 @@ public Administrador admin;
             this.botonEmpezar.setEnabled(true);
             this.Central.setText("ERROR");
         }
-        
+  
     }//GEN-LAST:event_botonEmpezarActionPerformed
 
     private void botonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPararActionPerformed
+        
+        
         admin.setKeep(false);
+        this.clip4.stop();
+        clip2.loop(Clip.LOOP_CONTINUOUSLY);
         this.botonEmpezar.setEnabled(true);
         this.Camp1.setIcon(null);
         this.Camp2.setIcon(null);
@@ -735,7 +767,6 @@ public Administrador admin;
         this.Central.setText("");
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        
         
     }//GEN-LAST:event_botonPararActionPerformed
 
@@ -769,7 +800,15 @@ public Administrador admin;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz().setVisible(true);
+                try {
+                    new Interfaz().setVisible(true);
+                } catch (UnsupportedAudioFileException ex) {
+                    Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

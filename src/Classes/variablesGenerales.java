@@ -27,6 +27,7 @@ public class variablesGenerales {
     private javax.swing.JLabel OTRO;
     public static Semaphore darPasoIA = new Semaphore(0);
     public static Semaphore darPasoAdmin = new Semaphore(0);
+    public static Semaphore stop = new Semaphore(1);
     
     public static int numeroCiclos = 0;
     
