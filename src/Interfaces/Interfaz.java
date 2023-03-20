@@ -756,6 +756,8 @@ public Administrador admin;
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         try {
             Thread.sleep(2000);
+            this.clip4.stop();
+            clip2.loop(Clip.LOOP_CONTINUOUSLY);
         } catch (InterruptedException ex) {
             Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
         }
