@@ -233,6 +233,7 @@ public class Administrador extends Thread{
                        
                        IA.start();
                        
+                       variablesGenerales.darPasoAdmin.acquire();
                        
                        
                        this.imprimirColas();
