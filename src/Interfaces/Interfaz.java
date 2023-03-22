@@ -236,6 +236,7 @@ public Administrador admin;
         colaRefuerzoUsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaRefuerzoUsecheTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaRefuerzoUsecheTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaRefuerzoUsecheTextField.setEnabled(false);
         jPanel2.add(colaRefuerzoUsecheTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 300, -1));
 
         jLabel16.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -257,6 +258,7 @@ public Administrador admin;
         colaNivel3UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel3UsecheTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel3UsecheTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel3UsecheTextField.setEnabled(false);
         colaNivel3UsecheTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colaNivel3UsecheTextFieldActionPerformed(evt);
@@ -278,6 +280,7 @@ public Administrador admin;
         colaNivel2UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel2UsecheTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel2UsecheTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel2UsecheTextField.setEnabled(false);
         jPanel2.add(colaNivel2UsecheTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 300, -1));
 
         jLabel21.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -299,6 +302,7 @@ public Administrador admin;
         colaNivel1UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel1UsecheTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel1UsecheTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel1UsecheTextField.setEnabled(false);
         jPanel2.add(colaNivel1UsecheTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 300, -1));
 
         jLabel24.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -348,6 +352,7 @@ public Administrador admin;
         colaRefuerzoJoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaRefuerzoJoseTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaRefuerzoJoseTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaRefuerzoJoseTextField.setEnabled(false);
         colaRefuerzoJoseTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colaRefuerzoJoseTextFieldActionPerformed(evt);
@@ -384,6 +389,7 @@ public Administrador admin;
         colaNivel3JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel3JoseTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel3JoseTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel3JoseTextField.setEnabled(false);
         jPanel1.add(colaNivel3JoseTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 300, -1));
 
         jLabel11.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -400,6 +406,7 @@ public Administrador admin;
         colaNivel2JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel2JoseTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel2JoseTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel2JoseTextField.setEnabled(false);
         jPanel1.add(colaNivel2JoseTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 300, -1));
 
         jLabel9.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -421,6 +428,7 @@ public Administrador admin;
         colaNivel1JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel1JoseTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel1JoseTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel1JoseTextField.setEnabled(false);
         colaNivel1JoseTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colaNivel1JoseTextFieldActionPerformed(evt);
@@ -470,6 +478,7 @@ public Administrador admin;
         colaRefuerzoAndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaRefuerzoAndyTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaRefuerzoAndyTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaRefuerzoAndyTextField.setEnabled(false);
         jPanel3.add(colaRefuerzoAndyTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 300, -1));
 
         jLabel29.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -491,6 +500,7 @@ public Administrador admin;
         colaNivel3AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel3AndyTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel3AndyTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel3AndyTextField.setEnabled(false);
         jPanel3.add(colaNivel3AndyTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 300, -1));
 
         jLabel32.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -507,6 +517,7 @@ public Administrador admin;
         colaNivel2AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel2AndyTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel2AndyTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel2AndyTextField.setEnabled(false);
         jPanel3.add(colaNivel2AndyTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 300, -1));
 
         jLabel34.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -528,6 +539,7 @@ public Administrador admin;
         colaNivel1AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel1AndyTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel1AndyTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel1AndyTextField.setEnabled(false);
         colaNivel1AndyTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colaNivel1AndyTextFieldActionPerformed(evt);
