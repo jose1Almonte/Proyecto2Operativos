@@ -31,20 +31,6 @@ public Administrador admin;
     Clip clip4;
     public Interfaz() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         initComponents();
-        
-        this.colaNivel1AndyTextField.setDisabledTextColor(Color.red);
-        this.colaNivel2AndyTextField.setDisabledTextColor(Color.red);
-        this.colaNivel3AndyTextField.setDisabledTextColor(Color.red);
-        this.colaNivel1JoseTextField.setDisabledTextColor(Color.red);
-        this.colaNivel2JoseTextField.setDisabledTextColor(Color.red);
-        this.colaNivel3JoseTextField.setDisabledTextColor(Color.red);
-        this.colaNivel1UsecheTextField.setDisabledTextColor(Color.red);
-        this.colaNivel2UsecheTextField.setDisabledTextColor(Color.red);
-        this.colaNivel3UsecheTextField.setDisabledTextColor(Color.red);
-        this.colaRefuerzoAndyTextField.setDisabledTextColor(Color.red);
-        this.colaRefuerzoJoseTextField.setDisabledTextColor(Color.red);
-        this.colaRefuerzoUsecheTextField.setDisabledTextColor(Color.red);
-        
         this.ataque1.setIcon(null);
         this.ataque2.setIcon(null);
         this.ataque3.setIcon(null);
