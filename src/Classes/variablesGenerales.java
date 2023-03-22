@@ -39,6 +39,7 @@ public class variablesGenerales {
     
     
     
+    
     public variablesGenerales(){
         
     }
@@ -73,14 +74,19 @@ public class variablesGenerales {
     
     public void guardarSerieJson(int id, int nivelPrioridad, int nivelPrioridadInicio, int rodajePertenece, int duracionMinutos, int contador, int puntosPoder, int vida) throws IOException{
         
-        Serie ser = new Serie(id, nivelPrioridad, nivelPrioridadInicio, rodajePertenece, duracionMinutos, contador, puntosPoder, vida);
-        Gson gson = new Gson();
-        String jsonString = gson.toJson(ser);
-        FileWriter fileWriter = new FileWriter("src\\Archivos\\serie.json",true);
-        try (PrintWriter printWriter = new PrintWriter(fileWriter)) {
-            printWriter.print(jsonString);
-            printWriter.println();
-        } 
+        if(Administrador.keep){
+            
+            Serie ser = new Serie(id, nivelPrioridad, nivelPrioridadInicio, rodajePertenece, duracionMinutos, contador, puntosPoder, vida);
+            Gson gson = new Gson();
+            String jsonString = gson.toJson(ser);
+            FileWriter fileWriter = new FileWriter("src\\Archivos\\serie.json",true);
+            try (PrintWriter printWriter = new PrintWriter(fileWriter)) {
+                printWriter.print(jsonString);
+                printWriter.println();
+            } 
+            
+        }
+        
 
     }
     

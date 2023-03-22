@@ -17,7 +17,7 @@ import javax.sound.sampled.Clip;
  */
 public class Administrador extends Thread{
     
-    private volatile boolean keep = true;
+    public static boolean keep = true;
     private int ciclo;
     public static LinkedList colaNivel1Jose = new LinkedList();
     public static LinkedList colaNivel2Jose = new LinkedList();

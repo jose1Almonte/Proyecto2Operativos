@@ -810,6 +810,8 @@ public Administrador admin;
         
         admin.setKeep(false);
         
+        Administrador.keep = false;
+        
         this.clip4.stop();
         
         clip2.loop(Clip.LOOP_CONTINUOUSLY);
