@@ -255,6 +255,9 @@ public class Procesador extends Thread{
                 this.vida2.setText("");
                 this.vida3.setText("");
                 this.peleaDesc.setText("");
+                this.serieAndyCombatiendo.setText("");
+                this.serieJoseCombatiendo.setText("");
+                this.serieUsecheCombatiendo.setText("");
         
             
                 
@@ -367,6 +370,9 @@ public class Procesador extends Thread{
                 this.vida2.setText("");
                 this.vida3.setText("");
                 this.peleaDesc.setText("");
+                this.serieAndyCombatiendo.setText("");
+                this.serieJoseCombatiendo.setText("");
+                this.serieUsecheCombatiendo.setText("");
                 
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
@@ -405,6 +411,9 @@ public class Procesador extends Thread{
                 this.vida2.setText("");
                 this.vida3.setText("");
                 this.peleaDesc.setText("");
+                this.serieAndyCombatiendo.setText("");
+                this.serieJoseCombatiendo.setText("");
+                this.serieUsecheCombatiendo.setText("");
                 
                 clip2.start();
     //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
@@ -492,15 +501,15 @@ public class Procesador extends Thread{
                                  if(target.getVida()-damage>0){
                                     
                                     target.setVida(target.getVida()-damage);
-                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
-                                    System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
+                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
                                  }
                                  else{
                                     target.setVida(target.getVida()-damage);
                                     target.setVida(0);
                                     
-
-                                    System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
+                                    System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
                                  }
                                  if(target.getVida() <= 0){
                                             System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
@@ -678,15 +687,13 @@ public class Procesador extends Thread{
                                  if(target.getVida()-damage>1){
                                     
                                     target.setVida(target.getVida()-damage);
-                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a" + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
-                                    System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
+                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
                                  }
                                  else{
                                     target.setVida(target.getVida()-damage);
                                     target.setVida(1);
-                                    
-
-                                    System.out.println(atacante.getRodajePertenece() + " ataca a" + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + "dejandole a 1 de vida");
                                  }
                                  if(target.getVida() <= 0){
                                             System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
