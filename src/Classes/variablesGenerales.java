@@ -35,6 +35,8 @@ public class variablesGenerales {
     public static int terminalCedulaAndy = 8; // Probablemente no se usen todos
     public static int terminalCedulaUseche = 3; // Probablemente no se usen todos
     
+    public static int tiempoAnalisisSegundos;
+    
     
     
     public variablesGenerales(){

@@ -41,7 +41,7 @@ public class Procesador extends Thread{
     
     variablesGenerales var=new variablesGenerales();
     
-    public static int tiempoAnalisisSegundos;
+    
             
     
     public Procesador(Serie serieJose,
@@ -181,7 +181,7 @@ public class Procesador extends Thread{
             
             
             this.serieGanadoraText.setText("");
-            Thread.sleep(2000);
+            Thread.sleep(variablesGenerales.tiempoAnalisisSegundos * 1000 / 12);
             
             this.probabilidadesBatallaAuxiliar(probBatalla, x1, x2, x3,clip,clip2,clip3);
             
@@ -200,7 +200,7 @@ public class Procesador extends Thread{
      * @param x3
      * @throws IOException 
      */
-    private void probabilidadesBatallaAuxiliar(double probBatalla, int x1, int x2, int x3,Clip clip, Clip clip2,Clip clip3) throws IOException, LineUnavailableException, UnsupportedAudioFileException{
+    private void probabilidadesBatallaAuxiliar(double probBatalla, int x1, int x2, int x3,Clip clip, Clip clip2,Clip clip3) throws IOException, LineUnavailableException, UnsupportedAudioFileException, InterruptedException{
         
         if (this.probHayGanador(probBatalla)){
                 
@@ -300,6 +300,9 @@ public class Procesador extends Thread{
                 
 
             }else if(this.probHayEmpate(probBatalla)){
+                
+                Thread.sleep((variablesGenerales.tiempoAnalisisSegundos * 1000) - (variablesGenerales.tiempoAnalisisSegundos/12 * 1000));                
+                
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
@@ -322,6 +325,9 @@ public class Procesador extends Thread{
                 clip.stop();
 
             }else{
+                
+                Thread.sleep((variablesGenerales.tiempoAnalisisSegundos * 1000) - (variablesGenerales.tiempoAnalisisSegundos/12 * 1000) );
+                
                 clip2.start();
     //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
                 this.camp1.setIcon(null);
@@ -385,45 +391,67 @@ public class Procesador extends Thread{
            Random rand = new Random();
            
            boolean listo = true;
-           while( listo){
-                      
-                      try {
-                                 Thread.sleep(500);
-                      } catch (InterruptedException ex) {
-                                 Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
-                      }
-                      aleatarioJugadores(jugadores, rand);
-                      
-                      for (int i = 0; i < jugadores.length; i++) {
-                                 Serie atacante = jugadores[i];
+           
+           int vecesQueDuermeElHilo = 10;
+           boolean sePermiteTerminarCiclo = true;
+           
+           try{                              
+               while(listo){
+                   
+                   if(vecesQueDuermeElHilo > 0){
+                       Thread.sleep(variablesGenerales.tiempoAnalisisSegundos * 1000 / 12);
+                       
+                       System.out.println(vecesQueDuermeElHilo + " <= AHI LO TIENES BRO");
+                       vecesQueDuermeElHilo--;
+                   }
+                   
+                  
+                  aleatarioJugadores(jugadores, rand);
+
+                  for (int i = 0; i < jugadores.length; i++) {
+                             Serie atacante = jugadores[i];
+
+                             if (atacante.getVida() <= 0){
+                                        continue;
+                             }
+
+                             Serie[] targets = elegirPersonajeObjetivo(jugadores, atacante);
+                             int objetivoIndex  = rand.nextInt(targets.length);
+                             Serie target = targets[objetivoIndex];
+
+
+                             int damage = atacante.getPuntosPoder();
+                             target.setVida(target.getVida()-damage);
+
+                             System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+
+                             if(target.getVida() <= 0){
+                                        System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
+                             }
+                             if(todosCampeonesMuertos(jugadores)){
+                                        
+                                if(vecesQueDuermeElHilo > 0){                   
+                                    while(vecesQueDuermeElHilo > 0){
+                                        Thread.sleep(variablesGenerales.tiempoAnalisisSegundos * 1000 / 12);
+                                        System.out.println(variablesGenerales.tiempoAnalisisSegundos  +" VAMOOO");
+                                        vecesQueDuermeElHilo--;
+                                    }                   
+                                }
                                  
-                                 if (atacante.getVida() <= 0){
-                                            continue;
-                                 }
-                                 
-                                 Serie[] targets = elegirPersonajeObjetivo(jugadores, atacante);
-                                 int objetivoIndex  = rand.nextInt(targets.length);
-                                 Serie target = targets[objetivoIndex];
-                                 
-                                 
-                                 int damage = atacante.getPuntosPoder();
-                                 target.setVida(target.getVida()-damage);
-                                 
-                                 System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
-                                 
-                                 if(target.getVida() <= 0){
-                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
-                                 }
-                                 if(todosCampeonesMuertos(jugadores)){
-                                            System.out.println("tenemos un ganador ");
-                                            listo = false;
-                                 }
-                      }
-                                 
-                              
+                                System.out.println("tenemos un ganador ");
+                                listo = false;
+                             }
+                  }
+
+
 //                      atacar ( this.serieJose, this.serieAndy, this.serieUseche);
 //                      atacar ( this.serieAndy, this.serieJose, this.serieUseche);
 //                      atacar ( this.serieUseche, this.serieJose, this.serieAndy );
+               }
+               
+               
+           }catch(Exception e){
+               
            }
         
         if(campeonJose.getVida() > 0){

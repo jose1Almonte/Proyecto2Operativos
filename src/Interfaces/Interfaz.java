@@ -100,6 +100,7 @@ public Administrador admin;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel49 = new javax.swing.JLabel();
         tiempoSegundosAnalisisTextField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
@@ -181,7 +182,6 @@ public Administrador admin;
         Camp3 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
         botonParar = new javax.swing.JButton();
         tiempoSegundosTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -191,6 +191,11 @@ public Administrador admin;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel49.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setText("Tiempo de ciclo (seg)");
+        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         tiempoSegundosAnalisisTextField.setBackground(new java.awt.Color(204, 255, 255));
         tiempoSegundosAnalisisTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -210,7 +215,7 @@ public Administrador admin;
                 tiempoSegundosAnalisisTextFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(tiempoSegundosAnalisisTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 110, -1));
+        getContentPane().add(tiempoSegundosAnalisisTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 110, -1));
 
         jPanel2.setToolTipText("");
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -564,6 +569,8 @@ public Administrador admin;
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 380, 280));
 
+        botonEmpezar.setBackground(new java.awt.Color(0, 0, 204));
+        botonEmpezar.setForeground(new java.awt.Color(255, 255, 255));
         botonEmpezar.setText("Empezar");
         botonEmpezar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -623,11 +630,8 @@ public Administrador admin;
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 1060, 320));
 
-        jLabel49.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setText("Tiempo (seg)");
-        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
-
+        botonParar.setBackground(new java.awt.Color(0, 0, 204));
+        botonParar.setForeground(new java.awt.Color(255, 255, 255));
         botonParar.setText("Parar");
         botonParar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -760,28 +764,6 @@ public Administrador admin;
 //                this.tiempoSegundosTextField.setEditable(false);
 //                this.tiempoSegundosAnalisisTextField.setEditable(false);
             }
-            else{
-                
-                int tiempoAnalisisSegundosTexto;
-                
-                try{
-                    tiempoAnalisisSegundosTexto = Integer.parseInt(this.tiempoSegundosAnalisisTextField.getText());
-                    
-                    if(tiempoAnalisisSegundosTexto < 0){
-                        this.tiempoSegundosAnalisisTextField.setText("0");
-                        tiempoAnalisisSegundosTexto = 0;
-                    }                    
-                }catch(Exception e){                    
-                    tiempoAnalisisSegundosTexto = 0;
-                    this.tiempoSegundosAnalisisTextField.setText("0");
-                }
-                
-                Procesador.tiempoAnalisisSegundos = tiempoAnalisisSegundosTexto;
-                
-                
-//                admin.setKeep(true);
-//                admin.start();
-            }
             
             int tiempoAnalisisSegundosTexto;
             
@@ -789,8 +771,15 @@ public Administrador admin;
                 tiempoAnalisisSegundosTexto = Integer.parseInt(this.tiempoSegundosAnalisisTextField.getText());
 
                 if(tiempoAnalisisSegundosTexto < 0){
-                    this.tiempoSegundosAnalisisTextField.setText("0");
-                    tiempoAnalisisSegundosTexto = 0;
+                    if(tiempoAnalisisSegundosTexto == -1){
+                        this.tiempoSegundosAnalisisTextField.setText("22");
+                        tiempoAnalisisSegundosTexto = 22;
+                        
+                    }else{
+                        this.tiempoSegundosAnalisisTextField.setText("0");
+                        tiempoAnalisisSegundosTexto = 0;
+                        
+                    }
                 }
 
             }catch(Exception e){
@@ -799,7 +788,7 @@ public Administrador admin;
                 this.tiempoSegundosAnalisisTextField.setText("0");
             }
 
-            Procesador.tiempoAnalisisSegundos = tiempoAnalisisSegundosTexto;
+            variablesGenerales.tiempoAnalisisSegundos = tiempoAnalisisSegundosTexto;
             
             admin.setKeep(true);
             admin.setCiclo(tiempo);
