@@ -5,7 +5,6 @@
 package Interfaces;
 
 import Classes.Administrador;
-import Classes.Procesador;
 import Classes.variablesGenerales;
 import java.awt.Color;
 import java.io.File;
@@ -19,6 +18,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
+
 /**
  *
  * @author Hallo
@@ -31,6 +31,35 @@ public Administrador admin;
     Clip clip4;
     public Interfaz() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         initComponents();
+        
+        this.colaNivel1AndyTextField.setDisabledTextColor(Color.red);
+        this.colaNivel2AndyTextField.setDisabledTextColor(Color.red);
+        this.colaNivel3AndyTextField.setDisabledTextColor(Color.red);
+        this.colaNivel1JoseTextField.setDisabledTextColor(Color.red);
+        this.colaNivel2JoseTextField.setDisabledTextColor(Color.red);
+        this.colaNivel3JoseTextField.setDisabledTextColor(Color.red);
+        this.colaNivel1UsecheTextField.setDisabledTextColor(Color.red);
+        this.colaNivel2UsecheTextField.setDisabledTextColor(Color.red);
+        this.colaNivel3UsecheTextField.setDisabledTextColor(Color.red);
+        this.colaRefuerzoAndyTextField.setDisabledTextColor(Color.red);
+        this.colaRefuerzoJoseTextField.setDisabledTextColor(Color.red);
+        this.colaRefuerzoUsecheTextField.setDisabledTextColor(Color.red);
+        
+        this.ataque1.setIcon(null);
+        this.ataque2.setIcon(null);
+        this.ataque3.setIcon(null);
+        this.vida1.setIcon(null);
+        this.vida2.setIcon(null);
+        this.vida3.setIcon(null);
+        
+        this.ataque1.setText("");
+        this.ataque2.setText("");
+        this.ataque3.setText("");
+        this.vida1.setText("");
+        this.vida2.setText("");
+        this.vida3.setText("");
+        this.Accion.setText("");
+        
         File audio = new File("src\\Archivos\\intro.wav");
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
         clip = AudioSystem.getClip();
@@ -88,7 +117,15 @@ public Administrador admin;
                 this.serieJoseCombatiendo, 
                 this.serieAndyCombatiendo, 
                 this.serieUsecheCombatiendo, 
-                this.serieGanadora, clip4);
+                this.serieGanadora,clip4,
+                this.ataque1,
+                this.ataque2,
+                this.ataque3,
+                this.vida1,
+                this.vida2,
+                this.vida3,
+                this.Accion);
+                
     }
 
     /**
@@ -100,8 +137,6 @@ public Administrador admin;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel49 = new javax.swing.JLabel();
-        tiempoSegundosAnalisisTextField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -170,18 +205,26 @@ public Administrador admin;
         jLabel53 = new javax.swing.JLabel();
         botonEmpezar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        Central = new javax.swing.JLabel();
+        winner = new javax.swing.JLabel();
+        vida2 = new javax.swing.JLabel();
+        ataque2 = new javax.swing.JLabel();
         serieGanadora = new javax.swing.JLabel();
         serieAndyCombatiendo = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        Central = new javax.swing.JLabel();
         serieJoseCombatiendo = new javax.swing.JLabel();
+        ataque3 = new javax.swing.JLabel();
+        vida3 = new javax.swing.JLabel();
         serieUsecheCombatiendo = new javax.swing.JLabel();
-        winner = new javax.swing.JLabel();
         Camp2 = new javax.swing.JLabel();
+        ataque1 = new javax.swing.JLabel();
+        vida1 = new javax.swing.JLabel();
+        Accion = new javax.swing.JLabel();
         Camp1 = new javax.swing.JLabel();
         Camp3 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
         botonParar = new javax.swing.JButton();
         tiempoSegundosTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -191,31 +234,6 @@ public Administrador admin;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel49.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setText("Tiempo de ciclo (seg)");
-        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
-
-        tiempoSegundosAnalisisTextField.setBackground(new java.awt.Color(204, 255, 255));
-        tiempoSegundosAnalisisTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
-        tiempoSegundosAnalisisTextField.setForeground(new java.awt.Color(0, 0, 0));
-        tiempoSegundosAnalisisTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tiempoSegundosAnalisisTextField.setText("Tiempo Analisis");
-        tiempoSegundosAnalisisTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tiempoSegundosAnalisisTextFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tiempoSegundosAnalisisTextFieldFocusLost(evt);
-            }
-        });
-        tiempoSegundosAnalisisTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tiempoSegundosAnalisisTextFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tiempoSegundosAnalisisTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 110, -1));
 
         jPanel2.setToolTipText("");
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -232,6 +250,7 @@ public Administrador admin;
         colaRefuerzoUsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaRefuerzoUsecheTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaRefuerzoUsecheTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaRefuerzoUsecheTextField.setEnabled(false);
         jPanel2.add(colaRefuerzoUsecheTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 300, -1));
 
         jLabel16.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -253,6 +272,7 @@ public Administrador admin;
         colaNivel3UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel3UsecheTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel3UsecheTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel3UsecheTextField.setEnabled(false);
         colaNivel3UsecheTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colaNivel3UsecheTextFieldActionPerformed(evt);
@@ -274,6 +294,7 @@ public Administrador admin;
         colaNivel2UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel2UsecheTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel2UsecheTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel2UsecheTextField.setEnabled(false);
         jPanel2.add(colaNivel2UsecheTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 300, -1));
 
         jLabel21.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -295,6 +316,7 @@ public Administrador admin;
         colaNivel1UsecheTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel1UsecheTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel1UsecheTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel1UsecheTextField.setEnabled(false);
         jPanel2.add(colaNivel1UsecheTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 300, -1));
 
         jLabel24.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -344,6 +366,7 @@ public Administrador admin;
         colaRefuerzoJoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaRefuerzoJoseTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaRefuerzoJoseTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaRefuerzoJoseTextField.setEnabled(false);
         colaRefuerzoJoseTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colaRefuerzoJoseTextFieldActionPerformed(evt);
@@ -380,6 +403,7 @@ public Administrador admin;
         colaNivel3JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel3JoseTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel3JoseTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel3JoseTextField.setEnabled(false);
         jPanel1.add(colaNivel3JoseTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 300, -1));
 
         jLabel11.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -396,6 +420,7 @@ public Administrador admin;
         colaNivel2JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel2JoseTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel2JoseTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel2JoseTextField.setEnabled(false);
         jPanel1.add(colaNivel2JoseTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 300, -1));
 
         jLabel9.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -417,6 +442,7 @@ public Administrador admin;
         colaNivel1JoseTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel1JoseTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel1JoseTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel1JoseTextField.setEnabled(false);
         colaNivel1JoseTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colaNivel1JoseTextFieldActionPerformed(evt);
@@ -466,6 +492,7 @@ public Administrador admin;
         colaRefuerzoAndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaRefuerzoAndyTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaRefuerzoAndyTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaRefuerzoAndyTextField.setEnabled(false);
         jPanel3.add(colaRefuerzoAndyTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 300, -1));
 
         jLabel29.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -487,6 +514,7 @@ public Administrador admin;
         colaNivel3AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel3AndyTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel3AndyTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel3AndyTextField.setEnabled(false);
         jPanel3.add(colaNivel3AndyTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 300, -1));
 
         jLabel32.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -503,6 +531,7 @@ public Administrador admin;
         colaNivel2AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel2AndyTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel2AndyTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel2AndyTextField.setEnabled(false);
         jPanel3.add(colaNivel2AndyTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 300, -1));
 
         jLabel34.setFont(new java.awt.Font("Elephant", 1, 10)); // NOI18N
@@ -524,6 +553,7 @@ public Administrador admin;
         colaNivel1AndyTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         colaNivel1AndyTextField.setForeground(new java.awt.Color(0, 0, 0));
         colaNivel1AndyTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        colaNivel1AndyTextField.setEnabled(false);
         colaNivel1AndyTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colaNivel1AndyTextFieldActionPerformed(evt);
@@ -569,8 +599,6 @@ public Administrador admin;
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 380, 280));
 
-        botonEmpezar.setBackground(new java.awt.Color(0, 0, 204));
-        botonEmpezar.setForeground(new java.awt.Color(255, 255, 255));
         botonEmpezar.setText("Empezar");
         botonEmpezar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -580,6 +608,29 @@ public Administrador admin;
         getContentPane().add(botonEmpezar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Central.setBackground(new java.awt.Color(204, 204, 204));
+        Central.setFont(new java.awt.Font("Hack NF", 1, 48)); // NOI18N
+        Central.setForeground(new java.awt.Color(255, 51, 51));
+        Central.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Central.setText("jLabel50");
+        jPanel4.add(Central, new org.netbeans.lib.awtextra.AbsoluteConstraints(-98, 130, 1250, -1));
+
+        winner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/chill.gif"))); // NOI18N
+        jPanel4.add(winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, 270));
+
+        vida2.setBackground(new java.awt.Color(255, 255, 255));
+        vida2.setForeground(new java.awt.Color(255, 255, 255));
+        vida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vidas.png"))); // NOI18N
+        vida2.setText("100");
+        jPanel4.add(vida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
+
+        ataque2.setBackground(new java.awt.Color(255, 255, 255));
+        ataque2.setForeground(new java.awt.Color(255, 255, 255));
+        ataque2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/espada.png"))); // NOI18N
+        ataque2.setText("100");
+        ataque2.setAutoscrolls(true);
+        jPanel4.add(ataque2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, -1, -1));
 
         serieGanadora.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieGanadora.setForeground(new java.awt.Color(255, 255, 255));
@@ -595,26 +646,48 @@ public Administrador admin;
         jLabel47.setText("ZONA DE BATALLA");
         jPanel4.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 10, 1250, -1));
 
-        Central.setBackground(new java.awt.Color(204, 204, 204));
-        Central.setFont(new java.awt.Font("Hack NF", 1, 48)); // NOI18N
-        Central.setForeground(new java.awt.Color(255, 51, 51));
-        Central.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Central.setText("jLabel50");
-        jPanel4.add(Central, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
-
         serieJoseCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieJoseCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.add(serieJoseCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        ataque3.setBackground(new java.awt.Color(255, 255, 255));
+        ataque3.setForeground(new java.awt.Color(255, 255, 255));
+        ataque3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/espada.png"))); // NOI18N
+        ataque3.setText("100");
+        ataque3.setAutoscrolls(true);
+        jPanel4.add(ataque3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 220, -1, -1));
+
+        vida3.setBackground(new java.awt.Color(255, 255, 255));
+        vida3.setForeground(new java.awt.Color(255, 255, 255));
+        vida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vidas.png"))); // NOI18N
+        vida3.setText("100");
+        jPanel4.add(vida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 270, -1, -1));
 
         serieUsecheCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieUsecheCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.add(serieUsecheCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, -1, -1));
 
-        winner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/chill.gif"))); // NOI18N
-        jPanel4.add(winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
-
         Camp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/10.gif"))); // NOI18N
         jPanel4.add(Camp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+
+        ataque1.setBackground(new java.awt.Color(255, 255, 255));
+        ataque1.setForeground(new java.awt.Color(255, 255, 255));
+        ataque1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/espada.png"))); // NOI18N
+        ataque1.setText("100");
+        ataque1.setAutoscrolls(true);
+        jPanel4.add(ataque1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+
+        vida1.setBackground(new java.awt.Color(255, 255, 255));
+        vida1.setForeground(new java.awt.Color(255, 255, 255));
+        vida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vidas.png"))); // NOI18N
+        vida1.setText("100");
+        jPanel4.add(vida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
+
+        Accion.setBackground(new java.awt.Color(255, 255, 255));
+        Accion.setForeground(new java.awt.Color(255, 255, 255));
+        Accion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Accion.setText("jLabel57");
+        jPanel4.add(Accion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 140, 1240, -1));
 
         Camp1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.gif"))); // NOI18N
         jPanel4.add(Camp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 360, 250));
@@ -630,8 +703,11 @@ public Administrador admin;
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 1060, 320));
 
-        botonParar.setBackground(new java.awt.Color(0, 0, 204));
-        botonParar.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setText("Tiempo (seg)");
+        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
         botonParar.setText("Parar");
         botonParar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -721,16 +797,8 @@ public Administrador admin;
         
         try{
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
-            
-            if(tiempo < 0){
-                tiempo = 0;
-                this.tiempoSegundosTextField.setText("0");
-            } 
-            
             admin.setCiclo(tiempo);
-            
             if(admin.isKeep()==false){
-                
                 admin = new Administrador(this.colaNivel1JoseTextField, 
                         this.colaNivel2JoseTextField, 
                         this.colaNivel3JoseTextField, 
@@ -755,52 +823,28 @@ public Administrador admin;
                         this.serieAndyCombatiendo, 
                         this.serieUsecheCombatiendo, 
                         this.serieGanadora,
-                        this.clip4
-                );
-//                admin.setKeep(true);
-//                admin.setCiclo(tiempo);
-//                admin.start();
-//                
-//                this.tiempoSegundosTextField.setEditable(false);
-//                this.tiempoSegundosAnalisisTextField.setEditable(false);
+                        this.clip4,
+                        this.ataque1,
+                this.ataque2,
+                this.ataque3,
+                this.vida1,
+                this.vida2,
+                this.vida3,
+                this.Accion);
+                admin.setKeep(true);
+                admin.setCiclo(tiempo);
+                admin.start();
             }
-            
-            int tiempoAnalisisSegundosTexto;
-            
-            try{
-                tiempoAnalisisSegundosTexto = Integer.parseInt(this.tiempoSegundosAnalisisTextField.getText());
-
-                if(tiempoAnalisisSegundosTexto < 0){
-                    if(tiempoAnalisisSegundosTexto == -1){
-                        this.tiempoSegundosAnalisisTextField.setText("22");
-                        tiempoAnalisisSegundosTexto = 22;
-                        
-                    }else{
-                        this.tiempoSegundosAnalisisTextField.setText("0");
-                        tiempoAnalisisSegundosTexto = 0;
-                        
-                    }
-                }
-
-            }catch(Exception e){
-
-                tiempoAnalisisSegundosTexto = 0;
-                this.tiempoSegundosAnalisisTextField.setText("0");
+            else{
+                admin.setKeep(true);
+                admin.start();
             }
-
-            variablesGenerales.tiempoAnalisisSegundos = tiempoAnalisisSegundosTexto;
-            
-            admin.setKeep(true);
-            admin.setCiclo(tiempo);
-            admin.start();
-
-            this.tiempoSegundosTextField.setEditable(false);
-            this.tiempoSegundosAnalisisTextField.setEditable(false);
         }
         catch(Exception e){
             System.out.print("Error");
             this.botonEmpezar.setEnabled(true);
             this.Central.setText("ERROR");
+            this.clip4.stop();
         }
   
     }//GEN-LAST:event_botonEmpezarActionPerformed
@@ -809,11 +853,7 @@ public Administrador admin;
         
         
         admin.setKeep(false);
-        
-        Administrador.keep = false;
-        
         this.clip4.stop();
-        
         clip2.loop(Clip.LOOP_CONTINUOUSLY);
         this.botonEmpezar.setEnabled(true);
         this.Camp1.setIcon(null);
@@ -839,28 +879,9 @@ public Administrador admin;
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         
-        this.tiempoSegundosTextField.setEditable(true);
-        this.tiempoSegundosAnalisisTextField.setEditable(true);
+        
         
     }//GEN-LAST:event_botonPararActionPerformed
-
-    private void tiempoSegundosAnalisisTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tiempoSegundosAnalisisTextFieldFocusGained
-        if(this.tiempoSegundosAnalisisTextField.getText().equals("Tiempo Analisis")){
-            this.tiempoSegundosAnalisisTextField.setText("");
-            this.tiempoSegundosAnalisisTextField.setForeground(new Color(0, 0, 0));
-        }
-    }//GEN-LAST:event_tiempoSegundosAnalisisTextFieldFocusGained
-
-    private void tiempoSegundosAnalisisTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tiempoSegundosAnalisisTextFieldFocusLost
-        if (this.tiempoSegundosAnalisisTextField.getText().equals("")) {
-            this.tiempoSegundosAnalisisTextField.setText("Tiempo Analisis");
-            this.tiempoSegundosAnalisisTextField.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_tiempoSegundosAnalisisTextFieldFocusLost
-
-    private void tiempoSegundosAnalisisTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoSegundosAnalisisTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tiempoSegundosAnalisisTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -906,6 +927,7 @@ public Administrador admin;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Accion;
     private javax.swing.JLabel Camp1;
     private javax.swing.JLabel Camp2;
     private javax.swing.JLabel Camp3;
@@ -913,6 +935,9 @@ public Administrador admin;
     private javax.swing.JLabel LOU;
     private javax.swing.JLabel OTRO;
     private javax.swing.JLabel VELMA;
+    private javax.swing.JLabel ataque1;
+    private javax.swing.JLabel ataque2;
+    private javax.swing.JLabel ataque3;
     private javax.swing.JButton botonEmpezar;
     private javax.swing.JButton botonParar;
     private javax.swing.JTextField colaNivel1AndyTextField;
@@ -991,8 +1016,10 @@ public Administrador admin;
     private javax.swing.JLabel serieGanadora;
     private javax.swing.JLabel serieJoseCombatiendo;
     private javax.swing.JLabel serieUsecheCombatiendo;
-    private javax.swing.JTextField tiempoSegundosAnalisisTextField;
     private javax.swing.JTextField tiempoSegundosTextField;
+    private javax.swing.JLabel vida1;
+    private javax.swing.JLabel vida2;
+    private javax.swing.JLabel vida3;
     private javax.swing.JLabel winner;
     // End of variables declaration//GEN-END:variables
 }

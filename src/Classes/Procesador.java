@@ -38,10 +38,15 @@ public class Procesador extends Thread{
     javax.swing.JLabel serieAndyCombatiendo;
     javax.swing.JLabel serieUsecheCombatiendo;
     javax.swing.JLabel serieGanadoraText;
+    javax.swing.JLabel lucha1;
+    javax.swing.JLabel lucha2;
+    javax.swing.JLabel lucha3;
+    javax.swing.JLabel vida1;
+    javax.swing.JLabel vida2;
+    javax.swing.JLabel vida3;
+    javax.swing.JLabel peleaDesc;
     
     variablesGenerales var=new variablesGenerales();
-    
-    
             
     
     public Procesador(Serie serieJose,
@@ -58,7 +63,11 @@ public class Procesador extends Thread{
             javax.swing.JLabel serieJoseCombatiendo, 
             javax.swing.JLabel serieAndyCombatiendo, 
             javax.swing.JLabel serieUsecheCombatiendo, 
-            javax.swing.JLabel serieGanadoraText,Clip clip4
+            javax.swing.JLabel serieGanadoraText,Clip clip4,
+            javax.swing.JLabel lucha1,
+            javax.swing.JLabel lucha2, javax.swing.JLabel lucha3,
+            javax.swing.JLabel vida1, javax.swing.JLabel vida2, javax.swing.JLabel vida3,
+            javax.swing.JLabel peleaDesc
     ){
         this.serieJose = serieJose;
         this.serieAndy = serieAndy;
@@ -76,54 +85,50 @@ public class Procesador extends Thread{
         this.serieUsecheCombatiendo = serieUsecheCombatiendo;
         this.serieGanadoraText = serieGanadoraText;
         this.clip4=clip4;
+        this.peleaDesc=peleaDesc;
+        this.vida1=vida1;
+        this.vida2=vida2;
+        this.vida3=vida3;
+        this.lucha1=lucha1;
+        this.lucha2=lucha2;
+        this.lucha3=lucha3;
     }
     
     @Override
     public void run(){
         
-        
         try{
-            while(Administrador.keep){
                 
                 
-                    File audio = new File("src\\Archivos\\1.wav");
-                    AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
-                    Clip clip = AudioSystem.getClip();
-
-                    File audio2 = new File("src\\Archivos\\3.wav");
-                    AudioInputStream audioStream2 = AudioSystem.getAudioInputStream(audio2);
-                    Clip clip2 = AudioSystem.getClip();
-
-                    File audio3 = new File("src\\Archivos\\w.wav");
-                    AudioInputStream audioStream3 = AudioSystem.getAudioInputStream(audio3);
-                    Clip clip3 = AudioSystem.getClip();
-
-
-
-                try {
-                    clip.open(audioStream);
-                    clip2.open(audioStream2);
-                    clip3.open(audioStream3);
-
-                } catch (LineUnavailableException ex) {
-                    Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                this.serieJoseCombatiendo.setText("( " + this.serieJose.getId() + ", " + this.serieJose.getRodajePertenece() + " )");
-                this.serieAndyCombatiendo.setText("( " + this.serieAndy.getId() + ", " + this.serieAndy.getRodajePertenece() + " )");
-                this.serieUsecheCombatiendo.setText("( " + this.serieUseche.getId() + ", " + this.serieUseche.getRodajePertenece() + " )");
-
-
-                this.probabilidadesBatalla( clip,clip2,clip3);
+                File audio = new File("src\\Archivos\\1.wav");
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
+                Clip clip = AudioSystem.getClip();
                 
-                break;
+                File audio2 = new File("src\\Archivos\\3.wav");
+                AudioInputStream audioStream2 = AudioSystem.getAudioInputStream(audio2);
+                Clip clip2 = AudioSystem.getClip();
+                
+                File audio3 = new File("src\\Archivos\\w.wav");
+                AudioInputStream audioStream3 = AudioSystem.getAudioInputStream(audio3);
+                Clip clip3 = AudioSystem.getClip();
+                
+                
+                
+            try {
+                clip.open(audioStream);
+                clip2.open(audioStream2);
+                clip3.open(audioStream3);
+                
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            this.serieJoseCombatiendo.setText("( " + this.serieJose.getId() + ", " + this.serieJose.getRodajePertenece() + " )");
+            this.serieAndyCombatiendo.setText("( " + this.serieAndy.getId() + ", " + this.serieAndy.getRodajePertenece() + " )");
+            this.serieUsecheCombatiendo.setText("( " + this.serieUseche.getId() + ", " + this.serieUseche.getRodajePertenece() + " )");
             
-                
-                
             
-            
+            this.probabilidadesBatalla( clip,clip2,clip3);
             
         }catch(Exception e){
 //            System.out.println(e);
@@ -139,6 +144,23 @@ public class Procesador extends Thread{
      */
     public void probabilidadesBatalla(Clip clip,Clip clip2,Clip clip3) throws IOException, InterruptedException, LineUnavailableException, UnsupportedAudioFileException{
         
+        ImageIcon luchas = new ImageIcon(getClass().getResource("/Imagenes/espada.png"));
+        ImageIcon vidas = new ImageIcon(getClass().getResource("/Imagenes/vidas.png"));
+        
+        
+        this.lucha1.setIcon(luchas);
+        this.vida1.setIcon(vidas);
+        this.lucha2.setIcon(luchas);
+        this.vida2.setIcon(vidas);
+        this.lucha3.setIcon(luchas);
+        this.vida3.setIcon(vidas);
+        this.vida1.setText(String.valueOf(this.serieJose.getVida()));
+        this.vida2.setText(String.valueOf(this.serieAndy.getVida()));
+        this.vida3.setText(String.valueOf(this.serieUseche.getVida()));
+        this.lucha1.setText(String.valueOf( this.serieJose.getPuntosPoder()));
+        this.lucha2.setText(String.valueOf(this.serieAndy.getPuntosPoder()));
+        this.lucha3.setText(String.valueOf(this.serieUseche.getPuntosPoder()));
+       
         double probcampeon1 = Math.random();
             double probcampeon2 = Math.random();
             double probcampeon3 = Math.random();
@@ -153,6 +175,7 @@ public class Procesador extends Thread{
                 ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/2.gif"));
                 this.camp1.setIcon(gift);
                 this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                
                 x1=1;
                 
             }
@@ -160,6 +183,7 @@ public class Procesador extends Thread{
                 ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/3.gif"));
                 this.camp1.setIcon(gift);
                 this.camp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                
                 x1=2;
             }
             
@@ -192,7 +216,7 @@ public class Procesador extends Thread{
             
             
             this.serieGanadoraText.setText("");
-            Thread.sleep(variablesGenerales.tiempoAnalisisSegundos * 1000 / 12);
+            Thread.sleep(2000);
             
             this.probabilidadesBatallaAuxiliar(probBatalla, x1, x2, x3,clip,clip2,clip3);
             
@@ -211,11 +235,31 @@ public class Procesador extends Thread{
      * @param x3
      * @throws IOException 
      */
-    private void probabilidadesBatallaAuxiliar(double probBatalla, int x1, int x2, int x3,Clip clip, Clip clip2,Clip clip3) throws IOException, LineUnavailableException, UnsupportedAudioFileException, InterruptedException{
+    private void probabilidadesBatallaAuxiliar(double probBatalla, int x1, int x2, int x3,Clip clip, Clip clip2,Clip clip3) throws IOException, LineUnavailableException, UnsupportedAudioFileException{
+        
         
         if (this.probHayGanador(probBatalla)){
                 
                 Serie serieGanadora = this.simuladorBatalla();
+                this.lucha1.setIcon(null);
+                this.lucha2.setIcon(null);
+                this.lucha3.setIcon(null);
+                this.vida1.setIcon(null);
+                this.vida2.setIcon(null);
+                this.vida3.setIcon(null);
+
+                this.lucha1.setText("");
+                this.lucha2.setText("");
+                this.lucha3.setText("");
+                this.vida1.setText("");
+                this.vida2.setText("");
+                this.vida3.setText("");
+                this.peleaDesc.setText("");
+                this.serieAndyCombatiendo.setText("");
+                this.serieJoseCombatiendo.setText("");
+                this.serieUsecheCombatiendo.setText("");
+        
+            
                 
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
@@ -230,28 +274,21 @@ public class Procesador extends Thread{
                 case 1 -> {
                     if(x1==1){
                         this.clip4.stop();
-                        
-                        if(Administrador.keep){
-                            clip3.start();
-                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/12.gif"));
-                            this.winner.setIcon(gift);
-                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                            this.central.setText("Ganador RICK");
-                        }
-                        
+                        clip3.start();
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/12.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganador RICK");
                         
                         
                     }
                     else if(x1==2){
                         this.clip4.stop();
-                        
-                        if(Administrador.keep) {
-                            clip3.start();
-                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/29.gif"));
-                            this.winner.setIcon(gift);
-                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                            this.central.setText("Ganador MORTY");
-                        }
+                        clip3.start();
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/29.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganador MORTY");
                         
                     }
                     var.guardarSerieJson(serieJose.getId(), serieJose.getNivelPrioridad(), serieJose.getNivelPrioridadInicio(), serieJose.getRodajePertenece(), serieJose.getDuracionMinutos(), serieJose.getContador(), serieJose.getPuntosPoder(), serieJose.getVida());
@@ -259,52 +296,40 @@ public class Procesador extends Thread{
                 case 2 -> {
                     if(x2==1){
                         this.clip4.stop();
-                        
-                        if(Administrador.keep){
-                            clip3.start();
-                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/jeryr.gif"));
-                            this.winner.setIcon(gift);
-                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                            this.central.setText("Ganador JERRY");
-                        }
+                        clip3.start();
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/jeryr.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganador JERRY");
                     }
                     else if(x2==2){
                         this.clip4.stop();
-                        
-                        if(Administrador.keep) {
-                            clip3.start();
-                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/17.gif"));
-                            this.winner.setIcon(gift);
-                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                            this.central.setText("Ganadora SUMMER");
-                        }
-                        
+                        clip3.start();
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/17.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganadora SUMMER");
                     }
                     var.guardarSerieJson(serieAndy.getId(), serieAndy.getNivelPrioridad(), serieAndy.getNivelPrioridadInicio(), serieAndy.getRodajePertenece(), serieAndy.getDuracionMinutos(), serieAndy.getContador(), serieAndy.getPuntosPoder(), serieAndy.getVida());
                 }
                 default -> {
                     if(x3==1){
                         this.clip4.stop();
-                        if(Administrador.keep){
-                            clip3.start();
-                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/13.gif"));
-                            this.winner.setIcon(gift);
-                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                            this.central.setText("Ganador BIRD PERSON");
-                            var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
-                        }
+                        clip3.start();
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/13.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganador BIRD PERSON");
+                        var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
                     }
                     else if(x3==2){
                         this.clip4.stop();
-                        
-                        if(Administrador.keep){
-                            clip3.start();
-                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/26.gif"));
-                            this.winner.setIcon(gift);
-                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                            this.central.setText("Ganadora BETH");
-                            var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
-                        }
+                        clip3.start();
+                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/26.gif"));
+                        this.winner.setIcon(gift);
+                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                        this.central.setText("Ganadora BETH");
+                        var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
                         
                     }
                 }
@@ -327,28 +352,41 @@ public class Procesador extends Thread{
                 }
                     clip3.stop();
                     clip4.loop(Clip.LOOP_CONTINUOUSLY);
-                    if(!Administrador.keep) clip4.stop();
                 
 
             }else if(this.probHayEmpate(probBatalla)){
-                
-                Thread.sleep((variablesGenerales.tiempoAnalisisSegundos * 1000) - (variablesGenerales.tiempoAnalisisSegundos/12 * 1000));                
+                this.simuladorBatalla2();
+                this.lucha1.setIcon(null);
+                this.lucha2.setIcon(null);
+                this.lucha3.setIcon(null);
+                this.vida1.setIcon(null);
+                this.vida2.setIcon(null);
+                this.vida3.setIcon(null);
+
+                this.lucha1.setText("");
+                this.lucha2.setText("");
+                this.lucha3.setText("");
+                this.vida1.setText("");
+                this.vida2.setText("");
+                this.vida3.setText("");
+                this.peleaDesc.setText("");
+                this.serieAndyCombatiendo.setText("");
+                this.serieJoseCombatiendo.setText("");
+                this.serieUsecheCombatiendo.setText("");
                 
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
                 
-                if(Administrador.keep){
-                    clip.start();
-        //            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
-                    ImageIcon gifto2 = new ImageIcon(getClass().getResource("/Imagenes/empate.gif"));
-                    this.winner.setIcon(gifto2);
-                    this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                    this.central.setText("EMPATE");
-                    Administrador admin = new Administrador();
-                    admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
-                }
+                clip.start();
 
+    //            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
+                ImageIcon gifto2 = new ImageIcon(getClass().getResource("/Imagenes/empate.gif"));
+                this.winner.setIcon(gifto2);
+                this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                this.central.setText("EMPATE");
+                Administrador admin = new Administrador();
+                admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
             try {
                 //                System.out.println("Empataron");
                 Thread.sleep(5000);
@@ -359,20 +397,33 @@ public class Procesador extends Thread{
 
             }else{
                 
-                Thread.sleep((variablesGenerales.tiempoAnalisisSegundos * 1000) - (variablesGenerales.tiempoAnalisisSegundos/12 * 1000) );
+                this.lucha1.setIcon(null);
+                this.lucha2.setIcon(null);
+                this.lucha3.setIcon(null);
+                this.vida1.setIcon(null);
+                this.vida2.setIcon(null);
+                this.vida3.setIcon(null);
+
+                this.lucha1.setText("");
+                this.lucha2.setText("");
+                this.lucha3.setText("");
+                this.vida1.setText("");
+                this.vida2.setText("");
+                this.vida3.setText("");
+                this.peleaDesc.setText("");
+                this.serieAndyCombatiendo.setText("");
+                this.serieJoseCombatiendo.setText("");
+                this.serieUsecheCombatiendo.setText("");
                 
-                if(Administrador.keep) clip2.start();
+                clip2.start();
     //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
                 ImageIcon gifto3 = new ImageIcon(getClass().getResource("/Imagenes/refuerzo.gif"));
-                if(Administrador.keep) {
-                    
-                    this.winner.setIcon(gifto3);
-                    this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                    this.central.setText("REFUERZO");
-                }
+                this.winner.setIcon(gifto3);
+                this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                this.central.setText("REFUERZO");
                 Administrador admin = new Administrador();
                 admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
 //                System.out.println("Se mandaron a refuerzo");
@@ -427,66 +478,62 @@ public class Procesador extends Thread{
            Random rand = new Random();
            
            boolean listo = true;
-           
-           int vecesQueDuermeElHilo = 10;
-           
-           try{                              
-               while(listo ){
-                   
-                   if(vecesQueDuermeElHilo > 0){
-                       Thread.sleep(variablesGenerales.tiempoAnalisisSegundos * 1000 / 12);
-                       
-                       System.out.println(vecesQueDuermeElHilo + " <= AHI LO TIENES BRO");
-                       vecesQueDuermeElHilo--;
-                   }
-                   
-                  
-                  aleatarioJugadores(jugadores, rand);
-
-                  for (int i = 0; i < jugadores.length; i++) {
-                             Serie atacante = jugadores[i];
-
-                             if (atacante.getVida() <= 0){
-                                        continue;
-                             }
-
-                             Serie[] targets = elegirPersonajeObjetivo(jugadores, atacante);
-                             int objetivoIndex  = rand.nextInt(targets.length);
-                             Serie target = targets[objetivoIndex];
-
-
-                             int damage = atacante.getPuntosPoder();
-                             target.setVida(target.getVida()-damage);
-
-                             System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
-
-                             if(target.getVida() <= 0){
-                                        System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
-                             }
-                             if(todosCampeonesMuertos(jugadores)){
-                                        
-                                if(vecesQueDuermeElHilo > 0){                   
-                                    while(vecesQueDuermeElHilo > 0){
-                                        Thread.sleep(variablesGenerales.tiempoAnalisisSegundos * 1000 / 12);
-                                        System.out.println(variablesGenerales.tiempoAnalisisSegundos  +" VAMOOO");
-                                        vecesQueDuermeElHilo--;
-                                    }                   
-                                }
+           while( listo){
+                      
+                      try {
+                                 Thread.sleep(500);
+                      } catch (InterruptedException ex) {
+                                 Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                      aleatarioJugadores(jugadores, rand);
+                      
+                      for (int i = 0; i < jugadores.length; i++) {
+                                 Serie atacante = jugadores[i];
                                  
-                                System.out.println("tenemos un ganador ");
-                                listo = false;
-                             }
-                  }
-
-
+                                 if (atacante.getVida() <= 0){
+                                            continue;
+                                 }
+                                 
+                                 Serie[] targets = elegirPersonajeObjetivo(jugadores, atacante);
+                                 int objetivoIndex  = rand.nextInt(targets.length);
+                                 Serie target = targets[objetivoIndex];
+                                 int damage = atacante.getPuntosPoder();
+                                 if(target.getVida()-damage>0){
+                                    
+                                    target.setVida(target.getVida()-damage);
+                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
+                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+                                 }
+                                 else{
+                                    target.setVida(target.getVida()-damage);
+                                    target.setVida(0);
+                                    
+                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
+                                    System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
+                                 }
+                                 if(target.getVida() <= 0){
+                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
+                                 }
+                                 if(todosCampeonesMuertos(jugadores)){
+                                            System.out.println("tenemos un ganador ");
+                                            listo = false;
+                                 }
+                      }
+                                 
+                        this.vida1.setText(String.valueOf(this.serieJose.getVida()));
+                        this.vida2.setText(String.valueOf(this.serieAndy.getVida()));
+                        this.vida3.setText(String.valueOf(this.serieUseche.getVida()));
+                        this.lucha1.setText(String.valueOf( this.serieJose.getPuntosPoder()));
+                        this.lucha2.setText(String.valueOf(this.serieAndy.getPuntosPoder()));
+                        this.lucha3.setText(String.valueOf(this.serieUseche.getPuntosPoder()));              
 //                      atacar ( this.serieJose, this.serieAndy, this.serieUseche);
 //                      atacar ( this.serieAndy, this.serieJose, this.serieUseche);
 //                      atacar ( this.serieUseche, this.serieJose, this.serieAndy );
-               }
-               
-               
-           }catch(Exception e){
-               
+                        if(this.serieJose.getVida() == 0 && this.serieAndy.getVida()==0){ break;}
+                        else if(this.serieJose.getVida() == 0 && this.serieUseche.getVida()==0){ break;}
+                        else if(this.serieAndy.getVida() == 0 && this.serieUseche.getVida()==0){ break;}
+
+
            }
         
         if(campeonJose.getVida() > 0){
@@ -600,7 +647,80 @@ public class Procesador extends Thread{
 
 
     
-    
+    public void simuladorBatalla2() {
+        
+//        System.out.println("Jose: " + this.serieJose.getPuntosPoder());
+//        System.out.println("Andy: " + this.serieAndy.getPuntosPoder());
+//        System.out.println("Useche: " + this.serieUseche.getPuntosPoder());
+           Serie campeonJose = this.serieJose;
+           Serie campeonAndy = this.serieAndy;
+           Serie campeonUseche = this.serieUseche;
+           
+           int vidaFinal1 =this.serieJose.getVida();
+           int vidaFinal2 =this.serieAndy.getVida();
+           int vidaFinal3 =this.serieUseche.getVida();
+           
+           Serie[] jugadores = {campeonJose,campeonAndy,campeonUseche};
+           Random rand = new Random();
+           
+           boolean listo = true;
+           while( listo){
+                      
+                      try {
+                                 Thread.sleep(500);
+                      } catch (InterruptedException ex) {
+                                 Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                      aleatarioJugadores(jugadores, rand);
+                      
+                      for (int i = 0; i < jugadores.length; i++) {
+                                 Serie atacante = jugadores[i];
+                                 
+                                 if (atacante.getVida() < 0){
+                                            continue;
+                                 }
+                                 
+                                 Serie[] targets = elegirPersonajeObjetivo(jugadores, atacante);
+                                 int objetivoIndex  = rand.nextInt(targets.length);
+                                 Serie target = targets[objetivoIndex];
+                                 int damage = atacante.getPuntosPoder();
+                                 if(target.getVida()-damage>1){
+                                    
+                                    target.setVida(target.getVida()-damage);
+                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
+                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+                                 }
+                                 else{
+                                    target.setVida(target.getVida()-damage);
+                                    target.setVida(1);
+                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + "dejandole a 1 de vida");
+                                 }
+                                 if(target.getVida() <= 0){
+                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
+                                 }
+                                 if(todosCampeonesMuertos(jugadores)){
+                                            System.out.println("tenemos un ganador ");
+                                            listo = false;
+                                 }
+                      }
+                                 
+                        this.vida1.setText(String.valueOf(this.serieJose.getVida()));
+                        this.vida2.setText(String.valueOf(this.serieAndy.getVida()));
+                        this.vida3.setText(String.valueOf(this.serieUseche.getVida()));
+                        this.lucha1.setText(String.valueOf( this.serieJose.getPuntosPoder()));
+                        this.lucha2.setText(String.valueOf(this.serieAndy.getPuntosPoder()));
+                        this.lucha3.setText(String.valueOf(this.serieUseche.getPuntosPoder()));              
+//                      atacar ( this.serieJose, this.serieAndy, this.serieUseche);
+//                      atacar ( this.serieAndy, this.serieJose, this.serieUseche);
+//                      atacar ( this.serieUseche, this.serieJose, this.serieAndy );
+                        if(this.serieJose.getVida() == 1 && this.serieAndy.getVida()==1 && this.serieUseche.getVida()==1){ break;}
+
+
+           }
+           this.serieJose.setVida(vidaFinal1);
+           this.serieAndy.setVida(vidaFinal2);
+           this.serieUseche.setVida(vidaFinal3);
+    }
     
     
     
