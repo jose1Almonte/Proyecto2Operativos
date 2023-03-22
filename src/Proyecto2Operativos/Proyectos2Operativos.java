@@ -8,10 +8,12 @@ import Classes.Administrador;
 import Classes.counter;
 import Classes.variablesGenerales;
 import Interfaces.Interfaz;
-import Interfaces.Prueba;
 import com.google.gson.Gson;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  *
@@ -24,9 +26,7 @@ public class Proyectos2Operativos {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        Prueba p =new Prueba();
-        p.setVisible(true);
+    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         Interfaz interfaz = new Interfaz();
         variablesGenerales f = new variablesGenerales();
         int counter=0;
