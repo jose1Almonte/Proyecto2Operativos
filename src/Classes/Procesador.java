@@ -47,6 +47,8 @@ public class Procesador extends Thread{
     javax.swing.JLabel peleaDesc;
     
     variablesGenerales var=new variablesGenerales();
+    
+    
             
     
     public Procesador(Serie serieJose,
@@ -97,38 +99,49 @@ public class Procesador extends Thread{
     @Override
     public void run(){
         
+        
         try{
+            while(Administrador.keep){
                 
                 
-                File audio = new File("src\\Archivos\\1.wav");
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
-                Clip clip = AudioSystem.getClip();
+                    File audio = new File("src\\Archivos\\1.wav");
+                    AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
+                    Clip clip = AudioSystem.getClip();
+
+                    File audio2 = new File("src\\Archivos\\3.wav");
+                    AudioInputStream audioStream2 = AudioSystem.getAudioInputStream(audio2);
+                    Clip clip2 = AudioSystem.getClip();
+
+                    File audio3 = new File("src\\Archivos\\w.wav");
+                    AudioInputStream audioStream3 = AudioSystem.getAudioInputStream(audio3);
+                    Clip clip3 = AudioSystem.getClip();
+
+
+
+                try {
+                    clip.open(audioStream);
+                    clip2.open(audioStream2);
+                    clip3.open(audioStream3);
+
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                this.serieJoseCombatiendo.setText("( " + this.serieJose.getId() + ", " + this.serieJose.getRodajePertenece() + " )");
+                this.serieAndyCombatiendo.setText("( " + this.serieAndy.getId() + ", " + this.serieAndy.getRodajePertenece() + " )");
+                this.serieUsecheCombatiendo.setText("( " + this.serieUseche.getId() + ", " + this.serieUseche.getRodajePertenece() + " )");
+
+
+                this.probabilidadesBatalla( clip,clip2,clip3);
                 
-                File audio2 = new File("src\\Archivos\\3.wav");
-                AudioInputStream audioStream2 = AudioSystem.getAudioInputStream(audio2);
-                Clip clip2 = AudioSystem.getClip();
-                
-                File audio3 = new File("src\\Archivos\\w.wav");
-                AudioInputStream audioStream3 = AudioSystem.getAudioInputStream(audio3);
-                Clip clip3 = AudioSystem.getClip();
-                
-                
-                
-            try {
-                clip.open(audioStream);
-                clip2.open(audioStream2);
-                clip3.open(audioStream3);
-                
-            } catch (LineUnavailableException ex) {
-                Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
+                break;
             }
             
-            this.serieJoseCombatiendo.setText("( " + this.serieJose.getId() + ", " + this.serieJose.getRodajePertenece() + " )");
-            this.serieAndyCombatiendo.setText("( " + this.serieAndy.getId() + ", " + this.serieAndy.getRodajePertenece() + " )");
-            this.serieUsecheCombatiendo.setText("( " + this.serieUseche.getId() + ", " + this.serieUseche.getRodajePertenece() + " )");
+            
+                
+                
             
             
-            this.probabilidadesBatalla( clip,clip2,clip3);
             
         }catch(Exception e){
 //            System.out.println(e);
@@ -216,7 +229,7 @@ public class Procesador extends Thread{
             
             
             this.serieGanadoraText.setText("");
-            Thread.sleep(2000);
+            Thread.sleep(variablesGenerales.tiempoAnalisisSegundos * 1000 / 12);
             
             this.probabilidadesBatallaAuxiliar(probBatalla, x1, x2, x3,clip,clip2,clip3);
             
@@ -235,7 +248,7 @@ public class Procesador extends Thread{
      * @param x3
      * @throws IOException 
      */
-    private void probabilidadesBatallaAuxiliar(double probBatalla, int x1, int x2, int x3,Clip clip, Clip clip2,Clip clip3) throws IOException, LineUnavailableException, UnsupportedAudioFileException{
+    private void probabilidadesBatallaAuxiliar(double probBatalla, int x1, int x2, int x3,Clip clip, Clip clip2,Clip clip3) throws IOException, LineUnavailableException, UnsupportedAudioFileException, InterruptedException{
         
         
         if (this.probHayGanador(probBatalla)){
@@ -271,21 +284,28 @@ public class Procesador extends Thread{
                 case 1 -> {
                     if(x1==1){
                         this.clip4.stop();
-                        clip3.start();
-                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/12.gif"));
-                        this.winner.setIcon(gift);
-                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        this.central.setText("Ganador RICK");
+                        
+                        if(Administrador.keep){
+                            clip3.start();
+                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/12.gif"));
+                            this.winner.setIcon(gift);
+                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                            this.central.setText("Ganador RICK");
+                        }
+                        
                         
                         
                     }
                     else if(x1==2){
                         this.clip4.stop();
-                        clip3.start();
-                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/29.gif"));
-                        this.winner.setIcon(gift);
-                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        this.central.setText("Ganador MORTY");
+                        
+                        if(Administrador.keep) {
+                            clip3.start();
+                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/29.gif"));
+                            this.winner.setIcon(gift);
+                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                            this.central.setText("Ganador MORTY");
+                        }
                         
                     }
                     var.guardarSerieJson(serieJose.getId(), serieJose.getNivelPrioridad(), serieJose.getNivelPrioridadInicio(), serieJose.getRodajePertenece(), serieJose.getDuracionMinutos(), serieJose.getContador(), serieJose.getPuntosPoder(), serieJose.getVida());
@@ -293,40 +313,52 @@ public class Procesador extends Thread{
                 case 2 -> {
                     if(x2==1){
                         this.clip4.stop();
-                        clip3.start();
-                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/jeryr.gif"));
-                        this.winner.setIcon(gift);
-                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        this.central.setText("Ganador JERRY");
+                        
+                        if(Administrador.keep){
+                            clip3.start();
+                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/jeryr.gif"));
+                            this.winner.setIcon(gift);
+                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                            this.central.setText("Ganador JERRY");
+                        }
                     }
                     else if(x2==2){
                         this.clip4.stop();
-                        clip3.start();
-                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/17.gif"));
-                        this.winner.setIcon(gift);
-                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        this.central.setText("Ganadora SUMMER");
+                        
+                        if(Administrador.keep) {
+                            clip3.start();
+                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/17.gif"));
+                            this.winner.setIcon(gift);
+                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                            this.central.setText("Ganadora SUMMER");
+                        }
+                        
                     }
                     var.guardarSerieJson(serieAndy.getId(), serieAndy.getNivelPrioridad(), serieAndy.getNivelPrioridadInicio(), serieAndy.getRodajePertenece(), serieAndy.getDuracionMinutos(), serieAndy.getContador(), serieAndy.getPuntosPoder(), serieAndy.getVida());
                 }
                 default -> {
                     if(x3==1){
                         this.clip4.stop();
-                        clip3.start();
-                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/13.gif"));
-                        this.winner.setIcon(gift);
-                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        this.central.setText("Ganador BIRD PERSON");
-                        var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
+                        if(Administrador.keep){
+                            clip3.start();
+                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/13.gif"));
+                            this.winner.setIcon(gift);
+                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                            this.central.setText("Ganador BIRD PERSON");
+                            var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
+                        }
                     }
                     else if(x3==2){
                         this.clip4.stop();
-                        clip3.start();
-                        ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/26.gif"));
-                        this.winner.setIcon(gift);
-                        this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                        this.central.setText("Ganadora BETH");
-                        var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
+                        
+                        if(Administrador.keep){
+                            clip3.start();
+                            ImageIcon gift = new ImageIcon(getClass().getResource("/Imagenes/26.gif"));
+                            this.winner.setIcon(gift);
+                            this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                            this.central.setText("Ganadora BETH");
+                            var.guardarSerieJson(serieUseche.getId(), serieUseche.getNivelPrioridad(), serieUseche.getNivelPrioridadInicio(), serieUseche.getRodajePertenece(), serieUseche.getDuracionMinutos(), serieUseche.getContador(), serieUseche.getPuntosPoder(), serieUseche.getVida());
+                        }
                         
                     }
                 }
@@ -349,6 +381,7 @@ public class Procesador extends Thread{
                 }
                     clip3.stop();
                     clip4.loop(Clip.LOOP_CONTINUOUSLY);
+                    if(!Administrador.keep) clip4.stop();
                 
 
             }else if(this.probHayEmpate(probBatalla)){
@@ -368,19 +401,24 @@ public class Procesador extends Thread{
                 this.vida3.setText("");
                 this.peleaDesc.setText("");
                 
+                Thread.sleep((variablesGenerales.tiempoAnalisisSegundos * 1000) - (variablesGenerales.tiempoAnalisisSegundos/12 * 1000));                
+
+                
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
                 
-                clip.start();
+                if(Administrador.keep){
+                    clip.start();
+        //            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
+                    ImageIcon gifto2 = new ImageIcon(getClass().getResource("/Imagenes/empate.gif"));
+                    this.winner.setIcon(gifto2);
+                    this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                    this.central.setText("EMPATE");
+                    Administrador admin = new Administrador();
+                    admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
+                }
 
-    //            Crear un metodo que ponga en su lista de prioridad respectiva las series que se le pasen
-                ImageIcon gifto2 = new ImageIcon(getClass().getResource("/Imagenes/empate.gif"));
-                this.winner.setIcon(gifto2);
-                this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                this.central.setText("EMPATE");
-                Administrador admin = new Administrador();
-                admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
             try {
                 //                System.out.println("Empataron");
                 Thread.sleep(5000);
@@ -407,14 +445,22 @@ public class Procesador extends Thread{
                 this.peleaDesc.setText("");
                 
                 clip2.start();
+                
+                Thread.sleep((variablesGenerales.tiempoAnalisisSegundos * 1000) - (variablesGenerales.tiempoAnalisisSegundos/12 * 1000) );
+                
+                if(Administrador.keep) clip2.start();
+                
     //            Crear un metodo que ponga en su lista de refuerzo respectiva las series que se le pasen
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
                 ImageIcon gifto3 = new ImageIcon(getClass().getResource("/Imagenes/refuerzo.gif"));
-                this.winner.setIcon(gifto3);
-                this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                this.central.setText("REFUERZO");
+                if(Administrador.keep) {
+                    
+                    this.winner.setIcon(gifto3);
+                    this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                    this.central.setText("REFUERZO");
+                }
                 Administrador admin = new Administrador();
                 admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
 //                System.out.println("Se mandaron a refuerzo");
