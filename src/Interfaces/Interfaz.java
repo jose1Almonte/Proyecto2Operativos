@@ -137,6 +137,8 @@ public Administrador admin;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel49 = new javax.swing.JLabel();
+        tiempoSegundosAnalisisTextField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -224,7 +226,6 @@ public Administrador admin;
         Camp3 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
         botonParar = new javax.swing.JButton();
         tiempoSegundosTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -234,6 +235,31 @@ public Administrador admin;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel49.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setText("Tiempo de ciclo (seg)");
+        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
+        tiempoSegundosAnalisisTextField.setBackground(new java.awt.Color(204, 255, 255));
+        tiempoSegundosAnalisisTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
+        tiempoSegundosAnalisisTextField.setForeground(new java.awt.Color(0, 0, 0));
+        tiempoSegundosAnalisisTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tiempoSegundosAnalisisTextField.setText("Tiempo Analisis");
+        tiempoSegundosAnalisisTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tiempoSegundosAnalisisTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tiempoSegundosAnalisisTextFieldFocusLost(evt);
+            }
+        });
+        tiempoSegundosAnalisisTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiempoSegundosAnalisisTextFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tiempoSegundosAnalisisTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 110, -1));
 
         jPanel2.setToolTipText("");
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -599,6 +625,8 @@ public Administrador admin;
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 380, 280));
 
+        botonEmpezar.setBackground(new java.awt.Color(0, 0, 204));
+        botonEmpezar.setForeground(new java.awt.Color(255, 255, 255));
         botonEmpezar.setText("Empezar");
         botonEmpezar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -621,13 +649,11 @@ public Administrador admin;
 
         vida2.setBackground(new java.awt.Color(255, 255, 255));
         vida2.setForeground(new java.awt.Color(255, 255, 255));
-        vida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vidas.png"))); // NOI18N
         vida2.setText("100");
         jPanel4.add(vida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
 
         ataque2.setBackground(new java.awt.Color(255, 255, 255));
         ataque2.setForeground(new java.awt.Color(255, 255, 255));
-        ataque2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/espada.png"))); // NOI18N
         ataque2.setText("100");
         ataque2.setAutoscrolls(true);
         jPanel4.add(ataque2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, -1, -1));
@@ -652,14 +678,12 @@ public Administrador admin;
 
         ataque3.setBackground(new java.awt.Color(255, 255, 255));
         ataque3.setForeground(new java.awt.Color(255, 255, 255));
-        ataque3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/espada.png"))); // NOI18N
         ataque3.setText("100");
         ataque3.setAutoscrolls(true);
         jPanel4.add(ataque3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 220, -1, -1));
 
         vida3.setBackground(new java.awt.Color(255, 255, 255));
         vida3.setForeground(new java.awt.Color(255, 255, 255));
-        vida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vidas.png"))); // NOI18N
         vida3.setText("100");
         jPanel4.add(vida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 270, -1, -1));
 
@@ -672,14 +696,12 @@ public Administrador admin;
 
         ataque1.setBackground(new java.awt.Color(255, 255, 255));
         ataque1.setForeground(new java.awt.Color(255, 255, 255));
-        ataque1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/espada.png"))); // NOI18N
         ataque1.setText("100");
         ataque1.setAutoscrolls(true);
         jPanel4.add(ataque1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
 
         vida1.setBackground(new java.awt.Color(255, 255, 255));
         vida1.setForeground(new java.awt.Color(255, 255, 255));
-        vida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vidas.png"))); // NOI18N
         vida1.setText("100");
         jPanel4.add(vida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
 
@@ -703,11 +725,8 @@ public Administrador admin;
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 1060, 320));
 
-        jLabel49.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setText("Tiempo (seg)");
-        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
-
+        botonParar.setBackground(new java.awt.Color(0, 0, 204));
+        botonParar.setForeground(new java.awt.Color(255, 255, 255));
         botonParar.setText("Parar");
         botonParar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1016,6 +1035,7 @@ public Administrador admin;
     private javax.swing.JLabel serieGanadora;
     private javax.swing.JLabel serieJoseCombatiendo;
     private javax.swing.JLabel serieUsecheCombatiendo;
+    private javax.swing.JTextField tiempoSegundosAnalisisTextField;
     private javax.swing.JTextField tiempoSegundosTextField;
     private javax.swing.JLabel vida1;
     private javax.swing.JLabel vida2;
