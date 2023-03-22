@@ -122,7 +122,7 @@ public class Administrador extends Thread{
         
         
         while(isKeep()){
-            try{
+            try{                
                 Thread.sleep(ciclo*1000);
                 
                 if(variablesGenerales.numeroCiclos==2){
@@ -151,7 +151,8 @@ public class Administrador extends Thread{
                 
                 this.sumar1ContadorSeries();
                 
-                this.sacarCabezaRefuerzo();
+                
+//                this.sacarCabezaRefuerzo();
                 
                 
 
@@ -230,6 +231,8 @@ public class Administrador extends Thread{
                                this.serieGanadoraText,this.clip4);
                                
                        this.imprimirColas();
+                       
+                       this.sacarCabezaRefuerzo();
                        
                        IA.start();
                        

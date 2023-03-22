@@ -40,6 +40,8 @@ public class Procesador extends Thread{
     javax.swing.JLabel serieGanadoraText;
     
     variablesGenerales var=new variablesGenerales();
+    
+    public static int tiempoAnalisisSegundos;
             
     
     public Procesador(Serie serieJose,

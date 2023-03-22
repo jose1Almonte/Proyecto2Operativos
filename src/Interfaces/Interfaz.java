@@ -5,6 +5,7 @@
 package Interfaces;
 
 import Classes.Administrador;
+import Classes.Procesador;
 import Classes.variablesGenerales;
 import java.awt.Color;
 import java.io.File;
@@ -87,7 +88,7 @@ public Administrador admin;
                 this.serieJoseCombatiendo, 
                 this.serieAndyCombatiendo, 
                 this.serieUsecheCombatiendo, 
-                this.serieGanadora,clip4);
+                this.serieGanadora, clip4);
     }
 
     /**
@@ -99,6 +100,7 @@ public Administrador admin;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tiempoSegundosAnalisisTextField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -189,6 +191,26 @@ public Administrador admin;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tiempoSegundosAnalisisTextField.setBackground(new java.awt.Color(204, 255, 255));
+        tiempoSegundosAnalisisTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
+        tiempoSegundosAnalisisTextField.setForeground(new java.awt.Color(0, 0, 0));
+        tiempoSegundosAnalisisTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tiempoSegundosAnalisisTextField.setText("Tiempo Analisis");
+        tiempoSegundosAnalisisTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tiempoSegundosAnalisisTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tiempoSegundosAnalisisTextFieldFocusLost(evt);
+            }
+        });
+        tiempoSegundosAnalisisTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiempoSegundosAnalisisTextFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tiempoSegundosAnalisisTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 110, -1));
 
         jPanel2.setToolTipText("");
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -695,8 +717,16 @@ public Administrador admin;
         
         try{
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
+            
+            if(tiempo < 0){
+                tiempo = 0;
+                this.tiempoSegundosTextField.setText("0");
+            } 
+            
             admin.setCiclo(tiempo);
+            
             if(admin.isKeep()==false){
+                
                 admin = new Administrador(this.colaNivel1JoseTextField, 
                         this.colaNivel2JoseTextField, 
                         this.colaNivel3JoseTextField, 
@@ -723,14 +753,60 @@ public Administrador admin;
                         this.serieGanadora,
                         this.clip4
                 );
-                admin.setKeep(true);
-                admin.setCiclo(tiempo);
-                admin.start();
+//                admin.setKeep(true);
+//                admin.setCiclo(tiempo);
+//                admin.start();
+//                
+//                this.tiempoSegundosTextField.setEditable(false);
+//                this.tiempoSegundosAnalisisTextField.setEditable(false);
             }
             else{
-                admin.setKeep(true);
-                admin.start();
+                
+                int tiempoAnalisisSegundosTexto;
+                
+                try{
+                    tiempoAnalisisSegundosTexto = Integer.parseInt(this.tiempoSegundosAnalisisTextField.getText());
+                    
+                    if(tiempoAnalisisSegundosTexto < 0){
+                        this.tiempoSegundosAnalisisTextField.setText("0");
+                        tiempoAnalisisSegundosTexto = 0;
+                    }                    
+                }catch(Exception e){                    
+                    tiempoAnalisisSegundosTexto = 0;
+                    this.tiempoSegundosAnalisisTextField.setText("0");
+                }
+                
+                Procesador.tiempoAnalisisSegundos = tiempoAnalisisSegundosTexto;
+                
+                
+//                admin.setKeep(true);
+//                admin.start();
             }
+            
+            int tiempoAnalisisSegundosTexto;
+            
+            try{
+                tiempoAnalisisSegundosTexto = Integer.parseInt(this.tiempoSegundosAnalisisTextField.getText());
+
+                if(tiempoAnalisisSegundosTexto < 0){
+                    this.tiempoSegundosAnalisisTextField.setText("0");
+                    tiempoAnalisisSegundosTexto = 0;
+                }
+
+            }catch(Exception e){
+
+                tiempoAnalisisSegundosTexto = 0;
+                this.tiempoSegundosAnalisisTextField.setText("0");
+            }
+
+            Procesador.tiempoAnalisisSegundos = tiempoAnalisisSegundosTexto;
+            
+            admin.setKeep(true);
+            admin.setCiclo(tiempo);
+            admin.start();
+
+            this.tiempoSegundosTextField.setEditable(false);
+            this.tiempoSegundosAnalisisTextField.setEditable(false);
         }
         catch(Exception e){
             System.out.print("Error");
@@ -744,7 +820,9 @@ public Administrador admin;
         
         
         admin.setKeep(false);
+        
         this.clip4.stop();
+        
         clip2.loop(Clip.LOOP_CONTINUOUSLY);
         this.botonEmpezar.setEnabled(true);
         this.Camp1.setIcon(null);
@@ -770,7 +848,28 @@ public Administrador admin;
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         
+        this.tiempoSegundosTextField.setEditable(true);
+        this.tiempoSegundosAnalisisTextField.setEditable(true);
+        
     }//GEN-LAST:event_botonPararActionPerformed
+
+    private void tiempoSegundosAnalisisTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tiempoSegundosAnalisisTextFieldFocusGained
+        if(this.tiempoSegundosAnalisisTextField.getText().equals("Tiempo Analisis")){
+            this.tiempoSegundosAnalisisTextField.setText("");
+            this.tiempoSegundosAnalisisTextField.setForeground(new Color(0, 0, 0));
+        }
+    }//GEN-LAST:event_tiempoSegundosAnalisisTextFieldFocusGained
+
+    private void tiempoSegundosAnalisisTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tiempoSegundosAnalisisTextFieldFocusLost
+        if (this.tiempoSegundosAnalisisTextField.getText().equals("")) {
+            this.tiempoSegundosAnalisisTextField.setText("Tiempo Analisis");
+            this.tiempoSegundosAnalisisTextField.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_tiempoSegundosAnalisisTextFieldFocusLost
+
+    private void tiempoSegundosAnalisisTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoSegundosAnalisisTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tiempoSegundosAnalisisTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -901,6 +1000,7 @@ public Administrador admin;
     private javax.swing.JLabel serieGanadora;
     private javax.swing.JLabel serieJoseCombatiendo;
     private javax.swing.JLabel serieUsecheCombatiendo;
+    private javax.swing.JTextField tiempoSegundosAnalisisTextField;
     private javax.swing.JTextField tiempoSegundosTextField;
     private javax.swing.JLabel winner;
     // End of variables declaration//GEN-END:variables
