@@ -62,6 +62,13 @@ public class Administrador extends Thread{
     javax.swing.JLabel serieAndyCombatiendo;
     javax.swing.JLabel serieUsecheCombatiendo;
     javax.swing.JLabel serieGanadoraText;
+    javax.swing.JLabel lucha1;
+    javax.swing.JLabel lucha2;
+    javax.swing.JLabel lucha3;
+    javax.swing.JLabel vida1;
+    javax.swing.JLabel vida2;
+    javax.swing.JLabel vida3;
+    javax.swing.JLabel peleaDesc;
     
     public Administrador(){
         
@@ -87,7 +94,10 @@ public class Administrador extends Thread{
             javax.swing.JLabel serieJoseCombatiendo, 
             javax.swing.JLabel serieAndyCombatiendo, 
             javax.swing.JLabel serieUsecheCombatiendo, 
-            javax.swing.JLabel serieGanadoraText,Clip clip4
+            javax.swing.JLabel serieGanadoraText,Clip clip4,javax.swing.JLabel lucha1,
+            javax.swing.JLabel lucha2, javax.swing.JLabel lucha3,
+            javax.swing.JLabel vida1, javax.swing.JLabel vida2, javax.swing.JLabel vida3,
+            javax.swing.JLabel peleaDesc
             ){
         this.colaNivel1JoseTextField = colaNivel1JoseTextField;
         this.colaNivel2JoseTextField = colaNivel2JoseTextField;
@@ -114,7 +124,14 @@ public class Administrador extends Thread{
         this.serieUsecheCombatiendo = serieUsecheCombatiendo;
         this.serieGanadoraText = serieGanadoraText;
         this.clip4=clip4;
-                
+        this.peleaDesc=peleaDesc;
+        this.vida1=vida1;
+        this.vida2=vida2;
+        this.vida3=vida3;
+        this.lucha1=lucha1;
+        this.lucha2=lucha2;
+        this.lucha3=lucha3;
+        
     }
     
     @Override
@@ -227,7 +244,10 @@ public class Administrador extends Thread{
                                this.serieJoseCombatiendo, 
                                this.serieAndyCombatiendo, 
                                this.serieUsecheCombatiendo, 
-                               this.serieGanadoraText,this.clip4);
+                               this.serieGanadoraText,this.clip4,
+                               this.lucha1,this.lucha2,this.lucha3,
+                               this.vida1,this.vida2,this.vida3,this.peleaDesc
+                       );
                                
                        this.imprimirColas();
                        

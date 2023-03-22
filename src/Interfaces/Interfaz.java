@@ -18,6 +18,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
+
 /**
  *
  * @author Hallo
@@ -30,6 +31,21 @@ public Administrador admin;
     Clip clip4;
     public Interfaz() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         initComponents();
+        this.ataque1.setIcon(null);
+        this.ataque2.setIcon(null);
+        this.ataque3.setIcon(null);
+        this.vida1.setIcon(null);
+        this.vida2.setIcon(null);
+        this.vida3.setIcon(null);
+        
+        this.ataque1.setText("");
+        this.ataque2.setText("");
+        this.ataque3.setText("");
+        this.vida1.setText("");
+        this.vida2.setText("");
+        this.vida3.setText("");
+        this.Accion.setText("");
+        
         File audio = new File("src\\Archivos\\intro.wav");
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
         clip = AudioSystem.getClip();
@@ -87,7 +103,15 @@ public Administrador admin;
                 this.serieJoseCombatiendo, 
                 this.serieAndyCombatiendo, 
                 this.serieUsecheCombatiendo, 
-                this.serieGanadora,clip4);
+                this.serieGanadora,clip4,
+                this.ataque1,
+                this.ataque2,
+                this.ataque3,
+                this.vida1,
+                this.vida2,
+                this.vida3,
+                this.Accion);
+                
     }
 
     /**
@@ -167,14 +191,21 @@ public Administrador admin;
         jLabel53 = new javax.swing.JLabel();
         botonEmpezar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        Central = new javax.swing.JLabel();
+        winner = new javax.swing.JLabel();
+        vida2 = new javax.swing.JLabel();
+        ataque2 = new javax.swing.JLabel();
         serieGanadora = new javax.swing.JLabel();
         serieAndyCombatiendo = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
-        Central = new javax.swing.JLabel();
         serieJoseCombatiendo = new javax.swing.JLabel();
+        ataque3 = new javax.swing.JLabel();
+        vida3 = new javax.swing.JLabel();
         serieUsecheCombatiendo = new javax.swing.JLabel();
-        winner = new javax.swing.JLabel();
         Camp2 = new javax.swing.JLabel();
+        ataque1 = new javax.swing.JLabel();
+        vida1 = new javax.swing.JLabel();
+        Accion = new javax.swing.JLabel();
         Camp1 = new javax.swing.JLabel();
         Camp3 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -552,6 +583,29 @@ public Administrador admin;
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Central.setBackground(new java.awt.Color(204, 204, 204));
+        Central.setFont(new java.awt.Font("Hack NF", 1, 48)); // NOI18N
+        Central.setForeground(new java.awt.Color(255, 51, 51));
+        Central.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Central.setText("jLabel50");
+        jPanel4.add(Central, new org.netbeans.lib.awtextra.AbsoluteConstraints(-98, 130, 1250, -1));
+
+        winner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/chill.gif"))); // NOI18N
+        jPanel4.add(winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, 270));
+
+        vida2.setBackground(new java.awt.Color(255, 255, 255));
+        vida2.setForeground(new java.awt.Color(255, 255, 255));
+        vida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vidas.png"))); // NOI18N
+        vida2.setText("100");
+        jPanel4.add(vida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
+
+        ataque2.setBackground(new java.awt.Color(255, 255, 255));
+        ataque2.setForeground(new java.awt.Color(255, 255, 255));
+        ataque2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/espada.png"))); // NOI18N
+        ataque2.setText("100");
+        ataque2.setAutoscrolls(true);
+        jPanel4.add(ataque2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, -1, -1));
+
         serieGanadora.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieGanadora.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.add(serieGanadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 380, 20));
@@ -566,26 +620,48 @@ public Administrador admin;
         jLabel47.setText("ZONA DE BATALLA");
         jPanel4.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 10, 1250, -1));
 
-        Central.setBackground(new java.awt.Color(204, 204, 204));
-        Central.setFont(new java.awt.Font("Hack NF", 1, 48)); // NOI18N
-        Central.setForeground(new java.awt.Color(255, 51, 51));
-        Central.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Central.setText("jLabel50");
-        jPanel4.add(Central, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
-
         serieJoseCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieJoseCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.add(serieJoseCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        ataque3.setBackground(new java.awt.Color(255, 255, 255));
+        ataque3.setForeground(new java.awt.Color(255, 255, 255));
+        ataque3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/espada.png"))); // NOI18N
+        ataque3.setText("100");
+        ataque3.setAutoscrolls(true);
+        jPanel4.add(ataque3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 220, -1, -1));
+
+        vida3.setBackground(new java.awt.Color(255, 255, 255));
+        vida3.setForeground(new java.awt.Color(255, 255, 255));
+        vida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vidas.png"))); // NOI18N
+        vida3.setText("100");
+        jPanel4.add(vida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 270, -1, -1));
 
         serieUsecheCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieUsecheCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.add(serieUsecheCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, -1, -1));
 
-        winner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/chill.gif"))); // NOI18N
-        jPanel4.add(winner, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, -1, -1));
-
         Camp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/10.gif"))); // NOI18N
         jPanel4.add(Camp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+
+        ataque1.setBackground(new java.awt.Color(255, 255, 255));
+        ataque1.setForeground(new java.awt.Color(255, 255, 255));
+        ataque1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/espada.png"))); // NOI18N
+        ataque1.setText("100");
+        ataque1.setAutoscrolls(true);
+        jPanel4.add(ataque1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+
+        vida1.setBackground(new java.awt.Color(255, 255, 255));
+        vida1.setForeground(new java.awt.Color(255, 255, 255));
+        vida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vidas.png"))); // NOI18N
+        vida1.setText("100");
+        jPanel4.add(vida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
+
+        Accion.setBackground(new java.awt.Color(255, 255, 255));
+        Accion.setForeground(new java.awt.Color(255, 255, 255));
+        Accion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Accion.setText("jLabel57");
+        jPanel4.add(Accion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-80, 140, 1240, -1));
 
         Camp1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/6.gif"))); // NOI18N
         jPanel4.add(Camp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 360, 250));
@@ -721,8 +797,14 @@ public Administrador admin;
                         this.serieAndyCombatiendo, 
                         this.serieUsecheCombatiendo, 
                         this.serieGanadora,
-                        this.clip4
-                );
+                        this.clip4,
+                        this.ataque1,
+                this.ataque2,
+                this.ataque3,
+                this.vida1,
+                this.vida2,
+                this.vida3,
+                this.Accion);
                 admin.setKeep(true);
                 admin.setCiclo(tiempo);
                 admin.start();
@@ -736,6 +818,7 @@ public Administrador admin;
             System.out.print("Error");
             this.botonEmpezar.setEnabled(true);
             this.Central.setText("ERROR");
+            this.clip4.stop();
         }
   
     }//GEN-LAST:event_botonEmpezarActionPerformed
@@ -818,6 +901,7 @@ public Administrador admin;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Accion;
     private javax.swing.JLabel Camp1;
     private javax.swing.JLabel Camp2;
     private javax.swing.JLabel Camp3;
@@ -825,6 +909,9 @@ public Administrador admin;
     private javax.swing.JLabel LOU;
     private javax.swing.JLabel OTRO;
     private javax.swing.JLabel VELMA;
+    private javax.swing.JLabel ataque1;
+    private javax.swing.JLabel ataque2;
+    private javax.swing.JLabel ataque3;
     private javax.swing.JButton botonEmpezar;
     private javax.swing.JButton botonParar;
     private javax.swing.JTextField colaNivel1AndyTextField;
@@ -904,6 +991,9 @@ public Administrador admin;
     private javax.swing.JLabel serieJoseCombatiendo;
     private javax.swing.JLabel serieUsecheCombatiendo;
     private javax.swing.JTextField tiempoSegundosTextField;
+    private javax.swing.JLabel vida1;
+    private javax.swing.JLabel vida2;
+    private javax.swing.JLabel vida3;
     private javax.swing.JLabel winner;
     // End of variables declaration//GEN-END:variables
 }
