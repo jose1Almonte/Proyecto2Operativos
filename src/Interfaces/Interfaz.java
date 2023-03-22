@@ -549,6 +549,8 @@ public Administrador admin;
         admin.setKeep(false);
         this.botonEmpezar.setEnabled(true);
         
+        
+        
     }//GEN-LAST:event_botonPararActionPerformed
 
     /**
