@@ -290,3 +290,15 @@
 {"id":4931,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":108,"contador":0,"puntosPoder":50,"vida":104}
 {"id":4959,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":149,"contador":0,"puntosPoder":50,"vida":140}
 {"id":4966,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":145,"contador":0,"puntosPoder":50,"vida":20}
+{"id":5158,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":91,"contador":0,"puntosPoder":51,"vida":89}
+{"id":5244,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":159,"contador":0,"puntosPoder":51,"vida":343}
+{"id":5280,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":137,"contador":0,"puntosPoder":51,"vida":227}
+{"id":5303,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":122,"contador":0,"puntosPoder":51,"vida":39}
+{"id":5300,"nivelPrioridad":1,"nivelPrioridadInicio":2,"rodajePertenece":2,"duracionMinutos":69,"contador":1,"puntosPoder":32,"vida":31}
+{"id":5316,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":3,"duracionMinutos":69,"contador":0,"puntosPoder":30,"vida":27}
+{"id":5325,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":3,"duracionMinutos":73,"contador":0,"puntosPoder":31,"vida":28}
+{"id":5376,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":139,"contador":0,"puntosPoder":50,"vida":83}
+{"id":5377,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":157,"contador":0,"puntosPoder":50,"vida":128}
+{"id":5388,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":137,"contador":0,"puntosPoder":51,"vida":92}
+{"id":5399,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":140,"contador":0,"puntosPoder":50,"vida":190}
+{"id":5401,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":137,"contador":0,"puntosPoder":51,"vida":54}
