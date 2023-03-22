@@ -137,6 +137,9 @@ public Administrador admin;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel49 = new javax.swing.JLabel();
+        Evaluacion = new javax.swing.JTextField();
+        tiempoSegundosTextField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel54 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -224,9 +227,7 @@ public Administrador admin;
         Camp3 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
         botonParar = new javax.swing.JButton();
-        tiempoSegundosTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
@@ -234,6 +235,51 @@ public Administrador admin;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel49.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setText("Tiempo de ciclo (seg)");
+        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
+        Evaluacion.setBackground(new java.awt.Color(204, 255, 255));
+        Evaluacion.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
+        Evaluacion.setForeground(new java.awt.Color(0, 0, 0));
+        Evaluacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Evaluacion.setText("Tiempo (seg)");
+        Evaluacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                EvaluacionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                EvaluacionFocusLost(evt);
+            }
+        });
+        Evaluacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EvaluacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Evaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 90, -1));
+
+        tiempoSegundosTextField.setBackground(new java.awt.Color(204, 255, 255));
+        tiempoSegundosTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
+        tiempoSegundosTextField.setForeground(new java.awt.Color(0, 0, 0));
+        tiempoSegundosTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tiempoSegundosTextField.setText("Tiempo (seg)");
+        tiempoSegundosTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tiempoSegundosTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tiempoSegundosTextFieldFocusLost(evt);
+            }
+        });
+        tiempoSegundosTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiempoSegundosTextFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tiempoSegundosTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 90, -1));
 
         jPanel2.setToolTipText("");
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -599,6 +645,8 @@ public Administrador admin;
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, 380, 280));
 
+        botonEmpezar.setBackground(new java.awt.Color(0, 0, 204));
+        botonEmpezar.setForeground(new java.awt.Color(255, 255, 255));
         botonEmpezar.setText("Empezar");
         botonEmpezar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -703,11 +751,8 @@ public Administrador admin;
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 1060, 320));
 
-        jLabel49.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setText("Tiempo (seg)");
-        getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
-
+        botonParar.setBackground(new java.awt.Color(0, 0, 204));
+        botonParar.setForeground(new java.awt.Color(255, 255, 255));
         botonParar.setText("Parar");
         botonParar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -715,26 +760,6 @@ public Administrador admin;
             }
         });
         getContentPane().add(botonParar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 230, -1, -1));
-
-        tiempoSegundosTextField.setBackground(new java.awt.Color(204, 255, 255));
-        tiempoSegundosTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
-        tiempoSegundosTextField.setForeground(new java.awt.Color(0, 0, 0));
-        tiempoSegundosTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tiempoSegundosTextField.setText("Tiempo (seg)");
-        tiempoSegundosTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tiempoSegundosTextFieldFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tiempoSegundosTextFieldFocusLost(evt);
-            }
-        });
-        tiempoSegundosTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tiempoSegundosTextFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tiempoSegundosTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 90, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LayoutBlue.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1230, 590));
@@ -796,8 +821,10 @@ public Administrador admin;
         this.botonParar.setEnabled(true);
         
         try{
+            int evaluacion = Integer.parseInt(this.Evaluacion.getText());
             int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
             admin.setCiclo(tiempo);
+            variablesGenerales.tiempoAnalisisSegundos= evaluacion;
             if(admin.isKeep()==false){
                 admin = new Administrador(this.colaNivel1JoseTextField, 
                         this.colaNivel2JoseTextField, 
@@ -883,6 +910,18 @@ public Administrador admin;
         
     }//GEN-LAST:event_botonPararActionPerformed
 
+    private void EvaluacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EvaluacionFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EvaluacionFocusGained
+
+    private void EvaluacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EvaluacionFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EvaluacionFocusLost
+
+    private void EvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EvaluacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EvaluacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -932,6 +971,7 @@ public Administrador admin;
     private javax.swing.JLabel Camp2;
     private javax.swing.JLabel Camp3;
     private javax.swing.JLabel Central;
+    private javax.swing.JTextField Evaluacion;
     private javax.swing.JLabel LOU;
     private javax.swing.JLabel OTRO;
     private javax.swing.JLabel VELMA;
