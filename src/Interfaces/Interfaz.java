@@ -124,7 +124,9 @@ public Administrador admin;
                 this.vida1,
                 this.vida2,
                 this.vida3,
-                this.Accion);
+                this.Accion,
+                this.DocumentacionIAJLabel
+        );
                 
     }
 
@@ -137,6 +139,8 @@ public Administrador admin;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        DocumentacionIAJLabel = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         Evaluacion = new javax.swing.JTextField();
         tiempoSegundosTextField = new javax.swing.JTextField();
@@ -234,11 +238,22 @@ public Administrador admin;
         jLabel43 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        DocumentacionIAJLabel.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
+        DocumentacionIAJLabel.setForeground(new java.awt.Color(255, 255, 255));
+        DocumentacionIAJLabel.setText("IA ESTA: ESPERANDO POR INSTRUCCIONES");
+        getContentPane().add(DocumentacionIAJLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, 340, 20));
+
+        jLabel57.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
+        jLabel57.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel57.setText("Analisis (seg)");
+        getContentPane().add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jLabel49.setFont(new java.awt.Font("Hack NF", 1, 12)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setText("Tiempo de ciclo (seg)");
+        jLabel49.setText("Ciclo (seg)");
         getContentPane().add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         Evaluacion.setBackground(new java.awt.Color(204, 255, 255));
@@ -686,7 +701,7 @@ public Administrador admin;
 
         serieAndyCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieAndyCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(serieAndyCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 50, -1, -1));
+        jPanel4.add(serieAndyCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 250, 40));
 
         jLabel47.setFont(new java.awt.Font("Hack NF", 1, 24)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
@@ -696,7 +711,7 @@ public Administrador admin;
 
         serieJoseCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieJoseCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(serieJoseCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+        jPanel4.add(serieJoseCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 200, 30));
 
         ataque3.setBackground(new java.awt.Color(255, 255, 255));
         ataque3.setForeground(new java.awt.Color(255, 255, 255));
@@ -713,7 +728,7 @@ public Administrador admin;
 
         serieUsecheCombatiendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         serieUsecheCombatiendo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel4.add(serieUsecheCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, -1, -1));
+        jPanel4.add(serieUsecheCombatiendo, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 190, 30));
 
         Camp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/10.gif"))); // NOI18N
         jPanel4.add(Camp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
@@ -873,7 +888,8 @@ public Administrador admin;
                 this.vida1,
                 this.vida2,
                 this.vida3,
-                this.Accion);
+                this.Accion,
+                this.DocumentacionIAJLabel);
             }
             
             try{
@@ -904,7 +920,8 @@ public Administrador admin;
             
             
             
-            
+            this.Evaluacion.setForeground(new Color(0, 0, 0));
+            this.tiempoSegundosTextField.setForeground(new Color(0, 0, 0));
             this.tiempoSegundosTextField.setEditable(false);
             this.Evaluacion.setEditable(false);
         }
@@ -949,7 +966,7 @@ public Administrador admin;
         this.winner.setIcon(giftInicio);
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         
-        
+        this.DocumentacionIAJLabel.setText("IA ESTA: ESPERANDO POR INSTRUCCIONES");
         this.tiempoSegundosTextField.setEditable(true);
         this.Evaluacion.setEditable(true);
         
@@ -1025,6 +1042,7 @@ public Administrador admin;
     private javax.swing.JLabel Camp2;
     private javax.swing.JLabel Camp3;
     private javax.swing.JLabel Central;
+    private javax.swing.JLabel DocumentacionIAJLabel;
     private javax.swing.JTextField Evaluacion;
     private javax.swing.JLabel LOU;
     private javax.swing.JLabel OTRO;
@@ -1098,6 +1116,7 @@ public Administrador admin;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

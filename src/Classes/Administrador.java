@@ -69,6 +69,7 @@ public class Administrador extends Thread{
     javax.swing.JLabel vida2;
     javax.swing.JLabel vida3;
     javax.swing.JLabel peleaDesc;
+    javax.swing.JLabel DocumentacionIAJLabel;
     
     public Administrador(){
         
@@ -97,7 +98,8 @@ public class Administrador extends Thread{
             javax.swing.JLabel serieGanadoraText,Clip clip4,javax.swing.JLabel lucha1,
             javax.swing.JLabel lucha2, javax.swing.JLabel lucha3,
             javax.swing.JLabel vida1, javax.swing.JLabel vida2, javax.swing.JLabel vida3,
-            javax.swing.JLabel peleaDesc
+            javax.swing.JLabel peleaDesc,
+            javax.swing.JLabel DocumentacionIAJLabel
             ){
         this.colaNivel1JoseTextField = colaNivel1JoseTextField;
         this.colaNivel2JoseTextField = colaNivel2JoseTextField;
@@ -131,7 +133,7 @@ public class Administrador extends Thread{
         this.lucha1=lucha1;
         this.lucha2=lucha2;
         this.lucha3=lucha3;
-        
+        this.DocumentacionIAJLabel = DocumentacionIAJLabel;
     }
     
     @Override
@@ -143,7 +145,7 @@ public class Administrador extends Thread{
                 Thread.sleep(ciclo*1000);
                 
                 if(variablesGenerales.numeroCiclos==2){
-                   
+                    
                     Serie serieJose = new Serie();
                     Serie serieAndy = new Serie();
                     Serie serieUseche = new Serie();
@@ -152,12 +154,8 @@ public class Administrador extends Thread{
                     this.asignarId(serieJose, serieAndy, serieUseche);
                     this.encolarSerie(serieJose, serieAndy, serieUseche);
                     
-                    
                     variablesGenerales.numeroCiclos=0;
                 }
-                
-                
-                
                 
     //            Series que van a la IA
                 Serie serieJoseProcesador = this.CampeonJose();
@@ -166,20 +164,16 @@ public class Administrador extends Thread{
                 
                 this.seriesALaIA(serieJoseProcesador, serieAndyProcesador, serieUsecheProcesador,clip4);
                 
+                this.DocumentacionIAJLabel.setText("IA ESTA: ESPERANDO POR INSTRUCCIONES");
+                
                 this.sumar1ContadorSeries();
                 
-                
-//                this.sacarCabezaRefuerzo();
-                
-                
-
-//                this.imprimirCola(Administrador.colaNivel1Jose, this.colaNivel1JoseTextField);
                 this.imprimirColas();
                 
                 variablesGenerales.numeroCiclos++;
                 
             }catch(Exception e){
-//                System.out.println(e);
+                
             }    
             
         }
@@ -216,7 +210,7 @@ public class Administrador extends Thread{
 
                if(serieJoseProcesador != null){
                           serieJoseProcesador.setNivelPrioridad(1);
-                          colaNivel1Jose.addFirst(serieJoseProcesador);
+                          Administrador.colaNivel1Jose.addFirst(serieJoseProcesador);
                }
 
                if(serieAndyProcesador != null){
@@ -247,7 +241,8 @@ public class Administrador extends Thread{
                                this.serieUsecheCombatiendo, 
                                this.serieGanadoraText,this.clip4,
                                this.lucha1,this.lucha2,this.lucha3,
-                               this.vida1,this.vida2,this.vida3,this.peleaDesc
+                               this.vida1,this.vida2,this.vida3,this.peleaDesc,
+                               this.DocumentacionIAJLabel
                        );
                                
                        this.imprimirColas();
@@ -263,7 +258,7 @@ public class Administrador extends Thread{
 
             }
         }catch(Exception e){
-//            System.out.println(e);
+            
         }
         
     }

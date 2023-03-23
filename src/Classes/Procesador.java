@@ -45,6 +45,7 @@ public class Procesador extends Thread{
     javax.swing.JLabel vida2;
     javax.swing.JLabel vida3;
     javax.swing.JLabel peleaDesc;
+    javax.swing.JLabel DocumentacionIAJLabel;
     
     variablesGenerales var=new variablesGenerales();
             
@@ -67,7 +68,8 @@ public class Procesador extends Thread{
             javax.swing.JLabel lucha1,
             javax.swing.JLabel lucha2, javax.swing.JLabel lucha3,
             javax.swing.JLabel vida1, javax.swing.JLabel vida2, javax.swing.JLabel vida3,
-            javax.swing.JLabel peleaDesc
+            javax.swing.JLabel peleaDesc,
+            javax.swing.JLabel DocumentacionIAJLabel
     ){
         this.serieJose = serieJose;
         this.serieAndy = serieAndy;
@@ -92,10 +94,13 @@ public class Procesador extends Thread{
         this.lucha1=lucha1;
         this.lucha2=lucha2;
         this.lucha3=lucha3;
+        this.DocumentacionIAJLabel = DocumentacionIAJLabel;
     }
     
     @Override
     public void run(){
+        
+        this.DocumentacionIAJLabel.setText("IA ESTA: ANALIZANDO");
         
         try{
              while(Administrador.keep){    
@@ -120,16 +125,17 @@ public class Procesador extends Thread{
                 } catch (LineUnavailableException ex) {
                     Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                this.serieJoseCombatiendo.setText("( " + this.serieJose.getId() + ", " + this.serieJose.getRodajePertenece() + " )");
-                this.serieAndyCombatiendo.setText("( " + this.serieAndy.getId() + ", " + this.serieAndy.getRodajePertenece() + " )");
-                this.serieUsecheCombatiendo.setText("( " + this.serieUseche.getId() + ", " + this.serieUseche.getRodajePertenece() + " )");
+                
+             
+                this.serieJoseCombatiendo.setText("( " + this.serieJose.getId() + ", TLOU, prioInic: " + this.serieJose.getNivelPrioridadInicio() + " )");
+                this.serieAndyCombatiendo.setText("( " + this.serieAndy.getId() + ", VELMA, prioInic: " + this.serieAndy.getNivelPrioridadInicio() + " )");
+                this.serieUsecheCombatiendo.setText("( " + this.serieUseche.getId() + ", GOT, prioInic: " + this.serieUseche.getNivelPrioridadInicio() + " )");
                 this.probabilidadesBatalla( clip,clip2,clip3);
                 
                 break;
             }
              
         }catch(Exception e){
-//            System.out.println(e);
         }
         
         variablesGenerales.darPasoAdmin.release();
@@ -256,15 +262,9 @@ public class Procesador extends Thread{
                 this.serieJoseCombatiendo.setText("");
                 this.serieUsecheCombatiendo.setText("");
         
-            
-                
                 this.camp1.setIcon(null);
                 this.camp2.setIcon(null);
                 this.camp3.setIcon(null);
-                
-                
-                System.out.println("RODAJE GANADOR: " + serieGanadora.getRodajePertenece());
-                
                 
             switch (serieGanadora.getRodajePertenece()) {
                 
@@ -347,10 +347,24 @@ public class Procesador extends Thread{
                 }
             }
             
-            
-//                System.out.println("Hay ganador" );
                 if(Administrador.keep){
-                    this.serieGanadoraText.setText("Serie Ganadora: (ID: " + serieGanadora.getId() + ", RODAJE: " + serieGanadora.getRodajePertenece() + ")");
+                    
+                    String rodaje;
+                    
+                    switch(serieGanadora.getRodajePertenece()){
+                        case 1:
+                          rodaje = "TLOU";  
+                          break;
+                        case 2:
+                          rodaje = "VELMA";  
+                          break;
+                        default:
+                          rodaje = "Game of Thrones";  
+                          break;
+                            
+                    }
+                    
+                    this.serieGanadoraText.setText("Serie Ganadora: (ID: " + serieGanadora.getId() + ", RODAJE: " + rodaje + ")");
                 }
                 try {
                     var.leerSerieJson(this.LOU, this.VELMA, this.OTRO);
@@ -358,7 +372,6 @@ public class Procesador extends Thread{
                     Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 try {
-                //                System.out.println("Empataron");
                     Thread.sleep(5000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
@@ -410,7 +423,6 @@ public class Procesador extends Thread{
                     admin.encolarSerie(this.serieJose, this.serieAndy, this.serieUseche);
                 }
             try {
-                //                System.out.println("Empataron");
                 Thread.sleep(5000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
@@ -462,7 +474,6 @@ public class Procesador extends Thread{
                     admin.encolarColaRefuerzo(this.serieJose, this.serieAndy, this.serieUseche);
                 }
             try {
-                //                System.out.println("Empataron");
                 Thread.sleep(2000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
@@ -501,9 +512,6 @@ public class Procesador extends Thread{
      */
     public Serie simuladorBatalla() {
         
-//        System.out.println("Jose: " + this.serieJose.getPuntosPoder());
-//        System.out.println("Andy: " + this.serieAndy.getPuntosPoder());
-//        System.out.println("Useche: " + this.serieUseche.getPuntosPoder());
            Serie campeonJose = this.serieJose;
            Serie campeonAndy = this.serieAndy;
            Serie campeonUseche = this.serieUseche;
@@ -540,7 +548,7 @@ public class Procesador extends Thread{
                                     
                                     target.setVida(target.getVida()-damage);
                                     this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
-                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+//                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
                                  }
                                  else if(target.getVida()==0){
                                      target.setVida(0);
@@ -550,13 +558,13 @@ public class Procesador extends Thread{
                                     target.setVida(0);
                                     
                                     this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
-                                    System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
+//                                    System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
                                  }
                                  if(target.getVida() <= 0){
-                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
+//                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
                                  }
                                  if(todosCampeonesMuertos(jugadores)){
-                                            System.out.println("tenemos un ganador ");
+//                                            System.out.println("tenemos un ganador ");
                                  }
                       }
                                  
@@ -700,9 +708,6 @@ public class Procesador extends Thread{
     
     public void simuladorBatalla2() {
         
-//        System.out.println("Jose: " + this.serieJose.getPuntosPoder());
-//        System.out.println("Andy: " + this.serieAndy.getPuntosPoder());
-//        System.out.println("Useche: " + this.serieUseche.getPuntosPoder());
            Serie campeonJose = this.serieJose;
            Serie campeonAndy = this.serieAndy;
            Serie campeonUseche = this.serieUseche;
@@ -739,7 +744,7 @@ public class Procesador extends Thread{
                                     
                                     target.setVida(target.getVida()-damage);
                                     this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
-                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+//                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
                                  }
                                  else if(target.getVida()==1){
                                      target.setVida(1);
@@ -751,10 +756,10 @@ public class Procesador extends Thread{
                                     this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + "dejandole a 1 de vida");
                                  }
                                  if(target.getVida() <= 0){
-                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
+//                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
                                  }
                                  if(todosCampeonesMuertos(jugadores)){
-                                            System.out.println("tenemos un ganador ");
+//                                            System.out.println("tenemos un ganador ");
                                             
                                  }
                       }

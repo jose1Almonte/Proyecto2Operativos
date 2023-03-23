@@ -343,3 +343,17 @@
 {"id":5951,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":103,"contador":0,"puntosPoder":50,"vida":94}
 {"id":5989,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":1,"duracionMinutos":83,"contador":0,"puntosPoder":31,"vida":27}
 {"id":5992,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":1,"duracionMinutos":71,"contador":0,"puntosPoder":30,"vida":210}
+{"id":6109,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":113,"contador":0,"puntosPoder":50,"vida":336}
+{"id":6142,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":156,"contador":0,"puntosPoder":50,"vida":45}
+{"id":6150,"nivelPrioridad":2,"nivelPrioridadInicio":2,"rodajePertenece":3,"duracionMinutos":80,"contador":0,"puntosPoder":31,"vida":121}
+{"id":6162,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":124,"contador":0,"puntosPoder":51,"vida":75}
+{"id":6189,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":99,"contador":0,"puntosPoder":51,"vida":153}
+{"id":6202,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":135,"contador":0,"puntosPoder":50,"vida":75}
+{"id":6233,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":176,"contador":0,"puntosPoder":50,"vida":350}
+{"id":6231,"nivelPrioridad":1,"nivelPrioridadInicio":2,"rodajePertenece":3,"duracionMinutos":74,"contador":1,"puntosPoder":32,"vida":51}
+{"id":6243,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":100,"contador":0,"puntosPoder":51,"vida":195}
+{"id":6274,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":91,"contador":0,"puntosPoder":51,"vida":91}
+{"id":6396,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":3,"duracionMinutos":130,"contador":0,"puntosPoder":51,"vida":152}
+{"id":6434,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":2,"duracionMinutos":176,"contador":0,"puntosPoder":50,"vida":110}
+{"id":6436,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":143,"contador":0,"puntosPoder":50,"vida":61}
+{"id":6448,"nivelPrioridad":1,"nivelPrioridadInicio":1,"rodajePertenece":1,"duracionMinutos":161,"contador":0,"puntosPoder":50,"vida":44}
