@@ -542,6 +542,9 @@ public class Procesador extends Thread{
                                     this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
                                     System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
                                  }
+                                 else if(target.getVida()==0){
+                                     target.setVida(0);
+                                 }
                                  else{
                                     target.setVida(target.getVida()-damage);
                                     target.setVida(0);
@@ -737,6 +740,10 @@ public class Procesador extends Thread{
                                     target.setVida(target.getVida()-damage);
                                     this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
                                     System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
+                                 }
+                                 else if(target.getVida()==1){
+                                     target.setVida(1);
+                                     this.peleaDesc.setText(atacante.getRodajePertenece() + " fallo ");
                                  }
                                  else{
                                     target.setVida(target.getVida()-damage);
