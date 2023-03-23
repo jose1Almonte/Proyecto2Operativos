@@ -935,7 +935,7 @@ public Administrador admin;
                 this.Accion_3,
                 this.DocumentacionIAJLabel);
             }
-            
+                admin.setKeep(true);
             try{
                 
                 
