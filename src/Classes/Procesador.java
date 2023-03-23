@@ -34,9 +34,6 @@ public class Procesador extends Thread{
     private javax.swing.JLabel VELMA;
     private javax.swing.JLabel OTRO;
     Clip clip4;
-    public static Clip clip3; 
-    public static Clip clip2; 
-    public static Clip clip; 
     
     javax.swing.JLabel serieJoseCombatiendo;
     javax.swing.JLabel serieAndyCombatiendo;
@@ -115,15 +112,15 @@ public class Procesador extends Thread{
                 
                 File audio = new File("src\\Archivos\\1.wav");
                 AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
-                clip = AudioSystem.getClip();
+                Clip clip = AudioSystem.getClip();
                 
                 File audio2 = new File("src\\Archivos\\3.wav");
                 AudioInputStream audioStream2 = AudioSystem.getAudioInputStream(audio2);
-                clip2 = AudioSystem.getClip();
+                Clip clip2 = AudioSystem.getClip();
                 
                 File audio3 = new File("src\\Archivos\\w.wav");
                 AudioInputStream audioStream3 = AudioSystem.getAudioInputStream(audio3);
-                clip3 = AudioSystem.getClip();
+                Clip clip3 = AudioSystem.getClip();
                 
                 
              try {
