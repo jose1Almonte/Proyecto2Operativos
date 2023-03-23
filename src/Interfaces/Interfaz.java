@@ -245,7 +245,7 @@ public Administrador admin;
         Evaluacion.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
         Evaluacion.setForeground(new java.awt.Color(0, 0, 0));
         Evaluacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Evaluacion.setText("Tiempo (seg)");
+        Evaluacion.setText("Tiempo Analisis (seg)");
         Evaluacion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 EvaluacionFocusGained(evt);
@@ -259,7 +259,7 @@ public Administrador admin;
                 EvaluacionActionPerformed(evt);
             }
         });
-        getContentPane().add(Evaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 90, -1));
+        getContentPane().add(Evaluacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 80, -1));
 
         tiempoSegundosTextField.setBackground(new java.awt.Color(204, 255, 255));
         tiempoSegundosTextField.setFont(new java.awt.Font("Yu Gothic Light", 1, 12)); // NOI18N
@@ -784,8 +784,6 @@ public Administrador admin;
         if(this.tiempoSegundosTextField.getText().equals("Tiempo (seg)")){
             this.tiempoSegundosTextField.setText("");
             this.tiempoSegundosTextField.setForeground(new Color(0, 0, 0));
-        }else{
-            
         }
     }//GEN-LAST:event_tiempoSegundosTextFieldFocusGained
 
@@ -821,10 +819,28 @@ public Administrador admin;
         this.botonParar.setEnabled(true);
         
         try{
-            int evaluacion = Integer.parseInt(this.Evaluacion.getText());
-            int tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
+            
+            int tiempo;
+            
+            try{
+                tiempo = Integer.parseInt(tiempoSegundosTextField.getText());
+                
+                if(tiempo < 0){
+                    tiempo = 0;
+                    this.tiempoSegundosTextField.setText("0");
+                }
+                
+                
+            }catch(Exception e){
+                
+                tiempo = 0;
+                this.tiempoSegundosTextField.setText("0");
+            }
+                        
+            
             admin.setCiclo(tiempo);
-            variablesGenerales.tiempoAnalisisSegundos= evaluacion;
+            
+            
             if(admin.isKeep()==false){
                 admin = new Administrador(this.colaNivel1JoseTextField, 
                         this.colaNivel2JoseTextField, 
@@ -858,14 +874,39 @@ public Administrador admin;
                 this.vida2,
                 this.vida3,
                 this.Accion);
-                admin.setKeep(true);
-                admin.setCiclo(tiempo);
-                admin.start();
             }
-            else{
-                admin.setKeep(true);
-                admin.start();
+            
+            try{
+                
+                
+                int evaluacion = Integer.parseInt(this.Evaluacion.getText());
+                
+                if(evaluacion >= 0){
+                    
+                    variablesGenerales.tiempoAnalisisSegundos= evaluacion;
+                }else{
+                    this.Evaluacion.setText("22");
+                    variablesGenerales.tiempoAnalisisSegundos = 22;
+                }
+                
+                
+            }catch(Exception e){
+                
+                    this.Evaluacion.setText("22");
+                    variablesGenerales.tiempoAnalisisSegundos = 22;
+                
             }
+            
+            admin.setKeep(true);
+            admin.setCiclo(tiempo);
+            admin.start();
+            
+            
+            
+            
+            
+            this.tiempoSegundosTextField.setEditable(false);
+            this.Evaluacion.setEditable(false);
         }
         catch(Exception e){
             System.out.print("Error");
@@ -873,6 +914,8 @@ public Administrador admin;
             this.Central.setText("ERROR");
             this.clip4.stop();
         }
+        
+        
   
     }//GEN-LAST:event_botonEmpezarActionPerformed
 
@@ -907,15 +950,26 @@ public Administrador admin;
         this.winner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         
         
+        this.tiempoSegundosTextField.setEditable(true);
+        this.Evaluacion.setEditable(true);
         
     }//GEN-LAST:event_botonPararActionPerformed
 
     private void EvaluacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EvaluacionFocusGained
-        // TODO add your handling code here:
+        
+        if(this.Evaluacion.getText().equals("Tiempo Analisis (seg)")){
+            this.Evaluacion.setText("");
+            this.Evaluacion.setForeground(new Color(0, 0, 0));
+        }
+        
     }//GEN-LAST:event_EvaluacionFocusGained
 
     private void EvaluacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EvaluacionFocusLost
-        // TODO add your handling code here:
+        
+        if(this.Evaluacion.getText().equals("")){
+            this.Evaluacion.setText("Tiempo Analisis (seg)");
+            this.Evaluacion.setForeground(new Color(153, 153, 153));
+        }
     }//GEN-LAST:event_EvaluacionFocusLost
 
     private void EvaluacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EvaluacionActionPerformed
