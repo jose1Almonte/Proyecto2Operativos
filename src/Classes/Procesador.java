@@ -554,7 +554,6 @@ public class Procesador extends Thread{
                                  }
                                  if(todosCampeonesMuertos(jugadores)){
                                             System.out.println("tenemos un ganador ");
-                                            listo = false;
                                  }
                       }
                                  
@@ -567,14 +566,21 @@ public class Procesador extends Thread{
 //                      atacar ( this.serieJose, this.serieAndy, this.serieUseche);
 //                      atacar ( this.serieAndy, this.serieJose, this.serieUseche);
 //                      atacar ( this.serieUseche, this.serieJose, this.serieAndy );
-                        if(this.serieJose.getVida() == 0 && this.serieAndy.getVida()==0){ break;}
-                        else if(this.serieJose.getVida() == 0 && this.serieUseche.getVida()==0){ break;}
-                        else if(this.serieAndy.getVida() == 0 && this.serieUseche.getVida()==0){ break;}
+                        if(this.serieJose.getVida() == 0 && this.serieAndy.getVida()==0){
+                            listo = false;
+                            break;}
+                        else if(this.serieJose.getVida() == 0 && this.serieUseche.getVida()==0){ 
+                            listo = false;
+                            break;}
+                        else if(this.serieAndy.getVida() == 0 && this.serieUseche.getVida()==0){ 
+                            listo = false;
+                            break;}
 
                         if(!Administrador.keep){
                             this.vida1.setText(String.valueOf(vidaResp1));
                             this.vida2.setText(String.valueOf(vidaResp2));
                             this.vida3.setText(String.valueOf(vidaResp3));
+                            
                         }
 
            }
@@ -743,7 +749,6 @@ public class Procesador extends Thread{
                                  }
                                  if(todosCampeonesMuertos(jugadores)){
                                             System.out.println("tenemos un ganador ");
-                                            listo = false;
                                  }
                       }
                                  
@@ -761,7 +766,9 @@ public class Procesador extends Thread{
 //                      atacar ( this.serieJose, this.serieAndy, this.serieUseche);
 //                      atacar ( this.serieAndy, this.serieJose, this.serieUseche);
 //                      atacar ( this.serieUseche, this.serieJose, this.serieAndy );
-                        if(this.serieJose.getVida() == 1 && this.serieAndy.getVida()==1 && this.serieUseche.getVida()==1){ break;}
+                        if(this.serieJose.getVida() == 1 && this.serieAndy.getVida()==1 && this.serieUseche.getVida()==1){ 
+                            listo = false;
+                            break;}
 
 
            }
