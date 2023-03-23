@@ -68,7 +68,9 @@ public class Administrador extends Thread{
     javax.swing.JLabel vida1;
     javax.swing.JLabel vida2;
     javax.swing.JLabel vida3;
-    javax.swing.JLabel peleaDesc;
+    javax.swing.JLabel Accion_1;
+    javax.swing.JLabel Accion_2;
+    javax.swing.JLabel Accion_3;
     javax.swing.JLabel DocumentacionIAJLabel;
     
     public Administrador(){
@@ -98,7 +100,9 @@ public class Administrador extends Thread{
             javax.swing.JLabel serieGanadoraText,Clip clip4,javax.swing.JLabel lucha1,
             javax.swing.JLabel lucha2, javax.swing.JLabel lucha3,
             javax.swing.JLabel vida1, javax.swing.JLabel vida2, javax.swing.JLabel vida3,
-            javax.swing.JLabel peleaDesc,
+            javax.swing.JLabel Accion_1,
+            javax.swing.JLabel Accion_2,
+            javax.swing.JLabel Accion_3,
             javax.swing.JLabel DocumentacionIAJLabel
             ){
         this.colaNivel1JoseTextField = colaNivel1JoseTextField;
@@ -126,7 +130,9 @@ public class Administrador extends Thread{
         this.serieUsecheCombatiendo = serieUsecheCombatiendo;
         this.serieGanadoraText = serieGanadoraText;
         this.clip4=clip4;
-        this.peleaDesc=peleaDesc;
+        this.Accion_1=Accion_1;
+        this.Accion_2=Accion_2;
+        this.Accion_3=Accion_3;
         this.vida1=vida1;
         this.vida2=vida2;
         this.vida3=vida3;
@@ -241,7 +247,7 @@ public class Administrador extends Thread{
                                this.serieUsecheCombatiendo, 
                                this.serieGanadoraText,this.clip4,
                                this.lucha1,this.lucha2,this.lucha3,
-                               this.vida1,this.vida2,this.vida3,this.peleaDesc,
+                               this.vida1,this.vida2,this.vida3,this.Accion_1,this.Accion_2,this.Accion_3,
                                this.DocumentacionIAJLabel
                        );
                                

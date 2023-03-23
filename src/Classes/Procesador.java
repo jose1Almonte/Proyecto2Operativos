@@ -4,6 +4,7 @@
  */
 package Classes;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -44,7 +45,9 @@ public class Procesador extends Thread{
     javax.swing.JLabel vida1;
     javax.swing.JLabel vida2;
     javax.swing.JLabel vida3;
-    javax.swing.JLabel peleaDesc;
+    javax.swing.JLabel Accion_1;
+    javax.swing.JLabel Accion_2;
+    javax.swing.JLabel Accion_3;
     javax.swing.JLabel DocumentacionIAJLabel;
     
     variablesGenerales var=new variablesGenerales();
@@ -68,7 +71,7 @@ public class Procesador extends Thread{
             javax.swing.JLabel lucha1,
             javax.swing.JLabel lucha2, javax.swing.JLabel lucha3,
             javax.swing.JLabel vida1, javax.swing.JLabel vida2, javax.swing.JLabel vida3,
-            javax.swing.JLabel peleaDesc,
+            javax.swing.JLabel Accion_1,javax.swing.JLabel Accion_2,javax.swing.JLabel Accion_3,
             javax.swing.JLabel DocumentacionIAJLabel
     ){
         this.serieJose = serieJose;
@@ -87,7 +90,9 @@ public class Procesador extends Thread{
         this.serieUsecheCombatiendo = serieUsecheCombatiendo;
         this.serieGanadoraText = serieGanadoraText;
         this.clip4=clip4;
-        this.peleaDesc=peleaDesc;
+        this.Accion_1 = Accion_1;
+        this.Accion_2 = Accion_2;
+        this.Accion_3 = Accion_3;
         this.vida1=vida1;
         this.vida2=vida2;
         this.vida3=vida3;
@@ -257,7 +262,9 @@ public class Procesador extends Thread{
                 this.vida1.setText("");
                 this.vida2.setText("");
                 this.vida3.setText("");
-                this.peleaDesc.setText("");
+                this.Accion_1.setText("");
+                this.Accion_2.setText("");
+                this.Accion_3.setText("");
                 this.serieAndyCombatiendo.setText("");
                 this.serieJoseCombatiendo.setText("");
                 this.serieUsecheCombatiendo.setText("");
@@ -403,7 +410,9 @@ public class Procesador extends Thread{
                 this.vida1.setText("");
                 this.vida2.setText("");
                 this.vida3.setText("");
-                this.peleaDesc.setText("");
+                this.Accion_1.setText("");
+                this.Accion_2.setText("");
+                this.Accion_3.setText("");
                 this.serieAndyCombatiendo.setText("");
                 this.serieJoseCombatiendo.setText("");
                 this.serieUsecheCombatiendo.setText("");
@@ -452,7 +461,9 @@ public class Procesador extends Thread{
                 this.vida1.setText("");
                 this.vida2.setText("");
                 this.vida3.setText("");
-                this.peleaDesc.setText("");
+                this.Accion_1.setText("");
+                this.Accion_2.setText("");
+                this.Accion_3.setText("");
                 this.serieAndyCombatiendo.setText("");
                 this.serieJoseCombatiendo.setText("");
                 this.serieUsecheCombatiendo.setText("");
@@ -546,18 +557,79 @@ public class Procesador extends Thread{
                                  int damage = atacante.getPuntosPoder();
                                  if(target.getVida()-damage>0){
                                     
-                                    target.setVida(target.getVida()-damage);
-                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
+                                            target.setVida(target.getVida()-damage);
+                                    
+                                            switch (atacante.getRodajePertenece()) {
+                                                       case 1 -> {this.Accion_1.setForeground(Color.yellow);
+                                                                  this.Accion_1.setText(Integer.toString(damage));
+                                                                  this.Accion_2.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                                  
+                                                       
+                                                       case 2 -> {this.Accion_2.setForeground(Color.yellow);
+                                                                  this.Accion_2.setText(Integer.toString(damage));
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                       
+                                                       default -> {this.Accion_3.setForeground(Color.yellow);
+                                                                  this.Accion_3.setText(Integer.toString(damage));
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_2.setText(null);
+                                                       }
+                                            }
+                                            switch (target.getRodajePertenece()) {
+                                                       case 1 -> {this.Accion_1.setForeground(Color.red);
+                                                                  this.Accion_1.setText(Integer.toString(damage));}
+                                                                       
+                                                       case 2 ->{this.Accion_2.setForeground(Color.red);
+                                                                  this.Accion_2.setText(Integer.toString(damage));}
+                                                       
+                                                       default ->{this.Accion_3.setForeground(Color.red);
+                                                                  this.Accion_3.setText(Integer.toString(damage));}
+                                            }
+                                            //this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
 //                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
-                                 }
-                                 else if(target.getVida()==0){
+                                 }else if(target.getVida()==0){
                                      target.setVida(0);
                                  }
                                  else{
                                     target.setVida(target.getVida()-damage);
                                     target.setVida(0);
                                     
-                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
+                                    switch (atacante.getRodajePertenece()) {
+                                                       case 1 -> {this.Accion_1.setForeground(Color.blue);
+                                                                  this.Accion_1.setText(Integer.toString(damage));
+                                                                  this.Accion_2.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                                  
+                                                       
+                                                       case 2 -> {this.Accion_2.setForeground(Color.blue);
+                                                                  this.Accion_2.setText(Integer.toString(damage));
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                       
+                                                       default -> {this.Accion_3.setForeground(Color.blue);
+                                                                  this.Accion_3.setText(Integer.toString(damage));
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_2.setText(null);
+                                                       }
+                                            }
+                                            switch (target.getRodajePertenece()) {
+                                                       case 1 -> {this.Accion_1.setForeground(Color.black);
+                                                                  this.Accion_1.setText(Integer.toString(damage));}
+                                                                       
+                                                       case 2 ->{this.Accion_2.setForeground(Color.black);
+                                                                  this.Accion_2.setText(Integer.toString(damage));}
+                                                       
+                                                       default ->{this.Accion_3.setForeground(Color.black);
+                                                                  this.Accion_3.setText(Integer.toString(damage));}
+                                            }
+                                    
+                                  //  this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
 //                                    System.out.println(atacante.getRodajePertenece() + " ataca " + target.getRodajePertenece() + " liquidandolo");
                                  }
                                  if(target.getVida() <= 0){
@@ -743,17 +815,108 @@ public class Procesador extends Thread{
                                  if(target.getVida()-damage>1){
                                     
                                     target.setVida(target.getVida()-damage);
-                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
+                                                                        
+                                     switch (atacante.getRodajePertenece()) {
+                                                       case 1 -> {this.Accion_1.setForeground(Color.yellow);
+                                                                  this.Accion_1.setText(Integer.toString(damage));
+                                                                  this.Accion_2.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                                  
+                                                       
+                                                       case 2 -> {this.Accion_2.setForeground(Color.yellow);
+                                                                  this.Accion_2.setText(Integer.toString(damage));
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                       
+                                                       default -> {this.Accion_3.setForeground(Color.yellow);
+                                                                  this.Accion_3.setText(Integer.toString(damage));
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_2.setText(null);
+                                                       }
+                                            }
+                                            switch (target.getRodajePertenece()) {
+                                                       case 1 -> {this.Accion_1.setForeground(Color.red);
+                                                                  this.Accion_1.setText(Integer.toString(damage));}
+                                                                       
+                                                       case 2 ->{this.Accion_2.setForeground(Color.red);
+                                                                  this.Accion_2.setText(Integer.toString(damage));}
+                                                       
+                                                       default ->{this.Accion_3.setForeground(Color.red);
+                                                                  this.Accion_3.setText(Integer.toString(damage));}
+                                            }
+                                    //this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de golpe! ");
 //                                    System.out.println(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + " haciendole " + damage + " de dano! ");
                                  }
                                  else if(target.getVida()==1){
                                      target.setVida(1);
-                                     this.peleaDesc.setText(atacante.getRodajePertenece() + " fallo ");
+                                     //this.peleaDesc.setText(atacante.getRodajePertenece() + " fallo ");
+                                     
+                                      switch (atacante.getRodajePertenece()) {
+                                                       case 1 -> {this.Accion_1.setForeground(Color.white);
+                                                                  this.Accion_1.setText("FALLO");
+                                                                  this.Accion_2.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                       
+                                                       case 2 -> {this.Accion_2.setForeground(Color.white);
+                                                                  this.Accion_2.setText("FALLO");
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                       
+                                                       default -> {this.Accion_3.setForeground(Color.white);
+                                                                  this.Accion_3.setText("FALLO");
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_2.setText(null);
+                                                       }
+                                            }
+//                                            switch (target.getRodajePertenece()) {
+//                                                       case 1 -> {this.Accion_1.setForeground(Color.red);
+//                                                                  this.Accion_1.setText(Integer.toString(damage));}
+//                                                                       
+//                                                       case 2 ->{this.Accion_2.setForeground(Color.red);
+//                                                                  this.Accion_2.setText(Integer.toString(damage));}
+//                                                       
+//                                                       default ->{this.Accion_3.setForeground(Color.red);
+//                                                                  this.Accion_3.setText(Integer.toString(damage));}
+//                                            }
                                  }
                                  else{
                                     target.setVida(target.getVida()-damage);
                                     target.setVida(1);
-                                    this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + "dejandole a 1 de vida");
+                                    //this.peleaDesc.setText(atacante.getRodajePertenece() + " ataca a " + target.getRodajePertenece() + "dejandole a 1 de vida");
+                                    
+                                     switch (atacante.getRodajePertenece()) {
+                                                       case 1 -> {this.Accion_1.setForeground(Color.yellow);
+                                                                  this.Accion_1.setText(Integer.toString(damage));
+                                                                  this.Accion_2.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                       
+                                                       case 2 -> {this.Accion_2.setForeground(Color.yellow);
+                                                                  this.Accion_2.setText(Integer.toString(damage));
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_3.setText(null);
+                                                       }
+                                                       
+                                                       default -> {this.Accion_3.setForeground(Color.yellow);
+                                                                  this.Accion_3.setText(Integer.toString(damage));
+                                                                  this.Accion_1.setText(null);
+                                                                  this.Accion_2.setText(null);
+                                                       }
+                                            }
+                                            switch (target.getRodajePertenece()) {
+                                                       case 1 -> {this.Accion_1.setForeground(Color.green);
+                                                                  this.Accion_1.setText("ESQUIVADO");}
+                                                                       
+                                                       case 2 ->{this.Accion_2.setForeground(Color.green);
+                                                                  this.Accion_2.setText("ESQUIVADO");}
+                                                       
+                                                       default ->{this.Accion_3.setForeground(Color.green);
+                                                                  this.Accion_3.setText("ESQUIVADO");}
+                                            }
                                  }
                                  if(target.getVida() <= 0){
 //                                            System.out.println(target.getRodajePertenece() + " ha sido derrotado" );
