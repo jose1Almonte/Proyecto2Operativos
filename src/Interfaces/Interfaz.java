@@ -5,7 +5,6 @@
 package Interfaces;
 
 import Classes.Administrador;
-import Classes.Procesador;
 import Classes.variablesGenerales;
 import java.awt.Color;
 import java.io.File;
@@ -985,9 +984,6 @@ public Administrador admin;
         
         admin.setKeep(false);
         this.clip4.stop();
-        Procesador.clip3.stop();
-        Procesador.clip2.stop();
-        Procesador.clip.stop();
         clip2.loop(Clip.LOOP_CONTINUOUSLY);
         this.botonEmpezar.setEnabled(true);
         this.Camp1.setIcon(null);
